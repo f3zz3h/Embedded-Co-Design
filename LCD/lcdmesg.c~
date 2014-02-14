@@ -230,7 +230,7 @@ void writechars(unsigned char *dat) {
 		*padr = *padr | (*dat & PAMASK);
 		*pcdr = *pcdr | ((*dat >> 7) & PCMASK);
 		
-		printf("Warite Chars pre increcment dat -- dat = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *dat, *padr, *pcdr);
+		printf("dat = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *dat, *padr, *pcdr);
 		
 		*dat++;
 	
