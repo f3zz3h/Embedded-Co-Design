@@ -1,0 +1,127 @@
+Restore Archived Project report for ts7300_top
+Tue Feb 11 12:13:56 2014
+Quartus II 64-Bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
+
+
+---------------------
+; Table of Contents ;
+---------------------
+  1. Legal Notice
+  2. Restore Archived Project Summary
+  3. Restore Archived Project Messages
+  4. Files Restored
+  5. Files Not Restored
+
+
+
+----------------
+; Legal Notice ;
+----------------
+Copyright (C) 1991-2012 Altera Corporation
+Your use of Altera Corporation's design tools, logic functions 
+and other software and tools, and its AMPP partner logic 
+functions, and any output files from any of the foregoing 
+(including device programming or simulation files), and any 
+associated documentation or information are expressly subject 
+to the terms and conditions of the Altera Program License 
+Subscription Agreement, Altera MegaCore Function License 
+Agreement, or other applicable license agreement, including, 
+without limitation, that your use is for the sole purpose of 
+programming logic devices manufactured by Altera and sold by 
+Altera or its authorized distributors.  Please refer to the 
+applicable agreement for further details.
+
+
+
++-------------------------------------------------------------------------+
+; Restore Archived Project Summary                                        ;
++---------------------------------+---------------------------------------+
+; Restore Archived Project Status ; Successful - Tue Feb 11 12:13:56 2014 ;
+; Revision Name                   ; ts7300_top                            ;
+; Top-level Entity Name           ; ts7300_top                            ;
+; Family                          ; Cyclone II                            ;
++---------------------------------+---------------------------------------+
+
+
++-----------------------------------+
+; Restore Archived Project Messages ;
++-----------------------------------+
+Info: Successfully restored '/home/luke/Downloads/ts7300_top.qar' into the '/home/luke/Downloads/ts7300_top_restored/' directory
+Info: Generated report 'ts7300_top.restore.rpt'
+Info (23030): Evaluation of Tcl script /home/luke/altera/12.1sp1/quartus/common/tcl/apps/qpm/qar.tcl was successful
+Info: Quartus II 64-Bit Shell was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 531 megabytes
+    Info: Processing ended: Tue Feb 11 12:13:56 2014
+    Info: Elapsed time: 00:00:02
+    Info: Total CPU time (on all processors): 00:00:02
+
+
++------------------------------------+
+; Files Restored                     ;
++------------------------------------+
+; File Name                          ;
++------------------------------------+
+; altera_dpram_16x32.v               ;
+; altera_ram.v                       ;
+; altera_spram_256x32.v              ;
+; ts7300_opencore.qpf                ;
+; ts7300_top.cbx.xml                 ;
+; ethernet/eth_clockgen.v            ;
+; ethernet/eth_cop.v                 ;
+; ethernet/eth_crc.v                 ;
+; ethernet/eth_defines.v             ;
+; ethernet/eth_fifo.v                ;
+; ethernet/eth_maccontrol.v          ;
+; ethernet/eth_macstatus.v           ;
+; ethernet/eth_miim.v                ;
+; ethernet/eth_outputcontrol.v       ;
+; ethernet/eth_random.v              ;
+; ethernet/eth_receivecontrol.v      ;
+; ethernet/eth_register.v            ;
+; ethernet/eth_registers.v           ;
+; ethernet/eth_rxaddrcheck.v         ;
+; ethernet/eth_rxcounters.v          ;
+; ethernet/eth_rxethmac.v            ;
+; ethernet/eth_rxstatem.v            ;
+; ethernet/eth_shiftreg.v            ;
+; ethernet/eth_spram_256x32.v        ;
+; ethernet/eth_top.v                 ;
+; ethernet/eth_transmitcontrol.v     ;
+; ethernet/eth_txcounters.v          ;
+; ethernet/eth_txethmac.v            ;
+; ethernet/eth_txstatem.v            ;
+; ethernet/eth_wishbone.v            ;
+; ethernet/timescale.v               ;
+; ethernet/xilinx_dist_ram_16x32.v   ;
+; pll.v                              ;
+; ts7300_top.asm.rpt                 ;
+; ts7300_top.done                    ;
+; ts7300_top.dpf                     ;
+; ts7300_top.fit.rpt                 ;
+; ts7300_top.fit.smsg                ;
+; ts7300_top.fit.summary             ;
+; ts7300_top.flow.rpt                ;
+; ts7300_top.map.rpt                 ;
+; ts7300_top.map.smsg                ;
+; ts7300_top.map.summary             ;
+; ts7300_top.pin                     ;
+; ts7300_top.pof                     ;
+; ts7300_top.qsf                     ;
+; ts7300_top.rbf                     ;
+; ts7300_top.sof                     ;
+; ts7300_top.v                       ;
+; ts7300_top_assignment_defaults.qdf ;
+; ts_7300_usercore.vhd               ;
+; wb32_blockram.v                    ;
+; wb32_bridge.v                      ;
+; assignment_defaults.qdf            ;
++------------------------------------+
+
+
++--------------------+
+; Files Not Restored ;
++--------------------+
+; File Name          ;
++--------------------+
+
+

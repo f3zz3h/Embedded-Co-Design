@@ -1,0 +1,274 @@
+ -- Copyright (C) 1991-2012 Altera Corporation
+ -- Your use of Altera Corporation's design tools, logic functions 
+ -- and other software and tools, and its AMPP partner logic 
+ -- functions, and any output files from any of the foregoing 
+ -- (including device programming or simulation files), and any 
+ -- associated documentation or information are expressly subject 
+ -- to the terms and conditions of the Altera Program License 
+ -- Subscription Agreement, Altera MegaCore Function License 
+ -- Agreement, or other applicable license agreement, including, 
+ -- without limitation, that your use is for the sole purpose of 
+ -- programming logic devices manufactured by Altera and sold by 
+ -- Altera or its authorized distributors.  Please refer to the 
+ -- applicable agreement for further details.
+ -- 
+ -- This is a Quartus II output file. It is for reporting purposes only, and is
+ -- not intended for use as a Quartus II input file. This file cannot be used
+ -- to make Quartus II pin assignments - for instructions on how to make pin
+ -- assignments, please see Quartus II help.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- NC            : No Connect. This pin has no internal connection to the device.
+ -- DNU           : Do Not Use. This pin MUST NOT be connected.
+ -- VCCINT        : Dedicated power pin, which MUST be connected to VCC  (1.2V).
+ -- VCCIO         : Dedicated power pin, which MUST be connected to VCC
+ --                 of its bank.
+ --					Bank 1:		3.3V
+ --					Bank 2:		3.3V
+ --					Bank 3:		3.3V
+ --					Bank 4:		3.3V
+ -- GND           : Dedicated ground pin. Dedicated GND pins MUST be connected to GND.
+ --					It can also be used to report unused dedicated pins. The connection
+ --					on the board for unused dedicated pins depends on whether this will
+ --					be used in a future design. One example is device migration. When
+ --					using device migration, refer to the device pin-tables. If it is a
+ --					GND pin in the pin table or if it will not be used in a future design
+ --					for another purpose the it MUST be connected to GND. If it is an unused
+ --					dedicated pin, then it can be connected to a valid signal on the board
+ --					(low, high, or toggling) if that signal is required for a different
+ --					revision of the design.
+ -- GND+          : Unused input pin. It can also be used to report unused dual-purpose pins.
+ --					This pin should be connected to GND. It may also be connected  to a
+ --					valid signal  on the board  (low, high, or toggling)  if that signal
+ --					is required for a different revision of the design.
+ -- GND*          : Unused  I/O  pin. Connect each pin marked GND* directly to GND
+ --           	    or leave it unconnected.
+ -- RESERVED      : Unused I/O pin, which MUST be left unconnected.
+ -- RESERVED_INPUT    : Pin is tri-stated and should be connected to the board.
+ -- RESERVED_INPUT_WITH_WEAK_PULLUP    : Pin is tri-stated with internal weak pull-up resistor.
+ -- RESERVED_INPUT_WITH_BUS_HOLD       : Pin is tri-stated with bus-hold circuitry.
+ -- RESERVED_OUTPUT_DRIVEN_HIGH        : Pin is output driven high.
+ ---------------------------------------------------------------------------------
+
+
+
+ ---------------------------------------------------------------------------------
+ -- Pin directions (input, output or bidir) are based on device operating in user mode.
+ ---------------------------------------------------------------------------------
+
+Quartus II 64-Bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
+CHIP  "ts7300_top"  ASSIGNED TO AN: EP2C8Q208C8
+
+Pin Name/Usage               : Location  : Dir.   : I/O Standard      : Voltage : I/O Bank  : User Assignment
+-------------------------------------------------------------------------------------------------------------
+sdram_data_pad[1]            : 1         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[2]            : 2         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[3]            : 3         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[4]            : 4         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[15]           : 5         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[7]            : 6         : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+VCCIO1                       : 7         : power  :                   : 3.3V    : 1         :                
+sdram_we_pad                 : 8         : output : 3.3-V LVCMOS      :         : 1         : Y              
+GND                          : 9         : gnd    :                   :         :           :                
+sdram_data_pad[14]           : 10        : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[13]           : 11        : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_cas_pad                : 12        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_ras_pad                : 13        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[12]           : 14        : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_data_pad[11]           : 15        : bidir  : 3.3-V LVCMOS      :         : 1         : Y              
+TDO                          : 16        : output :                   :         : 1         :                
+TMS                          : 17        : input  :                   :         : 1         :                
+TCK                          : 18        : input  :                   :         : 1         :                
+TDI                          : 19        : input  :                   :         : 1         :                
+DATA0                        : 20        : input  :                   :         : 1         :                
+DCLK                         : 21        :        :                   :         : 1         :                
+nCE                          : 22        :        :                   :         : 1         :                
+dio9_pad                     : 23        : input  : 3.3-V LVCMOS      :         : 1         : Y              
+start_cycle_pad              : 24        : input  : 3.3-V LVCMOS      :         : 1         : Y              
+GND                          : 25        : gnd    :                   :         :           :                
+nCONFIG                      : 26        :        :                   :         : 1         :                
+bd_oe_pad                    : 27        : input  : 3.3-V LVCMOS      :         : 1         : Y              
+add_pad[0]                   : 28        : input  : 3.3-V LVCMOS      :         : 1         : Y              
+VCCIO1                       : 29        : power  :                   : 3.3V    : 1         :                
+sdram_ba_pad[1]              : 30        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[10]            : 31        : output : 3.3-V LVCMOS      :         : 1         : Y              
+VCCINT                       : 32        : power  :                   : 1.2V    :           :                
+sdram_add_pad[0]             : 33        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[12]            : 34        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[11]            : 35        : output : 3.3-V LVCMOS      :         : 1         : Y              
+GND                          : 36        : gnd    :                   :         :           :                
+sdram_add_pad[9]             : 37        : output : 3.3-V LVCMOS      :         : 1         : Y              
+GND                          : 38        : gnd    :                   :         :           :                
+sdram_add_pad[8]             : 39        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[7]             : 40        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[1]             : 41        : output : 3.3-V LVCMOS      :         : 1         : Y              
+VCCIO1                       : 42        : power  :                   : 3.3V    : 1         :                
+sdram_add_pad[2]             : 43        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[3]             : 44        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[6]             : 45        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[5]             : 46        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_clk_pad                : 47        : output : 3.3-V LVCMOS      :         : 1         : Y              
+sdram_add_pad[4]             : 48        : output : 3.3-V LVCMOS      :         : 1         : Y              
+GND                          : 49        : gnd    :                   :         :           :                
+GND_PLL1                     : 50        : gnd    :                   :         :           :                
+VCCD_PLL1                    : 51        : power  :                   : 1.2V    :           :                
+GND_PLL1                     : 52        : gnd    :                   :         :           :                
+VCCA_PLL1                    : 53        : power  :                   : 1.2V    :           :                
+GNDA_PLL1                    : 54        : gnd    :                   :         :           :                
+GND                          : 55        : gnd    :                   :         :           :                
+bd_pad[7]                    : 56        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[6]                    : 57        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[4]                    : 58        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[5]                    : 59        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[3]                    : 60        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[2]                    : 61        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+VCCIO4                       : 62        : power  :                   : 3.3V    : 4         :                
+fl_d_pad[1]                  : 63        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[0]                    : 64        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 65        : gnd    :                   :         :           :                
+VCCINT                       : 66        : power  :                   : 1.2V    :           :                
+fl_d_pad[0]                  : 67        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+bd_pad[1]                    : 68        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+fl_d_pad[3]                  : 69        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+sdram_data_pad[8]            : 70        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+VCCIO4                       : 71        : power  :                   : 3.3V    : 4         :                
+fl_d_pad[6]                  : 72        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 73        : gnd    :                   :         :           :                
+clk_75mhz_pad                : 74        : output : 3.3-V LVCMOS      :         : 4         : Y              
+fl_d_pad[2]                  : 75        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+isa_add11_pad                : 76        : input  : 3.3-V LVCMOS      :         : 4         : Y              
+fl_d_pad[5]                  : 77        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 78        : gnd    :                   :         :           :                
+VCCINT                       : 79        : power  :                   : 1.2V    :           :                
+sdram_data_pad[9]            : 80        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+add_pad[2]                   : 81        : input  : 3.3-V LVCMOS      :         : 4         : Y              
+sdram_ba_pad[0]              : 82        : output : 3.3-V LVCMOS      :         : 4         : Y              
+VCCIO4                       : 83        : power  :                   : 3.3V    : 4         :                
+dma_req_pad                  : 84        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 85        : gnd    :                   :         :           :                
+fl_d_pad[7]                  : 86        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+add_pad[1]                   : 87        : input  : 3.3-V LVCMOS      :         : 4         : Y              
+fl_d_pad[4]                  : 88        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+add_pad[3]                   : 89        : input  : 3.3-V LVCMOS      :         : 4         : Y              
+irq7_pad                     : 90        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+VCCIO4                       : 91        : power  :                   : 3.3V    : 4         :                
+mux_cntrl_pad                : 92        : output : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 93        : gnd    :                   :         :           :                
+isa_wait_pad                 : 94        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+mux_pad[2]                   : 95        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+mux_pad[3]                   : 96        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+mux_pad[1]                   : 97        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+VCCIO4                       : 98        : power  :                   : 3.3V    : 4         :                
+mux_pad[0]                   : 99        : bidir  : 3.3-V LVCMOS      :         : 4         : Y              
+GND                          : 100       : gnd    :                   :         :           :                
+isa_add15_pad                : 101       : input  : 3.3-V LVCMOS      :         : 4         : Y              
+isa_add1_pad                 : 102       : input  : 3.3-V LVCMOS      :         : 4         : Y              
+isa_add14_pad                : 103       : input  : 3.3-V LVCMOS      :         : 4         : Y              
+isa_add12_pad                : 104       : input  : 3.3-V LVCMOS      :         : 4         : Y              
+rd_mux_pad                   : 105       : output : 3.3-V LVCMOS      :         : 3         : Y              
+sd_soft_power_pad            : 106       : output : 3.3-V LVCMOS      :         : 3         : Y              
+eth_pd_pad                   : 107       : output : 3.3-V LVCMOS      :         : 3         : Y              
+sd_wprot_pad                 : 108       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+VCCIO3                       : 109       : power  :                   : 3.3V    : 3         :                
+sd_hard_power_pad            : 110       : output : 3.3-V LVCMOS      :         : 3         : Y              
+GND                          : 111       : gnd    :                   :         :           :                
+eth_col_pad                  : 112       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txerr_pad                : 113       : output : 3.3-V LVCMOS      :         : 3         : Y              
+eth_crs_pad                  : 114       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txdat_pad[3]             : 115       : output : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txdat_pad[2]             : 116       : output : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txdat_pad[0]             : 117       : output : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txen_pad                 : 118       : output : 3.3-V LVCMOS      :         : 3         : Y              
+GND                          : 119       : gnd    :                   :         :           :                
+VCCINT                       : 120       : power  :                   : 1.2V    :           :                
+nSTATUS                      : 121       :        :                   :         : 3         :                
+VCCIO3                       : 122       : power  :                   : 3.3V    : 3         :                
+CONF_DONE                    : 123       :        :                   :         : 3         :                
+GND                          : 124       : gnd    :                   :         :           :                
+MSEL1                        : 125       :        :                   :         : 3         :                
+MSEL0                        : 126       :        :                   :         : 3         :                
+eth_txdat_pad[1]             : 127       : output : 3.3-V LVCMOS      :         : 3         : Y              
+sd_present_pad               : 128       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+clk_25mhz_pad                : 129       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_txclk_pad                : 130       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_rxerr_pad                : 131       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_rxclk_pad                : 132       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_rxdv_pad                 : 133       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_mdio_pad                 : 134       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_mdc_pad                  : 135       : output : 3.3-V LVCMOS      :         : 3         : Y              
+VCCIO3                       : 136       : power  :                   : 3.3V    : 3         :                
+eth_rxdat_pad[3]             : 137       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_rxdat_pad[0]             : 138       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+eth_rxdat_pad[1]             : 139       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+GND                          : 140       : gnd    :                   :         :           :                
+eth_rxdat_pad[2]             : 141       : input  : 3.3-V LVCMOS      :         : 3         : Y              
+red_pad[0]                   : 142       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+red_pad[1]                   : 143       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+blue_pad[3]                  : 144       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+blue_pad[4]                  : 145       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+green_pad[3]                 : 146       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+blue_pad[0]                  : 147       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+VCCIO3                       : 148       : power  :                   : 3.3V    : 3         :                
+red_pad[4]                   : 149       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+green_pad[4]                 : 150       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+red_pad[3]                   : 151       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+hsync_pad                    : 152       : bidir  : 3.3-V LVCMOS      :         : 3         : Y              
+GND                          : 153       : gnd    :                   :         :           :                
+GND_PLL2                     : 154       : gnd    :                   :         :           :                
+VCCD_PLL2                    : 155       : power  :                   : 1.2V    :           :                
+GND_PLL2                     : 156       : gnd    :                   :         :           :                
+VCCA_PLL2                    : 157       : power  :                   : 1.2V    :           :                
+GNDA_PLL2                    : 158       : gnd    :                   :         :           :                
+GND                          : 159       : gnd    :                   :         :           :                
+green_pad[1]                 : 160       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+vsync_pad                    : 161       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+blue_pad[1]                  : 162       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+blue_pad[2]                  : 163       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+green_pad[2]                 : 164       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+green_pad[0]                 : 165       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCIO2                       : 166       : power  :                   : 3.3V    : 2         :                
+GND                          : 167       : gnd    :                   :         :           :                
+red_pad[2]                   : 168       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio0to8_pad[0]               : 169       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+sd_dat_pad[2]                : 170       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+sd_dat_pad[3]                : 171       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCIO2                       : 172       : power  :                   : 3.3V    : 2         :                
+sd_dat_pad[1]                : 173       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+GND                          : 174       : gnd    :                   :         :           :                
+dio0to8_pad[1]               : 175       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[0]             : 176       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+GND                          : 177       : gnd    :                   :         :           :                
+VCCINT                       : 178       : power  :                   : 1.2V    :           :                
+sd_dat_pad[0]                : 179       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio0to8_pad[2]               : 180       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio0to8_pad[3]               : 181       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[1]             : 182       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCIO2                       : 183       : power  :                   : 3.3V    : 2         :                
+GND                          : 184       : gnd    :                   :         :           :                
+dio10to17_pad[2]             : 185       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+GND                          : 186       : gnd    :                   :         :           :                
+dio0to8_pad[4]               : 187       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[3]             : 188       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio0to8_pad[5]               : 189       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCINT                       : 190       : power  :                   : 1.2V    :           :                
+sd_cmd_pad                   : 191       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[4]             : 192       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[5]             : 193       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCIO2                       : 194       : power  :                   : 3.3V    : 2         :                
+dio0to8_pad[6]               : 195       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+GND                          : 196       : gnd    :                   :         :           :                
+dio0to8_pad[7]               : 197       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[6]             : 198       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio0to8_pad[8]               : 199       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+dio10to17_pad[7]             : 200       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+sdram_data_pad[6]            : 201       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+VCCIO2                       : 202       : power  :                   : 3.3V    : 2         :                
+sdram_data_pad[5]            : 203       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+GND                          : 204       : gnd    :                   :         :           :                
+sdram_data_pad[10]           : 205       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+wr_232_pad                   : 206       : output : 3.3-V LVCMOS      :         : 2         : Y              
+sdram_data_pad[0]            : 207       : bidir  : 3.3-V LVCMOS      :         : 2         : Y              
+sd_clk_pad                   : 208       : output : 3.3-V LVCMOS      :         : 2         : Y              

@@ -1,0 +1,16 @@
+Fitter Status : Successful - Tue Feb 11 12:14:56 2014
+Quartus II 64-Bit Version : 12.1 Build 243 01/31/2013 SP 1 SJ Web Edition
+Revision Name : ts7300_top
+Top-level Entity Name : ts7300_top
+Family : Cyclone II
+Device : EP2C8Q208C8
+Timing Models : Final
+Total logic elements : 213 / 8,256 ( 3 % )
+    Total combinational functions : 127 / 8,256 ( 2 % )
+    Dedicated logic registers : 172 / 8,256 ( 2 % )
+Total registers : 172
+Total pins : 138 / 138 ( 100 % )
+Total virtual pins : 0
+Total memory bits : 0 / 165,888 ( 0 % )
+Embedded Multiplier 9-bit elements : 0 / 36 ( 0 % )
+Total PLLs : 1 / 2 ( 50 % )

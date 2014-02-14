@@ -1,0 +1,141 @@
+------------------------------------------------------------
+TimeQuest Timing Analyzer Summary
+------------------------------------------------------------
+
+Type  : Slow Model Setup 'clkgencore|altpll_component|pll|clk[1]'
+Slack : -6.055
+TNS   : -593.978
+
+Type  : Slow Model Setup 'bd_oe_pad'
+Slack : -0.807
+TNS   : -1.320
+
+Type  : Slow Model Setup 'start_cycle_pad'
+Slack : 0.235
+TNS   : 0.000
+
+Type  : Slow Model Hold 'clkgencore|altpll_component|pll|clk[1]'
+Slack : -1.820
+TNS   : -1.841
+
+Type  : Slow Model Hold 'start_cycle_pad'
+Slack : -0.337
+TNS   : -0.337
+
+Type  : Slow Model Hold 'bd_oe_pad'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'ep93xx_end_q'
+Slack : -1.452
+TNS   : -1.452
+
+Type  : Slow Model Recovery 'start_cycle_pad'
+Slack : 1.330
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'bd_oe_pad'
+Slack : 1.425
+TNS   : 0.000
+
+Type  : Slow Model Removal 'bd_oe_pad'
+Slack : -1.191
+TNS   : -2.382
+
+Type  : Slow Model Removal 'start_cycle_pad'
+Slack : -1.096
+TNS   : -1.096
+
+Type  : Slow Model Removal 'ep93xx_end_q'
+Slack : 1.686
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'start_cycle_pad'
+Slack : -1.941
+TNS   : -39.041
+
+Type  : Slow Model Minimum Pulse Width 'bd_oe_pad'
+Slack : -1.941
+TNS   : -4.909
+
+Type  : Slow Model Minimum Pulse Width 'ep93xx_end_q'
+Slack : -0.742
+TNS   : -1.484
+
+Type  : Slow Model Minimum Pulse Width 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 5.424
+TNS   : 0.000
+
+Type  : Slow Model Minimum Pulse Width 'clk_25mhz_pad'
+Slack : 20.000
+TNS   : 0.000
+
+Type  : Fast Model Setup 'clkgencore|altpll_component|pll|clk[1]'
+Slack : -1.756
+TNS   : -166.471
+
+Type  : Fast Model Setup 'bd_oe_pad'
+Slack : 0.059
+TNS   : 0.000
+
+Type  : Fast Model Setup 'start_cycle_pad'
+Slack : 0.665
+TNS   : 0.000
+
+Type  : Fast Model Hold 'clkgencore|altpll_component|pll|clk[1]'
+Slack : -1.265
+TNS   : -2.134
+
+Type  : Fast Model Hold 'start_cycle_pad'
+Slack : -0.541
+TNS   : -0.541
+
+Type  : Fast Model Hold 'bd_oe_pad'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'ep93xx_end_q'
+Slack : -0.336
+TNS   : -0.336
+
+Type  : Fast Model Recovery 'start_cycle_pad'
+Slack : 1.200
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'bd_oe_pad'
+Slack : 1.217
+TNS   : 0.000
+
+Type  : Fast Model Removal 'bd_oe_pad'
+Slack : -0.837
+TNS   : -1.674
+
+Type  : Fast Model Removal 'start_cycle_pad'
+Slack : -0.820
+TNS   : -0.820
+
+Type  : Fast Model Removal 'ep93xx_end_q'
+Slack : 0.716
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'start_cycle_pad'
+Slack : -1.380
+TNS   : -26.380
+
+Type  : Fast Model Minimum Pulse Width 'bd_oe_pad'
+Slack : -1.380
+TNS   : -3.380
+
+Type  : Fast Model Minimum Pulse Width 'ep93xx_end_q'
+Slack : -0.500
+TNS   : -1.000
+
+Type  : Fast Model Minimum Pulse Width 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 5.666
+TNS   : 0.000
+
+Type  : Fast Model Minimum Pulse Width 'clk_25mhz_pad'
+Slack : 20.000
+TNS   : 0.000
+
+------------------------------------------------------------
