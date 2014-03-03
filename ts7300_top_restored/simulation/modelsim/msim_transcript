@@ -1,0 +1,31 @@
+# do ts7300_top_run_msim_rtl_verilog.do 
+# if {[file exists rtl_work]} {
+# 	vdel -lib rtl_work -all
+# }
+# vlib rtl_work
+# vmap work rtl_work
+# Copying /home/luke/altera/13.1/modelsim_ase/linux/../modelsim.ini to modelsim.ini
+# Modifying modelsim.ini
+# ** Warning: Copied /home/luke/altera/13.1/modelsim_ase/linux/../modelsim.ini to modelsim.ini.
+#          Updated modelsim.ini.
+# 
+# vlog -vlog01compat -work work +incdir+/home/luke/embedded-co-design/ts7300_top_restored {/home/luke/embedded-co-design/ts7300_top_restored/pll.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module pll
+# 
+# Top level modules:
+# 	pll
+# vlog -vlog01compat -work work +incdir+/home/luke/embedded-co-design/ts7300_top_restored {/home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v}
+# Model Technology ModelSim ALTERA vlog 10.1d Compiler 2012.11 Nov  2 2012
+# -- Compiling module ts7300_top
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(229): (vlog-2730) Undefined variable: 'start_cycle_posedge_q'.
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(230): (vlog-2730) Undefined variable: 'start_cycle_posedge'.
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(236): (vlog-2730) Undefined variable: 'start_cycle_negedge'.
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(251): 'start_cycle_negedge' already declared in this scope (ts7300_top).
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(251): 'start_cycle_posedge' already declared in this scope (ts7300_top).
+# ** Error: /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.v(253): 'start_cycle_posedge_q' already declared in this scope (ts7300_top).
+# ** Error: /home/luke/altera/13.1/modelsim_ase/linux/vlog failed.
+# Error in macro ./ts7300_top_run_msim_rtl_verilog.do line 9
+# /home/luke/altera/13.1/modelsim_ase/linux/vlog failed.
+#     while executing
+# "vlog -vlog01compat -work work +incdir+/home/luke/embedded-co-design/ts7300_top_restored {/home/luke/embedded-co-design/ts7300_top_restored/ts7300_top...."

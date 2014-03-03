@@ -1,0 +1,200 @@
+// Copyright (C) 1991-2012 Altera Corporation
+// Your use of Altera Corporation's design tools, logic functions 
+// and other software and tools, and its AMPP partner logic 
+// functions, and any output files from any of the foregoing 
+// (including device programming or simulation files), and any 
+// associated documentation or information are expressly subject 
+// to the terms and conditions of the Altera Program License 
+// Subscription Agreement, Altera MegaCore Function License 
+// Agreement, or other applicable license agreement, including, 
+// without limitation, that your use is for the sole purpose of 
+// programming logic devices manufactured by Altera and sold by 
+// Altera or its authorized distributors.  Please refer to the 
+// applicable agreement for further details.
+
+// *****************************************************************************
+// This file contains a Verilog test bench template that is freely editable to  
+// suit user's needs .Comments are provided in each section to help the user    
+// fill out necessary details.                                                  
+// *****************************************************************************
+// Generated on "03/03/2014 14:00:03"
+                                                                                
+// Verilog Test Bench template for design : ts7300_top
+// 
+// Simulation tool : ModelSim-Altera (Verilog)
+// 
+
+`timescale 1 ps/ 1 ps
+module ts7300_top_vlg_tst();
+// constants                                           
+// general purpose registers
+reg eachvec;
+// test vector input registers
+reg [3:0] add_pad;
+reg bd_oe_pad;
+reg [7:0] treg_bd_pad;
+reg [4:0] treg_blue_pad;
+reg clk_25mhz_pad;
+reg [8:0] treg_dio0to8_pad;
+reg dio9_pad;
+reg [7:0] treg_dio10to17_pad;
+reg treg_dma_req_pad;
+reg eth_col_pad;
+reg eth_crs_pad;
+reg treg_eth_mdio_pad;
+reg eth_rxclk_pad;
+reg [3:0] eth_rxdat_pad;
+reg eth_rxdv_pad;
+reg eth_rxerr_pad;
+reg eth_txclk_pad;
+reg [7:0] treg_fl_d_pad;
+reg [4:0] treg_green_pad;
+reg treg_hsync_pad;
+reg treg_irq7_pad;
+reg isa_add1_pad;
+reg isa_add11_pad;
+reg isa_add12_pad;
+reg isa_add14_pad;
+reg isa_add15_pad;
+reg treg_isa_wait_pad;
+reg [3:0] treg_mux_pad;
+reg [4:0] treg_red_pad;
+reg treg_sd_cmd_pad;
+reg [3:0] treg_sd_dat_pad;
+reg sd_present_pad;
+reg sd_wprot_pad;
+reg [15:0] treg_sdram_data_pad;
+reg start_cycle_pad;
+reg treg_vsync_pad;
+// wires                                               
+wire [7:0]  bd_pad;
+wire [4:0]  blue_pad;
+wire clk_75mhz_pad;
+wire [8:0]  dio0to8_pad;
+wire [7:0]  dio10to17_pad;
+wire dma_req_pad;
+wire eth_mdc_pad;
+wire eth_mdio_pad;
+wire eth_pd_pad;
+wire [3:0]  eth_txdat_pad;
+wire eth_txen_pad;
+wire eth_txerr_pad;
+wire [7:0]  fl_d_pad;
+wire [4:0]  green_pad;
+wire hsync_pad;
+wire irq7_pad;
+wire isa_wait_pad;
+wire mux_cntrl_pad;
+wire [3:0]  mux_pad;
+wire rd_mux_pad;
+wire [4:0]  red_pad;
+wire sd_clk_pad;
+wire sd_cmd_pad;
+wire [3:0]  sd_dat_pad;
+wire sd_hard_power_pad;
+wire sd_soft_power_pad;
+wire [12:0]  sdram_add_pad;
+wire [1:0]  sdram_ba_pad;
+wire sdram_cas_pad;
+wire sdram_clk_pad;
+wire [15:0]  sdram_data_pad;
+wire sdram_ras_pad;
+wire sdram_we_pad;
+wire vsync_pad;
+wire wr_232_pad;
+
+// assign statements (if any)                          
+assign bd_pad = treg_bd_pad;
+assign blue_pad = treg_blue_pad;
+assign dio0to8_pad = treg_dio0to8_pad;
+assign dio10to17_pad = treg_dio10to17_pad;
+assign dma_req_pad = treg_dma_req_pad;
+assign eth_mdio_pad = treg_eth_mdio_pad;
+assign fl_d_pad = treg_fl_d_pad;
+assign green_pad = treg_green_pad;
+assign hsync_pad = treg_hsync_pad;
+assign irq7_pad = treg_irq7_pad;
+assign isa_wait_pad = treg_isa_wait_pad;
+assign mux_pad = treg_mux_pad;
+assign red_pad = treg_red_pad;
+assign sd_cmd_pad = treg_sd_cmd_pad;
+assign sd_dat_pad = treg_sd_dat_pad;
+assign sdram_data_pad = treg_sdram_data_pad;
+assign vsync_pad = treg_vsync_pad;
+ts7300_top i1 (
+// port map - connection between master ports and signals/registers   
+	.add_pad(add_pad),
+	.bd_oe_pad(bd_oe_pad),
+	.bd_pad(bd_pad),
+	.blue_pad(blue_pad),
+	.clk_25mhz_pad(clk_25mhz_pad),
+	.clk_75mhz_pad(clk_75mhz_pad),
+	.dio0to8_pad(dio0to8_pad),
+	.dio9_pad(dio9_pad),
+	.dio10to17_pad(dio10to17_pad),
+	.dma_req_pad(dma_req_pad),
+	.eth_col_pad(eth_col_pad),
+	.eth_crs_pad(eth_crs_pad),
+	.eth_mdc_pad(eth_mdc_pad),
+	.eth_mdio_pad(eth_mdio_pad),
+	.eth_pd_pad(eth_pd_pad),
+	.eth_rxclk_pad(eth_rxclk_pad),
+	.eth_rxdat_pad(eth_rxdat_pad),
+	.eth_rxdv_pad(eth_rxdv_pad),
+	.eth_rxerr_pad(eth_rxerr_pad),
+	.eth_txclk_pad(eth_txclk_pad),
+	.eth_txdat_pad(eth_txdat_pad),
+	.eth_txen_pad(eth_txen_pad),
+	.eth_txerr_pad(eth_txerr_pad),
+	.fl_d_pad(fl_d_pad),
+	.green_pad(green_pad),
+	.hsync_pad(hsync_pad),
+	.irq7_pad(irq7_pad),
+	.isa_add1_pad(isa_add1_pad),
+	.isa_add11_pad(isa_add11_pad),
+	.isa_add12_pad(isa_add12_pad),
+	.isa_add14_pad(isa_add14_pad),
+	.isa_add15_pad(isa_add15_pad),
+	.isa_wait_pad(isa_wait_pad),
+	.mux_cntrl_pad(mux_cntrl_pad),
+	.mux_pad(mux_pad),
+	.rd_mux_pad(rd_mux_pad),
+	.red_pad(red_pad),
+	.sd_clk_pad(sd_clk_pad),
+	.sd_cmd_pad(sd_cmd_pad),
+	.sd_dat_pad(sd_dat_pad),
+	.sd_hard_power_pad(sd_hard_power_pad),
+	.sd_present_pad(sd_present_pad),
+	.sd_soft_power_pad(sd_soft_power_pad),
+	.sd_wprot_pad(sd_wprot_pad),
+	.sdram_add_pad(sdram_add_pad),
+	.sdram_ba_pad(sdram_ba_pad),
+	.sdram_cas_pad(sdram_cas_pad),
+	.sdram_clk_pad(sdram_clk_pad),
+	.sdram_data_pad(sdram_data_pad),
+	.sdram_ras_pad(sdram_ras_pad),
+	.sdram_we_pad(sdram_we_pad),
+	.start_cycle_pad(start_cycle_pad),
+	.vsync_pad(vsync_pad),
+	.wr_232_pad(wr_232_pad)
+);
+initial                                                
+begin                                                  
+// code that executes only once                        
+// insert code here --> begin                          
+                                                       
+// --> end                                             
+$display("Running testbench");                       
+end                                                    
+always                                                 
+// optional sensitivity list                           
+// @(event1 or event2 or .... eventn)                  
+begin                                                  
+// code executes for every event on sensitivity list   
+// insert code here --> begin                          
+                                                       
+@eachvec;                                              
+// --> end                                             
+end                                                    
+endmodule
+

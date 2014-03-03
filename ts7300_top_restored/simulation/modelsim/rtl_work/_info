@@ -1,0 +1,25 @@
+m255
+K3
+13
+cModel Technology
+Z0 d/home/luke/embedded-co-design/ts7300_top_restored/simulation/modelsim
+vpll
+!i10b 1
+!s100 ;`6J;PbEh^ohZ[U?ellak3
+I2>eEeThS_B7bZIE^>;de23
+VYgSHNCM?nBg`07nDCX6H00
+Z1 d/home/luke/embedded-co-design/ts7300_top_restored/simulation/modelsim
+w1148035734
+8/home/luke/embedded-co-design/ts7300_top_restored/pll.v
+F/home/luke/embedded-co-design/ts7300_top_restored/pll.v
+L0 36
+OV;L;10.1d;51
+r1
+!s85 0
+31
+!s108 1393855095.087668
+!s107 /home/luke/embedded-co-design/ts7300_top_restored/pll.v|
+!s90 -reportprogress|300|-vlog01compat|-work|work|+incdir+/home/luke/embedded-co-design/ts7300_top_restored|/home/luke/embedded-co-design/ts7300_top_restored/pll.v|
+!s101 -O0
+o-vlog01compat -work work -O0
+!s92 -vlog01compat -work work +incdir+/home/luke/embedded-co-design/ts7300_top_restored -O0
