@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<LOG_ROOT>
+	<PROJECT NAME="pwm1">
+		<CBX_INST_ENTRY INSTANCE_NAME="|pwm1|pwm:inst|lpm_add_sub:add_rtl_0" CBX_FILE_NAME="add_sub_pqh.tdf"/>
+	</PROJECT>
+</LOG_ROOT>

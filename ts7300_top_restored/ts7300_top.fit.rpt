@@ -1,5 +1,5 @@
 Fitter report for ts7300_top
-Tue Feb 11 12:14:56 2014
+Mon Mar  3 13:50:59 2014
 Quartus II 64-Bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
 
 
@@ -66,17 +66,17 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Fitter Summary                                                                     ;
 +------------------------------------+-----------------------------------------------+
-; Fitter Status                      ; Successful - Tue Feb 11 12:14:56 2014         ;
+; Fitter Status                      ; Successful - Mon Mar  3 13:50:58 2014         ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 243 01/31/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; ts7300_top                                    ;
 ; Top-level Entity Name              ; ts7300_top                                    ;
 ; Family                             ; Cyclone II                                    ;
 ; Device                             ; EP2C8Q208C8                                   ;
 ; Timing Models                      ; Final                                         ;
-; Total logic elements               ; 213 / 8,256 ( 3 % )                           ;
-;     Total combinational functions  ; 127 / 8,256 ( 2 % )                           ;
-;     Dedicated logic registers      ; 172 / 8,256 ( 2 % )                           ;
-; Total registers                    ; 172                                           ;
+; Total logic elements               ; 410 / 8,256 ( 5 % )                           ;
+;     Total combinational functions  ; 309 / 8,256 ( 4 % )                           ;
+;     Dedicated logic registers      ; 304 / 8,256 ( 4 % )                           ;
+; Total registers                    ; 304                                           ;
 ; Total pins                         ; 138 / 138 ( 100 % )                           ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0 / 165,888 ( 0 % )                           ;
@@ -163,8 +163,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Type                ; Value                  ;
 +---------------------+------------------------+
 ; Placement (by node) ;                        ;
-;     -- Requested    ; 0 / 441 ( 0.00 % )     ;
-;     -- Achieved     ; 0 / 441 ( 0.00 % )     ;
+;     -- Requested    ; 0 / 759 ( 0.00 % )     ;
+;     -- Achieved     ; 0 / 759 ( 0.00 % )     ;
 ;                     ;                        ;
 ; Routing (by net)    ;                        ;
 ;     -- Requested    ; 0 / 0 ( 0.00 % )       ;
@@ -187,7 +187,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 ; Partition Name                 ; # Nodes ; # Preserved Nodes ; Preservation Level Used ; Netlist Type Used ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
-; Top                            ; 439     ; 0                 ; N/A                     ; Source File       ;
+; Top                            ; 757     ; 0                 ; N/A                     ; Source File       ;
 ; hard_block:auto_generated_inst ; 2       ; 0                 ; N/A                     ; Source File       ;
 +--------------------------------+---------+-------------------+-------------------------+-------------------+
 
@@ -195,7 +195,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +--------------+
 ; Pin-Out File ;
 +--------------+
-The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300_top.pin.
+The pin-out file can be found in /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.pin.
 
 
 +-------------------------------------------------------------------+
@@ -203,46 +203,46 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 +---------------------------------------------+---------------------+
 ; Resource                                    ; Usage               ;
 +---------------------------------------------+---------------------+
-; Total logic elements                        ; 213 / 8,256 ( 3 % ) ;
-;     -- Combinational with no register       ; 41                  ;
-;     -- Register only                        ; 86                  ;
-;     -- Combinational with a register        ; 86                  ;
+; Total logic elements                        ; 410 / 8,256 ( 5 % ) ;
+;     -- Combinational with no register       ; 106                 ;
+;     -- Register only                        ; 101                 ;
+;     -- Combinational with a register        ; 203                 ;
 ;                                             ;                     ;
 ; Logic element usage by number of LUT inputs ;                     ;
-;     -- 4 input functions                    ; 76                  ;
-;     -- 3 input functions                    ; 41                  ;
-;     -- <=2 input functions                  ; 10                  ;
-;     -- Register only                        ; 86                  ;
+;     -- 4 input functions                    ; 141                 ;
+;     -- 3 input functions                    ; 68                  ;
+;     -- <=2 input functions                  ; 100                 ;
+;     -- Register only                        ; 101                 ;
 ;                                             ;                     ;
 ; Logic elements by mode                      ;                     ;
-;     -- normal mode                          ; 127                 ;
-;     -- arithmetic mode                      ; 0                   ;
+;     -- normal mode                          ; 242                 ;
+;     -- arithmetic mode                      ; 67                  ;
 ;                                             ;                     ;
-; Total registers*                            ; 172 / 8,646 ( 2 % ) ;
-;     -- Dedicated logic registers            ; 172 / 8,256 ( 2 % ) ;
+; Total registers*                            ; 304 / 8,646 ( 4 % ) ;
+;     -- Dedicated logic registers            ; 304 / 8,256 ( 4 % ) ;
 ;     -- I/O registers                        ; 0 / 390 ( 0 % )     ;
 ;                                             ;                     ;
-; Total LABs:  partially or completely used   ; 21 / 516 ( 4 % )    ;
+; Total LABs:  partially or completely used   ; 40 / 516 ( 8 % )    ;
 ; Virtual pins                                ; 0                   ;
 ; I/O pins                                    ; 138 / 138 ( 100 % ) ;
 ;     -- Clock pins                           ; 4 / 4 ( 100 % )     ;
 ;                                             ;                     ;
-; Global signals                              ; 3                   ;
+; Global signals                              ; 7                   ;
 ; M4Ks                                        ; 0 / 36 ( 0 % )      ;
 ; Total block memory bits                     ; 0 / 165,888 ( 0 % ) ;
 ; Total block memory implementation bits      ; 0 / 165,888 ( 0 % ) ;
 ; Embedded Multiplier 9-bit elements          ; 0 / 36 ( 0 % )      ;
 ; PLLs                                        ; 1 / 2 ( 50 % )      ;
-; Global clocks                               ; 3 / 8 ( 38 % )      ;
+; Global clocks                               ; 7 / 8 ( 88 % )      ;
 ; JTAGs                                       ; 0 / 1 ( 0 % )       ;
 ; ASMI blocks                                 ; 0 / 1 ( 0 % )       ;
 ; CRC blocks                                  ; 0 / 1 ( 0 % )       ;
 ; Average interconnect usage (total/H/V)      ; 2% / 2% / 2%        ;
-; Peak interconnect usage (total/H/V)         ; 5% / 5% / 4%        ;
-; Maximum fan-out                             ; 146                 ;
-; Highest non-global fan-out                  ; 39                  ;
-; Total fan-out                               ; 1073                ;
-; Average fan-out                             ; 2.17                ;
+; Peak interconnect usage (total/H/V)         ; 9% / 8% / 10%       ;
+; Maximum fan-out                             ; 242                 ;
+; Highest non-global fan-out                  ; 74                  ;
+; Total fan-out                               ; 1970                ;
+; Average fan-out                             ; 2.40                ;
 +---------------------------------------------+---------------------+
 *  Register count does not include registers inside RAM blocks or DSP blocks.
 
@@ -255,25 +255,25 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 +---------------------------------------------+--------------------+--------------------------------+
 ; Difficulty Clustering Region                ; Low                ; Low                            ;
 ;                                             ;                    ;                                ;
-; Total logic elements                        ; 213 / 8256 ( 3 % ) ; 0 / 8256 ( 0 % )               ;
-;     -- Combinational with no register       ; 41                 ; 0                              ;
-;     -- Register only                        ; 86                 ; 0                              ;
-;     -- Combinational with a register        ; 86                 ; 0                              ;
+; Total logic elements                        ; 410 / 8256 ( 5 % ) ; 0 / 8256 ( 0 % )               ;
+;     -- Combinational with no register       ; 106                ; 0                              ;
+;     -- Register only                        ; 101                ; 0                              ;
+;     -- Combinational with a register        ; 203                ; 0                              ;
 ;                                             ;                    ;                                ;
 ; Logic element usage by number of LUT inputs ;                    ;                                ;
-;     -- 4 input functions                    ; 76                 ; 0                              ;
-;     -- 3 input functions                    ; 41                 ; 0                              ;
-;     -- <=2 input functions                  ; 10                 ; 0                              ;
-;     -- Register only                        ; 86                 ; 0                              ;
+;     -- 4 input functions                    ; 141                ; 0                              ;
+;     -- 3 input functions                    ; 68                 ; 0                              ;
+;     -- <=2 input functions                  ; 100                ; 0                              ;
+;     -- Register only                        ; 101                ; 0                              ;
 ;                                             ;                    ;                                ;
 ; Logic elements by mode                      ;                    ;                                ;
-;     -- normal mode                          ; 127                ; 0                              ;
-;     -- arithmetic mode                      ; 0                  ; 0                              ;
+;     -- normal mode                          ; 242                ; 0                              ;
+;     -- arithmetic mode                      ; 67                 ; 0                              ;
 ;                                             ;                    ;                                ;
-; Total registers                             ; 172                ; 0                              ;
-;     -- Dedicated logic registers            ; 172 / 8256 ( 2 % ) ; 0 / 8256 ( 0 % )               ;
+; Total registers                             ; 304                ; 0                              ;
+;     -- Dedicated logic registers            ; 304 / 8256 ( 4 % ) ; 0 / 8256 ( 0 % )               ;
 ;                                             ;                    ;                                ;
-; Total LABs:  partially or completely used   ; 21 / 516 ( 4 % )   ; 0 / 516 ( 0 % )                ;
+; Total LABs:  partially or completely used   ; 40 / 516 ( 8 % )   ; 0 / 516 ( 0 % )                ;
 ;                                             ;                    ;                                ;
 ; Virtual pins                                ; 0                  ; 0                              ;
 ; I/O pins                                    ; 138                ; 0                              ;
@@ -281,21 +281,21 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 ; Total memory bits                           ; 0                  ; 0                              ;
 ; Total RAM block bits                        ; 0                  ; 0                              ;
 ; PLL                                         ; 0 / 2 ( 0 % )      ; 1 / 2 ( 50 % )                 ;
-; Clock control block                         ; 2 / 10 ( 20 % )    ; 1 / 10 ( 10 % )                ;
+; Clock control block                         ; 6 / 10 ( 60 % )    ; 1 / 10 ( 10 % )                ;
 ;                                             ;                    ;                                ;
 ; Connections                                 ;                    ;                                ;
-;     -- Input Connections                    ; 149                ; 1                              ;
-;     -- Registered Input Connections         ; 144                ; 0                              ;
-;     -- Output Connections                   ; 1                  ; 149                            ;
+;     -- Input Connections                    ; 245                ; 1                              ;
+;     -- Registered Input Connections         ; 240                ; 0                              ;
+;     -- Output Connections                   ; 1                  ; 245                            ;
 ;     -- Registered Output Connections        ; 0                  ; 0                              ;
 ;                                             ;                    ;                                ;
 ; Internal Connections                        ;                    ;                                ;
-;     -- Total Connections                    ; 1072               ; 151                            ;
-;     -- Registered Connections               ; 547                ; 0                              ;
+;     -- Total Connections                    ; 1969               ; 247                            ;
+;     -- Registered Connections               ; 1025               ; 0                              ;
 ;                                             ;                    ;                                ;
 ; External Connections                        ;                    ;                                ;
-;     -- Top                                  ; 0                  ; 150                            ;
-;     -- hard_block:auto_generated_inst       ; 150                ; 0                              ;
+;     -- Top                                  ; 0                  ; 246                            ;
+;     -- hard_block:auto_generated_inst       ; 246                ; 0                              ;
 ;                                             ;                    ;                                ;
 ; Partition Interface                         ;                    ;                                ;
 ;     -- Input Ports                          ; 25                 ; 1                              ;
@@ -406,14 +406,14 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 ; bd_pad[5]          ; 59    ; 4        ; 1            ; 0            ; 0           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
 ; bd_pad[6]          ; 57    ; 4        ; 1            ; 0            ; 2           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
 ; bd_pad[7]          ; 56    ; 4        ; 1            ; 0            ; 3           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
-; blue_pad[0]        ; 147   ; 3        ; 34           ; 15           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[0]   ; -                   ;
-; blue_pad[1]        ; 162   ; 2        ; 32           ; 19           ; 2           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[1]   ; -                   ;
-; blue_pad[2]        ; 163   ; 2        ; 30           ; 19           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[2]   ; -                   ;
-; blue_pad[3]        ; 144   ; 3        ; 34           ; 13           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[3]   ; -                   ;
-; blue_pad[4]        ; 145   ; 3        ; 34           ; 14           ; 4           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[4]   ; -                   ;
-; dio0to8_pad[0]     ; 169   ; 2        ; 28           ; 19           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[0]  ; -                   ;
-; dio0to8_pad[1]     ; 175   ; 2        ; 23           ; 19           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[1]  ; -                   ;
-; dio0to8_pad[2]     ; 180   ; 2        ; 18           ; 19           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[2]  ; -                   ;
+; blue_pad[0]        ; 147   ; 3        ; 34           ; 15           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[0]   ; -                   ;
+; blue_pad[1]        ; 162   ; 2        ; 32           ; 19           ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[1]   ; -                   ;
+; blue_pad[2]        ; 163   ; 2        ; 30           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[2]   ; -                   ;
+; blue_pad[3]        ; 144   ; 3        ; 34           ; 13           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[3]   ; -                   ;
+; blue_pad[4]        ; 145   ; 3        ; 34           ; 14           ; 4           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[4]   ; -                   ;
+; dio0to8_pad[0]     ; 169   ; 2        ; 28           ; 19           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
+; dio0to8_pad[1]     ; 175   ; 2        ; 23           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
+; dio0to8_pad[2]     ; 180   ; 2        ; 18           ; 19           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; dio0to8_pad[3]     ; 181   ; 2        ; 18           ; 19           ; 2           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[3]  ; -                   ;
 ; dio0to8_pad[4]     ; 187   ; 2        ; 14           ; 19           ; 2           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[4]  ; -                   ;
 ; dio0to8_pad[5]     ; 189   ; 2        ; 12           ; 19           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|dio2_enable[5]  ; -                   ;
@@ -438,11 +438,11 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 ; fl_d_pad[5]        ; 77    ; 4        ; 18           ; 0            ; 0           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
 ; fl_d_pad[6]        ; 72    ; 4        ; 16           ; 0            ; 2           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
 ; fl_d_pad[7]        ; 86    ; 4        ; 25           ; 0            ; 2           ; 2                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ep93xx_databus_oe~0                      ; -                   ;
-; green_pad[0]       ; 165   ; 2        ; 30           ; 19           ; 2           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[5]   ; -                   ;
-; green_pad[1]       ; 160   ; 2        ; 32           ; 19           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[6]   ; -                   ;
-; green_pad[2]       ; 164   ; 2        ; 30           ; 19           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[7]   ; -                   ;
-; green_pad[3]       ; 146   ; 3        ; 34           ; 15           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[8]   ; -                   ;
-; green_pad[4]       ; 150   ; 3        ; 34           ; 16           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[9]   ; -                   ;
+; green_pad[0]       ; 165   ; 2        ; 30           ; 19           ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[5]   ; -                   ;
+; green_pad[1]       ; 160   ; 2        ; 32           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[6]   ; -                   ;
+; green_pad[2]       ; 164   ; 2        ; 30           ; 19           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[7]   ; -                   ;
+; green_pad[3]       ; 146   ; 3        ; 34           ; 15           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[8]   ; -                   ;
+; green_pad[4]       ; 150   ; 3        ; 34           ; 16           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; hsync_pad          ; 152   ; 3        ; 34           ; 17           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|misc_enable[0]  ; -                   ;
 ; irq7_pad           ; 90    ; 4        ; 28           ; 0            ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; isa_wait_pad       ; 94    ; 4        ; 28           ; 0            ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; start_cycle_negedge (inverted)           ; -                   ;
@@ -450,11 +450,11 @@ The pin-out file can be found in /home/luke/Downloads/ts7300_top_restored/ts7300
 ; mux_pad[1]         ; 97    ; 4        ; 30           ; 0            ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; yes      ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; mux_pad[2]         ; 95    ; 4        ; 30           ; 0            ; 3           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; yes      ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; mux_pad[3]         ; 96    ; 4        ; 30           ; 0            ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; yes      ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
-; red_pad[0]         ; 142   ; 3        ; 34           ; 12           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[10]  ; -                   ;
-; red_pad[1]         ; 143   ; 3        ; 34           ; 13           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[11]  ; -                   ;
-; red_pad[2]         ; 168   ; 2        ; 28           ; 19           ; 0           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[12]  ; -                   ;
-; red_pad[3]         ; 151   ; 3        ; 34           ; 17           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[13]  ; -                   ;
-; red_pad[4]         ; 149   ; 3        ; 34           ; 16           ; 1           ; 1                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[14]  ; -                   ;
+; red_pad[0]         ; 142   ; 3        ; 34           ; 12           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[10]  ; -                   ;
+; red_pad[1]         ; 143   ; 3        ; 34           ; 13           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; no         ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[11]  ; -                   ;
+; red_pad[2]         ; 168   ; 2        ; 28           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[12]  ; -                   ;
+; red_pad[3]         ; 151   ; 3        ; 34           ; 17           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[13]  ; -                   ;
+; red_pad[4]         ; 149   ; 3        ; 34           ; 16           ; 1           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; Off          ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; ts7300_usercore:usercore|vga_enable[14]  ; -                   ;
 ; sd_cmd_pad         ; 191   ; 2        ; 12           ; 19           ; 2           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; On           ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; sd_dat_pad[0]      ; 179   ; 2        ; 18           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; On           ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
 ; sd_dat_pad[1]      ; 173   ; 2        ; 25           ; 19           ; 0           ; 0                     ; 0                  ; no     ; no             ; no              ; no                     ; no            ; no              ; yes        ; no       ; On           ; 3.3-V LVCMOS ; 4mA              ; Off         ; User                 ; 0 pF ; -                                        ; -                   ;
@@ -793,10 +793,14 @@ Note: User assignments will override these defaults. The user specified values a
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------------------------------------+--------------+
 ; Compilation Hierarchy Node              ; Logic Cells ; Dedicated Logic Registers ; I/O Registers ; Memory Bits ; M4Ks ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; LUT-Only LCs ; Register-Only LCs ; LUT/Register LCs ; Full Hierarchy Name                                ; Library Name ;
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------------------------------------+--------------+
-; |ts7300_top                             ; 213 (76)    ; 172 (70)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 138  ; 0            ; 41 (6)       ; 86 (31)           ; 86 (12)          ; |ts7300_top                                        ;              ;
+; |ts7300_top                             ; 410 (74)    ; 304 (70)                  ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 138  ; 0            ; 106 (6)      ; 101 (32)          ; 203 (12)         ; |ts7300_top                                        ;              ;
 ;    |pll:clkgencore|                     ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |ts7300_top|pll:clkgencore                         ;              ;
 ;       |altpll:altpll_component|         ; 0 (0)       ; 0 (0)                     ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 0 (0)            ; |ts7300_top|pll:clkgencore|altpll:altpll_component ;              ;
-;    |ts7300_usercore:usercore|           ; 131 (131)   ; 86 (86)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 34 (34)      ; 55 (55)           ; 42 (42)          ; |ts7300_top|ts7300_usercore:usercore               ;              ;
+;    |ts7300_usercore:usercore|           ; 327 (232)   ; 218 (146)                 ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 99 (76)      ; 69 (69)           ; 159 (87)         ; |ts7300_top|ts7300_usercore:usercore               ;              ;
+;       |pwm:PWM_1|                       ; 34 (34)     ; 34 (34)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 0 (0)        ; 0 (0)             ; 34 (34)          ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_1     ;              ;
+;       |pwm:PWM_2|                       ; 23 (23)     ; 10 (10)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 12 (12)      ; 0 (0)             ; 11 (11)          ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_2     ;              ;
+;       |pwm:PWM_3|                       ; 18 (18)     ; 10 (10)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 8 (8)        ; 0 (0)             ; 10 (10)          ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_3     ;              ;
+;       |pwm:PWM_4|                       ; 21 (21)     ; 18 (18)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 3 (3)        ; 0 (0)             ; 18 (18)          ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_4     ;              ;
 ;    |wb32_bridge:epwbm_wb32m_bridgecore| ; 33 (33)     ; 16 (16)                   ; 0 (0)         ; 0           ; 0    ; 0            ; 0       ; 0         ; 0    ; 0            ; 1 (1)        ; 0 (0)             ; 32 (32)          ; |ts7300_top|wb32_bridge:epwbm_wb32m_bridgecore     ;              ;
 +-----------------------------------------+-------------+---------------------------+---------------+-------------+------+--------------+---------+-----------+------+--------------+--------------+-------------------+------------------+----------------------------------------------------+--------------+
 Note: For table entries with two numbers listed, the numbers in parentheses indicate the number of resources of the given type used by the specific entity alone. The numbers listed outside of parentheses indicate the total resources of the given type used by the specific entity and all of its sub-entities in the hierarchy.
@@ -824,9 +828,9 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; bd_pad[5]          ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
 ; bd_pad[6]          ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
 ; bd_pad[7]          ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
-; dio0to8_pad[0]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; dio0to8_pad[1]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; dio0to8_pad[2]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
+; dio0to8_pad[0]     ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; dio0to8_pad[1]     ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; dio0to8_pad[2]     ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
 ; dio0to8_pad[3]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
 ; dio0to8_pad[4]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
 ; dio0to8_pad[5]     ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
@@ -869,21 +873,21 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mux_pad[1]         ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
 ; mux_pad[2]         ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
 ; mux_pad[3]         ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
-; blue_pad[0]        ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; blue_pad[1]        ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; blue_pad[2]        ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; blue_pad[3]        ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; blue_pad[4]        ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; red_pad[0]         ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; red_pad[1]         ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; red_pad[2]         ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; red_pad[3]         ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; red_pad[4]         ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; green_pad[0]       ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; green_pad[1]       ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; green_pad[2]       ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
-; green_pad[3]       ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
-; green_pad[4]       ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
+; blue_pad[0]        ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; blue_pad[1]        ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; blue_pad[2]        ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; blue_pad[3]        ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; blue_pad[4]        ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; red_pad[0]         ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; red_pad[1]         ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; red_pad[2]         ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; red_pad[3]         ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; red_pad[4]         ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; green_pad[0]       ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; green_pad[1]       ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; green_pad[2]       ; Bidir    ; (0) 170 ps    ; (0) 170 ps    ; --                    ; --  ;
+; green_pad[3]       ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
+; green_pad[4]       ; Bidir    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
 ; hsync_pad          ; Bidir    ; (6) 2523 ps   ; (6) 2523 ps   ; --                    ; --  ;
 ; vsync_pad          ; Bidir    ; (6) 2514 ps   ; (6) 2514 ps   ; --                    ; --  ;
 ; dio9_pad           ; Input    ; (0) 171 ps    ; (0) 171 ps    ; --                    ; --  ;
@@ -958,83 +962,80 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ;      - ep93xx_address[23]                    ; 1                 ; 0       ;
 ;      - epwbm_dat_o[0]                        ; 1                 ; 0       ;
 ; fl_d_pad[1]                                  ;                   ;         ;
-;      - ep93xx_address[22]                    ; 0                 ; 0       ;
-;      - epwbm_dat_o[1]~feeder                 ; 0                 ; 0       ;
+;      - ep93xx_address[22]                    ; 1                 ; 0       ;
+;      - epwbm_dat_o[1]                        ; 1                 ; 0       ;
 ; fl_d_pad[2]                                  ;                   ;         ;
-;      - ep93xx_address[21]                    ; 1                 ; 0       ;
-;      - epwbm_dat_o[2]                        ; 1                 ; 0       ;
+;      - ep93xx_address[21]                    ; 0                 ; 0       ;
+;      - epwbm_dat_o[2]~feeder                 ; 0                 ; 0       ;
 ; fl_d_pad[3]                                  ;                   ;         ;
-;      - ep93xx_address[16]~feeder             ; 0                 ; 0       ;
-;      - epwbm_dat_o[3]~feeder                 ; 0                 ; 0       ;
+;      - ep93xx_address[16]                    ; 0                 ; 0       ;
+;      - epwbm_dat_o[3]                        ; 0                 ; 0       ;
 ; fl_d_pad[4]                                  ;                   ;         ;
-;      - ep93xx_address[13]~feeder             ; 0                 ; 0       ;
-;      - epwbm_dat_o[4]~feeder                 ; 0                 ; 0       ;
+;      - ep93xx_address[13]~feeder             ; 1                 ; 0       ;
+;      - epwbm_dat_o[4]~feeder                 ; 1                 ; 0       ;
 ; fl_d_pad[5]                                  ;                   ;         ;
-;      - ep93xx_address[2]                     ; 0                 ; 0       ;
-;      - epwbm_dat_o[5]                        ; 0                 ; 0       ;
+;      - ep93xx_address[2]                     ; 1                 ; 0       ;
+;      - epwbm_dat_o[5]                        ; 1                 ; 0       ;
 ; fl_d_pad[6]                                  ;                   ;         ;
-;      - epwbm_dat_o[6]                        ; 1                 ; 0       ;
+;      - epwbm_dat_o[6]~feeder                 ; 1                 ; 0       ;
 ; fl_d_pad[7]                                  ;                   ;         ;
-;      - epwbm_dat_o[7]                        ; 1                 ; 0       ;
-;      - epwbm_we_o~feeder                     ; 1                 ; 0       ;
+;      - epwbm_we_o~feeder                     ; 0                 ; 0       ;
+;      - epwbm_dat_o[7]~feeder                 ; 0                 ; 0       ;
 ; bd_pad[0]                                    ;                   ;         ;
+;      - ep93xx_address[10]                    ; 1                 ; 0       ;
 ;      - epwbm_dat_o[8]~feeder                 ; 1                 ; 0       ;
-;      - ep93xx_address[10]~feeder             ; 1                 ; 0       ;
 ; bd_pad[1]                                    ;                   ;         ;
-;      - ep93xx_address[9]                     ; 1                 ; 0       ;
-;      - epwbm_dat_o[9]                        ; 1                 ; 0       ;
+;      - ep93xx_address[9]~feeder              ; 1                 ; 0       ;
+;      - epwbm_dat_o[9]~feeder                 ; 1                 ; 0       ;
 ; bd_pad[2]                                    ;                   ;         ;
-;      - ep93xx_address[8]                     ; 0                 ; 0       ;
-;      - epwbm_dat_o[10]                       ; 0                 ; 0       ;
+;      - ep93xx_address[8]                     ; 1                 ; 0       ;
+;      - epwbm_dat_o[10]                       ; 1                 ; 0       ;
 ; bd_pad[3]                                    ;                   ;         ;
-;      - ep93xx_address[7]                     ; 1                 ; 0       ;
-;      - epwbm_dat_o[11]~feeder                ; 1                 ; 0       ;
+;      - ep93xx_address[7]                     ; 0                 ; 0       ;
+;      - epwbm_dat_o[11]                       ; 0                 ; 0       ;
 ; bd_pad[4]                                    ;                   ;         ;
-;      - epwbm_dat_o[12]~feeder                ; 0                 ; 0       ;
-;      - ep93xx_address[6]~feeder              ; 0                 ; 0       ;
+;      - ep93xx_address[6]                     ; 1                 ; 0       ;
+;      - epwbm_dat_o[12]~feeder                ; 1                 ; 0       ;
 ; bd_pad[5]                                    ;                   ;         ;
-;      - ep93xx_address[5]~feeder              ; 0                 ; 0       ;
-;      - epwbm_dat_o[13]~feeder                ; 0                 ; 0       ;
+;      - ep93xx_address[5]                     ; 0                 ; 0       ;
+;      - epwbm_dat_o[13]                       ; 0                 ; 0       ;
 ; bd_pad[6]                                    ;                   ;         ;
-;      - ep93xx_address[4]                     ; 0                 ; 0       ;
-;      - epwbm_dat_o[14]~feeder                ; 0                 ; 0       ;
+;      - epwbm_dat_o[14]                       ; 0                 ; 0       ;
+;      - ep93xx_address[4]~feeder              ; 0                 ; 0       ;
 ; bd_pad[7]                                    ;                   ;         ;
-;      - ep93xx_address[3]                     ; 0                 ; 0       ;
-;      - epwbm_dat_o[15]~feeder                ; 0                 ; 0       ;
+;      - ep93xx_address[3]                     ; 1                 ; 0       ;
+;      - epwbm_dat_o[15]~feeder                ; 1                 ; 0       ;
 ; dio0to8_pad[0]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector15~2 ; 1                 ; 6       ;
 ; dio0to8_pad[1]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector14~2 ; 0                 ; 6       ;
 ; dio0to8_pad[2]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector13~2 ; 1                 ; 6       ;
 ; dio0to8_pad[3]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector12~2 ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector12~3 ; 1                 ; 6       ;
 ; dio0to8_pad[4]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector11~1 ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector11~3 ; 1                 ; 6       ;
 ; dio0to8_pad[5]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector10~0 ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector10~2 ; 1                 ; 6       ;
 ; dio0to8_pad[6]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector9~1  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector9~2  ; 0                 ; 6       ;
 ; dio0to8_pad[7]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector8~0  ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector8~2  ; 0                 ; 6       ;
 ; dio0to8_pad[8]                               ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector7~1  ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector7~3  ; 1                 ; 6       ;
 ; dio10to17_pad[0]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector5~0  ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector5~2  ; 0                 ; 6       ;
 ; dio10to17_pad[1]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector4~1  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector4~2  ; 0                 ; 6       ;
 ; dio10to17_pad[2]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector3~0  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector3~2  ; 0                 ; 6       ;
 ; dio10to17_pad[3]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector2~1  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector2~2  ; 0                 ; 6       ;
 ; dio10to17_pad[4]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector1~0  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector1~3  ; 0                 ; 6       ;
 ; dio10to17_pad[5]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector0~2  ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector0~2  ; 1                 ; 6       ;
 ; dio10to17_pad[6]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector13~0 ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector13~2 ; 1                 ; 6       ;
 ; dio10to17_pad[7]                             ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector12~0 ; 1                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector12~2 ; 1                 ; 6       ;
 ; sdram_data_pad[0]                            ;                   ;         ;
 ; sdram_data_pad[1]                            ;                   ;         ;
 ; sdram_data_pad[2]                            ;                   ;         ;
@@ -1064,39 +1065,24 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; mux_pad[2]                                   ;                   ;         ;
 ; mux_pad[3]                                   ;                   ;         ;
 ; blue_pad[0]                                  ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector15~0 ; 1                 ; 6       ;
 ; blue_pad[1]                                  ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector14~0 ; 1                 ; 6       ;
 ; blue_pad[2]                                  ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector13~0 ; 1                 ; 6       ;
 ; blue_pad[3]                                  ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector12~0 ; 0                 ; 6       ;
 ; blue_pad[4]                                  ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector11~0 ; 1                 ; 6       ;
 ; red_pad[0]                                   ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector5~0  ; 0                 ; 6       ;
 ; red_pad[1]                                   ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector4~0  ; 0                 ; 6       ;
 ; red_pad[2]                                   ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector3~0  ; 0                 ; 6       ;
 ; red_pad[3]                                   ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector2~0  ; 1                 ; 6       ;
 ; red_pad[4]                                   ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector1~0  ; 1                 ; 6       ;
 ; green_pad[0]                                 ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector10~0 ; 1                 ; 6       ;
 ; green_pad[1]                                 ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector9~0  ; 0                 ; 6       ;
 ; green_pad[2]                                 ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector8~0  ; 1                 ; 6       ;
 ; green_pad[3]                                 ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector7~0  ; 1                 ; 6       ;
 ; green_pad[4]                                 ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector6~0  ; 0                 ; 6       ;
 ; hsync_pad                                    ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector15~0 ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector15~7 ; 0                 ; 6       ;
 ; vsync_pad                                    ;                   ;         ;
-;      - ts7300_usercore:usercore|Selector14~0 ; 0                 ; 6       ;
+;      - ts7300_usercore:usercore|Selector14~2 ; 0                 ; 6       ;
 ; dio9_pad                                     ;                   ;         ;
 ; sd_wprot_pad                                 ;                   ;         ;
 ; sd_present_pad                               ;                   ;         ;
@@ -1114,622 +1100,968 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 ; bd_oe_pad                                    ;                   ;         ;
 ; start_cycle_pad                              ;                   ;         ;
 ; isa_add11_pad                                ;                   ;         ;
-;      - ep93xx_address[11]                    ; 0                 ; 6       ;
+;      - ep93xx_address[11]~feeder             ; 1                 ; 6       ;
 ; isa_add12_pad                                ;                   ;         ;
-;      - ep93xx_address[12]~feeder             ; 1                 ; 6       ;
+;      - ep93xx_address[12]                    ; 1                 ; 6       ;
 ; isa_add14_pad                                ;                   ;         ;
-;      - ep93xx_address[14]                    ; 0                 ; 6       ;
+;      - ep93xx_address[14]~feeder             ; 0                 ; 6       ;
 ; isa_add15_pad                                ;                   ;         ;
-;      - ep93xx_address[15]                    ; 1                 ; 6       ;
+;      - ep93xx_address[15]~feeder             ; 0                 ; 6       ;
 ; add_pad[0]                                   ;                   ;         ;
 ; add_pad[1]                                   ;                   ;         ;
-;      - ep93xx_address[18]~feeder             ; 0                 ; 6       ;
+;      - ep93xx_address[18]~feeder             ; 1                 ; 6       ;
 ; add_pad[2]                                   ;                   ;         ;
 ;      - ep93xx_address[19]                    ; 0                 ; 6       ;
 ; add_pad[3]                                   ;                   ;         ;
-;      - ep93xx_address[20]~feeder             ; 1                 ; 6       ;
+;      - ep93xx_address[20]                    ; 0                 ; 6       ;
 ; isa_add1_pad                                 ;                   ;         ;
 ;      - ep93xx_address[1]                     ; 1                 ; 6       ;
-;      - isa_add1_pad_q~feeder                 ; 1                 ; 6       ;
+;      - isa_add1_pad_q                        ; 1                 ; 6       ;
 +----------------------------------------------+-------------------+---------+
 
 
-+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
-; Control Signals                                                                                                                                                                      ;
-+--------------------------------------------------+--------------------+---------+---------------------+--------+----------------------+------------------+---------------------------+
-; Name                                             ; Location           ; Fan-Out ; Usage               ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+--------------------------------------------------+--------------------+---------+---------------------+--------+----------------------+------------------+---------------------------+
-; always0~0                                        ; LCCOMB_X5_Y9_N10   ; 17      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; always0~2                                        ; LCCOMB_X5_Y9_N22   ; 18      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; bd_oe_pad                                        ; PIN_27             ; 2       ; Clock               ; yes    ; Global Clock         ; GCLK3            ; --                        ;
-; clk_25mhz_pad                                    ; PIN_129            ; 1       ; Clock               ; no     ; --                   ; --               ; --                        ;
-; ep93xx_databus_oe~0                              ; LCCOMB_X5_Y9_N26   ; 16      ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ep93xx_end_q                                     ; LCFF_X1_Y9_N31     ; 4       ; Async. clear, Clock ; no     ; --                   ; --               ; --                        ;
-; pll:clkgencore|altpll:altpll_component|_clk1     ; PLL_2              ; 146     ; Clock               ; yes    ; Global Clock         ; GCLK7            ; --                        ;
-; start_cycle_negedge                              ; LCFF_X1_Y9_N9      ; 3       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; start_cycle_negedge_aset                         ; LCCOMB_X1_Y9_N12   ; 1       ; Async. clear        ; no     ; --                   ; --               ; --                        ;
-; start_cycle_pad                                  ; PIN_24             ; 25      ; Clock               ; yes    ; Global Clock         ; GCLK2            ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[0]          ; LCFF_X23_Y15_N25   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[0]~0        ; LCCOMB_X23_Y15_N24 ; 16      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[10]         ; LCFF_X24_Y15_N21   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[11]         ; LCFF_X24_Y15_N19   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[12]         ; LCFF_X23_Y13_N9    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[13]         ; LCFF_X24_Y15_N5    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[14]         ; LCFF_X21_Y15_N17   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[15]         ; LCFF_X23_Y15_N11   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[1]          ; LCFF_X23_Y15_N23   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[2]          ; LCFF_X23_Y15_N17   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[3]          ; LCFF_X23_Y15_N3    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[4]          ; LCFF_X24_Y15_N1    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[5]          ; LCFF_X24_Y15_N27   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[6]          ; LCFF_X24_Y15_N29   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[7]          ; LCFF_X24_Y15_N23   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_enable[8]          ; LCFF_X23_Y15_N13   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|dio2_reg[0]~0           ; LCCOMB_X23_Y14_N8  ; 15      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_enable[0]          ; LCFF_X24_Y14_N9    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_enable[1]          ; LCFF_X24_Y14_N7    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_enable[2]          ; LCFF_X24_Y14_N5    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_enable[2]~0        ; LCCOMB_X24_Y14_N4  ; 4       ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_enable[3]          ; LCFF_X24_Y14_N11   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|misc_reg[2]~0           ; LCCOMB_X24_Y13_N14 ; 4       ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[0]           ; LCFF_X26_Y15_N7    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[0]~0         ; LCCOMB_X23_Y15_N16 ; 15      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[10]          ; LCFF_X26_Y15_N19   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[11]          ; LCFF_X25_Y15_N1    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[12]          ; LCFF_X25_Y15_N23   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[13]          ; LCFF_X25_Y15_N13   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[14]          ; LCFF_X25_Y15_N27   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[1]           ; LCFF_X22_Y15_N19   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[2]           ; LCFF_X25_Y15_N17   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[3]           ; LCFF_X23_Y14_N7    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[4]           ; LCFF_X25_Y15_N11   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[5]           ; LCFF_X22_Y15_N5    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[6]           ; LCFF_X22_Y15_N21   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[7]           ; LCFF_X22_Y15_N25   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[8]           ; LCFF_X25_Y15_N5    ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_enable[9]           ; LCFF_X22_Y15_N23   ; 2       ; Output enable       ; no     ; --                   ; --               ; --                        ;
-; ts7300_usercore:usercore|vga_reg[0]~0            ; LCCOMB_X23_Y15_N22 ; 15      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[0]~1 ; LCCOMB_X13_Y9_N8   ; 16      ; Clock enable        ; no     ; --                   ; --               ; --                        ;
-+--------------------------------------------------+--------------------+---------+---------------------+--------+----------------------+------------------+---------------------------+
++---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+; Control Signals                                                                                                                                                                             ;
++--------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
+; Name                                             ; Location           ; Fan-Out ; Usage                      ; Global ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++--------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
+; always0~0                                        ; LCCOMB_X5_Y9_N0    ; 17      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; always0~2                                        ; LCCOMB_X5_Y9_N20   ; 18      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; bd_oe_pad                                        ; PIN_27             ; 2       ; Clock                      ; yes    ; Global Clock         ; GCLK3            ; --                        ;
+; clk_25mhz_pad                                    ; PIN_129            ; 1       ; Clock                      ; no     ; --                   ; --               ; --                        ;
+; ep93xx_databus_oe~0                              ; LCCOMB_X4_Y9_N16   ; 16      ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ep93xx_end_q                                     ; LCFF_X1_Y9_N17     ; 4       ; Async. clear, Clock        ; no     ; --                   ; --               ; --                        ;
+; pll:clkgencore|altpll:altpll_component|_clk1     ; PLL_2              ; 242     ; Clock                      ; yes    ; Global Clock         ; GCLK7            ; --                        ;
+; start_cycle_negedge                              ; LCFF_X1_Y9_N11     ; 3       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; start_cycle_negedge_aset                         ; LCCOMB_X1_Y9_N26   ; 1       ; Async. clear               ; no     ; --                   ; --               ; --                        ;
+; start_cycle_pad                                  ; PIN_24             ; 25      ; Clock                      ; yes    ; Global Clock         ; GCLK2            ; --                        ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[0]~0        ; LCCOMB_X14_Y14_N6  ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[0]~0        ; LCCOMB_X13_Y13_N22 ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[0]~0        ; LCCOMB_X14_Y15_N22 ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|DUTY_CYCLED[0]~0        ; LCCOMB_X17_Y15_N26 ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|PWM_not_reset           ; LCFF_X16_Y13_N15   ; 74      ; Async. clear, Clock enable ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[10]         ; LCFF_X16_Y16_N5    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[11]         ; LCFF_X16_Y16_N15   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[12]         ; LCFF_X16_Y16_N21   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[13]         ; LCFF_X16_Y14_N15   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[14]         ; LCFF_X16_Y14_N17   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[15]         ; LCFF_X16_Y14_N3    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[3]          ; LCFF_X16_Y14_N23   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[3]~0        ; LCCOMB_X16_Y14_N10 ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[4]          ; LCFF_X16_Y14_N9    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[5]          ; LCFF_X16_Y16_N17   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[6]          ; LCFF_X16_Y16_N31   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[7]          ; LCFF_X16_Y14_N27   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_enable[8]          ; LCFF_X16_Y14_N21   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|dio2_reg[3]~0           ; LCCOMB_X14_Y15_N10 ; 12      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_enable[0]          ; LCFF_X15_Y14_N3    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_enable[1]          ; LCFF_X15_Y14_N13   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_enable[2]          ; LCFF_X15_Y14_N1    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_enable[2]~0        ; LCCOMB_X15_Y14_N2  ; 4       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_enable[3]          ; LCFF_X15_Y14_N7    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|misc_reg[2]~0           ; LCCOMB_X19_Y15_N28 ; 4       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_1|slow_clk      ; LCFF_X3_Y9_N13     ; 9       ; Clock                      ; yes    ; Global Clock         ; GCLK0            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~4      ; LCCOMB_X18_Y14_N16 ; 20      ; Clock enable, Sync. clear  ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_2|slow_clk      ; LCFF_X33_Y10_N7    ; 9       ; Clock                      ; yes    ; Global Clock         ; GCLK6            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_3|slow_clk      ; LCFF_X3_Y9_N5      ; 9       ; Clock                      ; yes    ; Global Clock         ; GCLK1            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_4|slow_clk      ; LCFF_X33_Y10_N31   ; 9       ; Clock                      ; yes    ; Global Clock         ; GCLK4            ; --                        ;
+; ts7300_usercore:usercore|vga_enable[0]           ; LCFF_X17_Y15_N9    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[0]~0         ; LCCOMB_X16_Y14_N24 ; 15      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[11]          ; LCFF_X15_Y16_N25   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[1]           ; LCFF_X15_Y14_N5    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[2]           ; LCFF_X15_Y14_N23   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[3]           ; LCFF_X15_Y14_N17   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[5]           ; LCFF_X15_Y14_N9    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[6]           ; LCFF_X15_Y16_N13   ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[7]           ; LCFF_X15_Y16_N7    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_enable[8]           ; LCFF_X18_Y14_N1    ; 2       ; Output enable              ; no     ; --                   ; --               ; --                        ;
+; ts7300_usercore:usercore|vga_reg[0]~0            ; LCCOMB_X19_Y15_N14 ; 9       ; Clock enable               ; no     ; --                   ; --               ; --                        ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[2]~1 ; LCCOMB_X12_Y9_N0   ; 16      ; Clock enable               ; no     ; --                   ; --               ; --                        ;
++--------------------------------------------------+--------------------+---------+----------------------------+--------+----------------------+------------------+---------------------------+
 
 
-+-----------------------------------------------------------------------------------------------------------------------------------------+
-; Global & Other Fast Signals                                                                                                             ;
-+----------------------------------------------+----------+---------+----------------------+------------------+---------------------------+
-; Name                                         ; Location ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
-+----------------------------------------------+----------+---------+----------------------+------------------+---------------------------+
-; bd_oe_pad                                    ; PIN_27   ; 2       ; Global Clock         ; GCLK3            ; --                        ;
-; pll:clkgencore|altpll:altpll_component|_clk1 ; PLL_2    ; 146     ; Global Clock         ; GCLK7            ; --                        ;
-; start_cycle_pad                              ; PIN_24   ; 25      ; Global Clock         ; GCLK2            ; --                        ;
-+----------------------------------------------+----------+---------+----------------------+------------------+---------------------------+
++-------------------------------------------------------------------------------------------------------------------------------------------------+
+; Global & Other Fast Signals                                                                                                                     ;
++----------------------------------------------+------------------+---------+----------------------+------------------+---------------------------+
+; Name                                         ; Location         ; Fan-Out ; Global Resource Used ; Global Line Name ; Enable Signal Source Name ;
++----------------------------------------------+------------------+---------+----------------------+------------------+---------------------------+
+; bd_oe_pad                                    ; PIN_27           ; 2       ; Global Clock         ; GCLK3            ; --                        ;
+; pll:clkgencore|altpll:altpll_component|_clk1 ; PLL_2            ; 242     ; Global Clock         ; GCLK7            ; --                        ;
+; start_cycle_pad                              ; PIN_24           ; 25      ; Global Clock         ; GCLK2            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_1|slow_clk  ; LCFF_X3_Y9_N13   ; 9       ; Global Clock         ; GCLK0            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_2|slow_clk  ; LCFF_X33_Y10_N7  ; 9       ; Global Clock         ; GCLK6            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_3|slow_clk  ; LCFF_X3_Y9_N5    ; 9       ; Global Clock         ; GCLK1            ; --                        ;
+; ts7300_usercore:usercore|pwm:PWM_4|slow_clk  ; LCFF_X33_Y10_N31 ; 9       ; Global Clock         ; GCLK4            ; --                        ;
++----------------------------------------------+------------------+---------+----------------------+------------------+---------------------------+
 
 
-+----------------------------------------------------------------+
-; Non-Global High Fan-Out Signals                                ;
-+------------------------------------------------------+---------+
-; Name                                                 ; Fan-Out ;
-+------------------------------------------------------+---------+
-; ep93xx_address1_q                                    ; 39      ;
-; ts7300_usercore:usercore|process_0~0                 ; 22      ;
-; always0~2                                            ; 18      ;
-; ep93xx_address[4]                                    ; 18      ;
-; always0~0                                            ; 17      ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[0]~1     ; 16      ;
-; ts7300_usercore:usercore|dio2_enable[0]~0            ; 16      ;
-; ep93xx_databus_oe~0                                  ; 16      ;
-; ts7300_usercore:usercore|dummyreg[14]~1              ; 15      ;
-; ts7300_usercore:usercore|WideNor0~1                  ; 15      ;
-; ts7300_usercore:usercore|vga_enable[0]~0             ; 15      ;
-; ts7300_usercore:usercore|vga_reg[0]~0                ; 15      ;
-; ts7300_usercore:usercore|dio2_reg[0]~0               ; 15      ;
-; ep93xx_address[2]                                    ; 14      ;
-; ts7300_usercore:usercore|WideNor0~2                  ; 12      ;
-; ts7300_usercore:usercore|dummyreg[31]                ; 11      ;
-; ts7300_usercore:usercore|Equal5~0                    ; 11      ;
-; ts7300_usercore:usercore|Equal4~0                    ; 11      ;
-; ep93xx_address[3]                                    ; 11      ;
-; ts7300_usercore:usercore|Equal0~5                    ; 10      ;
-; ep93xx_end                                           ; 8       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[3]       ; 7       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[2]       ; 7       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[1]       ; 7       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[0]       ; 7       ;
-; ts7300_usercore:usercore|Equal2~0                    ; 6       ;
-; start_cycle_posedge_q                                ; 6       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[14]      ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[13]      ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[12]      ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[11]      ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[10]      ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[8]       ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[7]       ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[6]       ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[5]       ; 5       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[4]       ; 5       ;
-; ts7300_usercore:usercore|Equal1~1                    ; 4       ;
-; ts7300_usercore:usercore|Equal0~7                    ; 4       ;
-; ts7300_usercore:usercore|misc_enable[2]~0            ; 4       ;
-; ts7300_usercore:usercore|misc_reg[2]~0               ; 4       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[9]       ; 4       ;
-; ep93xx_end_q                                         ; 4       ;
-; epwbm_stb_o                                          ; 4       ;
-; epwbm_done                                           ; 4       ;
-; start_cycle_posedge                                  ; 4       ;
-; bd_oe_negedge                                        ; 3       ;
-; ep93xx_address[22]                                   ; 3       ;
-; ts7300_usercore:usercore|Equal0~4                    ; 3       ;
-; ep93xx_address[23]                                   ; 3       ;
-; ep93xx_address[21]                                   ; 3       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[15]      ; 3       ;
-; start_cycle_negedge                                  ; 3       ;
-; epwbm_we_o                                           ; 3       ;
-; pll:clkgencore|altpll:altpll_component|_locked       ; 3       ;
-; isa_add1_pad                                         ; 2       ;
-; bd_pad[7]~7                                          ; 2       ;
-; bd_pad[6]~6                                          ; 2       ;
-; bd_pad[5]~5                                          ; 2       ;
-; bd_pad[4]~4                                          ; 2       ;
-; bd_pad[3]~3                                          ; 2       ;
-; bd_pad[2]~2                                          ; 2       ;
-; bd_pad[1]~1                                          ; 2       ;
-; bd_pad[0]~0                                          ; 2       ;
-; fl_d_pad[7]~7                                        ; 2       ;
-; fl_d_pad[5]~5                                        ; 2       ;
-; fl_d_pad[4]~4                                        ; 2       ;
-; fl_d_pad[3]~3                                        ; 2       ;
-; fl_d_pad[2]~2                                        ; 2       ;
-; fl_d_pad[1]~1                                        ; 2       ;
-; fl_d_pad[0]~0                                        ; 2       ;
-; bd_oe_posedge                                        ; 2       ;
-; bd_oe_negedge_q                                      ; 2       ;
-; ts7300_usercore:usercore|Equal1~0                    ; 2       ;
-; ts7300_usercore:usercore|Equal0~6                    ; 2       ;
-; always0~1                                            ; 2       ;
-; epwbm_done32                                         ; 2       ;
-; isa_add1_pad_q                                       ; 2       ;
-; ts7300_usercore:usercore|Equal3~0                    ; 2       ;
-; ts7300_usercore:usercore|misc_enable[1]              ; 2       ;
-; ts7300_usercore:usercore|misc_enable[0]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[9]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[8]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[7]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[6]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[5]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[14]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[13]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[12]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[11]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[10]              ; 2       ;
-; ts7300_usercore:usercore|vga_enable[4]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[3]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[2]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[1]               ; 2       ;
-; ts7300_usercore:usercore|vga_enable[0]               ; 2       ;
-; ts7300_usercore:usercore|misc_enable[3]              ; 2       ;
-; ts7300_usercore:usercore|misc_enable[2]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[15]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[14]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[13]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[12]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[11]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[10]             ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[8]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[7]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[6]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[5]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[4]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[3]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[2]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[1]              ; 2       ;
-; ts7300_usercore:usercore|dio2_enable[0]              ; 2       ;
-; start_cycle_negedge~feeder                           ; 1       ;
-; add_pad[3]                                           ; 1       ;
-; add_pad[2]                                           ; 1       ;
-; add_pad[1]                                           ; 1       ;
-; add_pad[0]                                           ; 1       ;
-; isa_add15_pad                                        ; 1       ;
-; isa_add14_pad                                        ; 1       ;
-; isa_add12_pad                                        ; 1       ;
-; isa_add11_pad                                        ; 1       ;
-; start_cycle_pad                                      ; 1       ;
-; bd_oe_pad                                            ; 1       ;
-; clk_25mhz_pad                                        ; 1       ;
-; vsync_pad~0                                          ; 1       ;
-; hsync_pad~0                                          ; 1       ;
-; green_pad[4]~4                                       ; 1       ;
-; green_pad[3]~3                                       ; 1       ;
-; green_pad[2]~2                                       ; 1       ;
-; green_pad[1]~1                                       ; 1       ;
-; green_pad[0]~0                                       ; 1       ;
-; red_pad[4]~4                                         ; 1       ;
-; red_pad[3]~3                                         ; 1       ;
-; red_pad[2]~2                                         ; 1       ;
-; red_pad[1]~1                                         ; 1       ;
-; red_pad[0]~0                                         ; 1       ;
-; blue_pad[4]~4                                        ; 1       ;
-; blue_pad[3]~3                                        ; 1       ;
-; blue_pad[2]~2                                        ; 1       ;
-; blue_pad[1]~1                                        ; 1       ;
-; blue_pad[0]~0                                        ; 1       ;
-; dio10to17_pad[7]~7                                   ; 1       ;
-; dio10to17_pad[6]~6                                   ; 1       ;
-; dio10to17_pad[5]~5                                   ; 1       ;
-; dio10to17_pad[4]~4                                   ; 1       ;
-; dio10to17_pad[3]~3                                   ; 1       ;
-; dio10to17_pad[2]~2                                   ; 1       ;
-; dio10to17_pad[1]~1                                   ; 1       ;
-; dio10to17_pad[0]~0                                   ; 1       ;
-; dio0to8_pad[8]~8                                     ; 1       ;
-; dio0to8_pad[7]~7                                     ; 1       ;
-; dio0to8_pad[6]~6                                     ; 1       ;
-; dio0to8_pad[5]~5                                     ; 1       ;
-; dio0to8_pad[4]~4                                     ; 1       ;
-; dio0to8_pad[3]~3                                     ; 1       ;
-; dio0to8_pad[2]~2                                     ; 1       ;
-; dio0to8_pad[1]~1                                     ; 1       ;
-; dio0to8_pad[0]~0                                     ; 1       ;
-; fl_d_pad[6]~6                                        ; 1       ;
-; ts7300_usercore:usercore|Selector0~3                 ; 1       ;
-; bd_oe_negedge~0                                      ; 1       ;
-; start_cycle_negedge_q~0                              ; 1       ;
-; bd_oe_posedge~0                                      ; 1       ;
-; bd_oe_negedge_q~0                                    ; 1       ;
-; ep93xx_end~1                                         ; 1       ;
-; ep93xx_end~0                                         ; 1       ;
-; start_cycle_negedge_q                                ; 1       ;
-; epwbm_done32~0                                       ; 1       ;
-; ts7300_usercore:usercore|Selector0~2                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~16       ; 1       ;
-; epwbm_dat_o[15]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector1~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector1~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector1~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~15       ; 1       ;
-; epwbm_dat_o[14]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector2~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector2~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector2~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~14       ; 1       ;
-; epwbm_dat_o[13]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector3~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector3~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector3~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~13       ; 1       ;
-; epwbm_dat_o[12]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector4~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector4~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector4~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~12       ; 1       ;
-; epwbm_dat_o[11]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector5~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector5~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector5~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~11       ; 1       ;
-; epwbm_dat_o[10]                                      ; 1       ;
-; ts7300_usercore:usercore|Selector6~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector6~0                 ; 1       ;
-; ts7300_usercore:usercore|dio2_enable[9]              ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~10       ; 1       ;
-; epwbm_dat_o[9]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector7~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector7~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector7~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~9        ; 1       ;
-; epwbm_dat_o[8]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector8~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector8~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector8~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~8        ; 1       ;
-; epwbm_dat_o[7]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector9~2                 ; 1       ;
-; ts7300_usercore:usercore|Selector9~1                 ; 1       ;
-; ts7300_usercore:usercore|Selector9~0                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~7        ; 1       ;
-; epwbm_dat_o[6]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector10~2                ; 1       ;
-; ts7300_usercore:usercore|Selector10~1                ; 1       ;
-; ts7300_usercore:usercore|Selector10~0                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~6        ; 1       ;
-; epwbm_dat_o[5]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector11~2                ; 1       ;
-; ts7300_usercore:usercore|Selector11~1                ; 1       ;
-; ts7300_usercore:usercore|Selector11~0                ; 1       ;
-; ts7300_usercore:usercore|dummyreg[14]~0              ; 1       ;
-; ts7300_usercore:usercore|WideNor0~0                  ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~5        ; 1       ;
-; epwbm_dat_o[4]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector12~3                ; 1       ;
-; ts7300_usercore:usercore|Selector12~2                ; 1       ;
-; ts7300_usercore:usercore|Selector12~1                ; 1       ;
-; ts7300_usercore:usercore|Selector12~0                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~4        ; 1       ;
-; epwbm_dat_o[3]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector13~3                ; 1       ;
-; ts7300_usercore:usercore|Selector13~2                ; 1       ;
-; ts7300_usercore:usercore|Selector13~1                ; 1       ;
-; ts7300_usercore:usercore|Selector13~0                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~3        ; 1       ;
-; epwbm_dat_o[2]                                       ; 1       ;
-; ts7300_usercore:usercore|Selector14~3                ; 1       ;
-; ts7300_usercore:usercore|Selector14~2                ; 1       ;
-; ts7300_usercore:usercore|Selector14~1                ; 1       ;
-; ts7300_usercore:usercore|Selector14~0                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~2        ; 1       ;
-; epwbm_dat_o[1]                                       ; 1       ;
-; start_cycle_posedge_q~0                              ; 1       ;
-; epwbm_stb_o~0                                        ; 1       ;
-; ts7300_usercore:usercore|Selector15~3                ; 1       ;
-; ts7300_usercore:usercore|Selector15~2                ; 1       ;
-; ts7300_usercore:usercore|Selector15~1                ; 1       ;
-; ts7300_usercore:usercore|Selector15~0                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~0        ; 1       ;
-; epwbm_dat_o[0]                                       ; 1       ;
-; start_cycle_negedge_aset                             ; 1       ;
-; epwbm_done~0                                         ; 1       ;
-; ep93xx_address[1]                                    ; 1       ;
-; ts7300_usercore:usercore|Equal0~3                    ; 1       ;
-; ep93xx_address[20]                                   ; 1       ;
-; ep93xx_address[19]                                   ; 1       ;
-; ep93xx_address[18]                                   ; 1       ;
-; ep93xx_address[17]                                   ; 1       ;
-; ts7300_usercore:usercore|Equal0~2                    ; 1       ;
-; ep93xx_address[16]                                   ; 1       ;
-; ep93xx_address[15]                                   ; 1       ;
-; ep93xx_address[14]                                   ; 1       ;
-; ep93xx_address[13]                                   ; 1       ;
-; ts7300_usercore:usercore|Equal0~1                    ; 1       ;
-; ep93xx_address[12]                                   ; 1       ;
-; ep93xx_address[11]                                   ; 1       ;
-; ep93xx_address[10]                                   ; 1       ;
-; ep93xx_address[9]                                    ; 1       ;
-; ts7300_usercore:usercore|Equal0~0                    ; 1       ;
-; ep93xx_address[8]                                    ; 1       ;
-; ep93xx_address[7]                                    ; 1       ;
-; ep93xx_address[6]                                    ; 1       ;
-; ep93xx_address[5]                                    ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[15]~15 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[15]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[14]~14 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[14]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[13]~13 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[13]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[12]~12 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[12]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[11]~11 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[11]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[10]~10 ; 1       ;
-; ts7300_usercore:usercore|dummyreg[10]                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[9]~9   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[9]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[8]~8   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[8]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[7]~7   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[7]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[6]~6   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[6]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[5]~5   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[5]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[4]~4   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[4]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[3]~3   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[3]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[2]~2   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[2]                 ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[1]~1   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[1]                 ; 1       ;
-; start_cycle_posedge~0                                ; 1       ;
-; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[0]~0   ; 1       ;
-; ts7300_usercore:usercore|dummyreg[0]                 ; 1       ;
-; ts7300_usercore:usercore|misc_reg[1]                 ; 1       ;
-; ts7300_usercore:usercore|misc_reg[0]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[9]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[8]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[7]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[6]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[5]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[14]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[13]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[12]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[11]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[10]                 ; 1       ;
-; ts7300_usercore:usercore|vga_reg[4]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[3]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[2]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[1]                  ; 1       ;
-; ts7300_usercore:usercore|vga_reg[0]                  ; 1       ;
-; ts7300_usercore:usercore|misc_reg[3]                 ; 1       ;
-; ts7300_usercore:usercore|misc_reg[2]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[15]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[14]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[13]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[12]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[11]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[10]                ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[8]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[7]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[6]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[5]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[4]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[3]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[2]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[1]                 ; 1       ;
-; ts7300_usercore:usercore|dio2_reg[0]                 ; 1       ;
-; ep93xx_dat_latch[15]                                 ; 1       ;
-; ep93xx_dat_latch[14]                                 ; 1       ;
-; ep93xx_dat_latch[13]                                 ; 1       ;
-; ep93xx_dat_latch[12]                                 ; 1       ;
-; ep93xx_dat_latch[11]                                 ; 1       ;
-; ep93xx_dat_latch[10]                                 ; 1       ;
-; ep93xx_dat_latch[9]                                  ; 1       ;
-; ep93xx_dat_latch[8]                                  ; 1       ;
-; ep93xx_dat_latch[7]                                  ; 1       ;
-; ep93xx_dat_latch[6]                                  ; 1       ;
-; ep93xx_dat_latch[5]                                  ; 1       ;
-; ep93xx_dat_latch[4]                                  ; 1       ;
-; ep93xx_dat_latch[3]                                  ; 1       ;
-; ep93xx_dat_latch[2]                                  ; 1       ;
-; ep93xx_dat_latch[1]                                  ; 1       ;
-; ep93xx_dat_latch[0]                                  ; 1       ;
-; sdram_clk_pad~0                                      ; 1       ;
-+------------------------------------------------------+---------+
++------------------------------------------------------------------+
+; Non-Global High Fan-Out Signals                                  ;
++--------------------------------------------------------+---------+
+; Name                                                   ; Fan-Out ;
++--------------------------------------------------------+---------+
+; ts7300_usercore:usercore|PWM_not_reset                 ; 74      ;
+; ep93xx_address1_q                                      ; 34      ;
+; ep93xx_address[3]                                      ; 21      ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~4            ; 20      ;
+; always0~2                                              ; 18      ;
+; ts7300_usercore:usercore|Equal6~0                      ; 18      ;
+; ts7300_usercore:usercore|Equal8~0                      ; 18      ;
+; ts7300_usercore:usercore|Equal7~0                      ; 18      ;
+; ts7300_usercore:usercore|Equal9~0                      ; 18      ;
+; always0~0                                              ; 17      ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[0]~0              ; 16      ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[0]~0              ; 16      ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[0]~0              ; 16      ;
+; ts7300_usercore:usercore|DUTY_CYCLED[0]~0              ; 16      ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[2]~1       ; 16      ;
+; ts7300_usercore:usercore|process_0~1                   ; 16      ;
+; ts7300_usercore:usercore|dio2_enable[3]~0              ; 16      ;
+; ts7300_usercore:usercore|Equal0~4                      ; 16      ;
+; ep93xx_databus_oe~0                                    ; 16      ;
+; ts7300_usercore:usercore|Equal2~1                      ; 15      ;
+; ts7300_usercore:usercore|Equal1~2                      ; 15      ;
+; ts7300_usercore:usercore|vga_enable[0]~0               ; 15      ;
+; ts7300_usercore:usercore|process_0~0                   ; 15      ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[0]         ; 15      ;
+; ts7300_usercore:usercore|WideNor0~5                    ; 14      ;
+; ts7300_usercore:usercore|Equal3~0                      ; 13      ;
+; ts7300_usercore:usercore|dio2_reg[3]~0                 ; 12      ;
+; ts7300_usercore:usercore|dummyreg[31]                  ; 11      ;
+; ep93xx_address[5]                                      ; 11      ;
+; ep93xx_address[4]                                      ; 11      ;
+; ep93xx_address[22]                                     ; 11      ;
+; ep93xx_address[2]                                      ; 11      ;
+; ep93xx_address[23]                                     ; 11      ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[3]         ; 11      ;
+; ts7300_usercore:usercore|Equal0~6                      ; 10      ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[2]         ; 10      ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[1]         ; 10      ;
+; ts7300_usercore:usercore|vga_reg[0]~0                  ; 9       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[8]         ; 9       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[7]         ; 9       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[6]         ; 9       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[5]         ; 9       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[4]         ; 9       ;
+; ep93xx_end                                             ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[14]        ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[13]        ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[12]        ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[11]        ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[10]        ; 8       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[15]        ; 7       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch[9]         ; 7       ;
+; start_cycle_posedge_q                                  ; 7       ;
+; ts7300_usercore:usercore|Equal5~1                      ; 6       ;
+; ts7300_usercore:usercore|Equal4~1                      ; 6       ;
+; ts7300_usercore:usercore|Equal1~0                      ; 6       ;
+; epwbm_stb_o                                            ; 5       ;
+; ts7300_usercore:usercore|misc_enable[2]~0              ; 4       ;
+; ts7300_usercore:usercore|misc_reg[2]~0                 ; 4       ;
+; ep93xx_end_q                                           ; 4       ;
+; epwbm_done                                             ; 4       ;
+; epwbm_we_o                                             ; 4       ;
+; start_cycle_posedge                                    ; 4       ;
+; bd_oe_negedge                                          ; 3       ;
+; ts7300_usercore:usercore|Equal10~1                     ; 3       ;
+; ts7300_usercore:usercore|Equal13~1                     ; 3       ;
+; ts7300_usercore:usercore|Equal12~1                     ; 3       ;
+; ts7300_usercore:usercore|Equal11~1                     ; 3       ;
+; ts7300_usercore:usercore|Equal14~1                     ; 3       ;
+; ts7300_usercore:usercore|PWM_enable_A                  ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[0]          ; 3       ;
+; ts7300_usercore:usercore|Equal0~5                      ; 3       ;
+; ts7300_usercore:usercore|PWM_enable_D                  ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[0]          ; 3       ;
+; ts7300_usercore:usercore|PWM_enable_C                  ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[0]          ; 3       ;
+; ts7300_usercore:usercore|PWM_enable_B                  ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[0]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[0]          ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[1]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[2]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[3]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[4]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[5]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[6]   ; 3       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[7]   ; 3       ;
+; start_cycle_negedge                                    ; 3       ;
+; pll:clkgencore|altpll:altpll_component|_locked         ; 3       ;
+; isa_add1_pad                                           ; 2       ;
+; bd_pad[7]~7                                            ; 2       ;
+; bd_pad[6]~6                                            ; 2       ;
+; bd_pad[5]~5                                            ; 2       ;
+; bd_pad[4]~4                                            ; 2       ;
+; bd_pad[3]~3                                            ; 2       ;
+; bd_pad[2]~2                                            ; 2       ;
+; bd_pad[1]~1                                            ; 2       ;
+; bd_pad[0]~0                                            ; 2       ;
+; fl_d_pad[7]~7                                          ; 2       ;
+; fl_d_pad[5]~5                                          ; 2       ;
+; fl_d_pad[4]~4                                          ; 2       ;
+; fl_d_pad[3]~3                                          ; 2       ;
+; fl_d_pad[2]~2                                          ; 2       ;
+; fl_d_pad[1]~1                                          ; 2       ;
+; fl_d_pad[0]~0                                          ; 2       ;
+; bd_oe_posedge                                          ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[7]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[7]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[6]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[6]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[5]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[5]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[4]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[4]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[3]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[3]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[2]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[2]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[1]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[1]                ; 2       ;
+; bd_oe_negedge_q                                        ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[0]                ; 2       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[0]                ; 2       ;
+; ts7300_usercore:usercore|Equal10~0                     ; 2       ;
+; ts7300_usercore:usercore|Equal11~0                     ; 2       ;
+; ts7300_usercore:usercore|Equal1~1                      ; 2       ;
+; always0~1                                              ; 2       ;
+; epwbm_done32                                           ; 2       ;
+; isa_add1_pad_q                                         ; 2       ;
+; ts7300_usercore:usercore|Equal5~0                      ; 2       ;
+; ts7300_usercore:usercore|Equal4~0                      ; 2       ;
+; ts7300_usercore:usercore|misc_enable[1]                ; 2       ;
+; ts7300_usercore:usercore|misc_enable[0]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[8]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[7]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[6]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[5]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[14]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[13]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[12]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[11]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[10]                ; 2       ;
+; ts7300_usercore:usercore|vga_enable[4]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[3]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[2]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[1]                 ; 2       ;
+; ts7300_usercore:usercore|vga_enable[0]                 ; 2       ;
+; ts7300_usercore:usercore|misc_enable[3]                ; 2       ;
+; ts7300_usercore:usercore|misc_enable[2]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[15]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[14]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[13]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[12]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[11]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[10]               ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[8]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[7]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[6]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[5]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[4]                ; 2       ;
+; ts7300_usercore:usercore|dio2_enable[3]                ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|pwm_out_sig         ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|pwm_out_sig         ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|pwm_out_sig         ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[5]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[8]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[7]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[6]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[4]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[2]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[1]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[3]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[0]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[9]        ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[15]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[14]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[13]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[12]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[11]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|clock_div[10]       ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[1]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[2]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[3]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[4]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[5]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[6]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[7]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[1]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[2]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[3]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[4]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[5]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[6]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[7]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[1]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[2]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[3]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[4]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[5]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[6]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[7]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[1]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[2]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[3]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[4]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[5]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[6]          ; 2       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[7]          ; 2       ;
+; start_cycle_negedge~feeder                             ; 1       ;
+; add_pad[3]                                             ; 1       ;
+; add_pad[2]                                             ; 1       ;
+; add_pad[1]                                             ; 1       ;
+; add_pad[0]                                             ; 1       ;
+; isa_add15_pad                                          ; 1       ;
+; isa_add14_pad                                          ; 1       ;
+; isa_add12_pad                                          ; 1       ;
+; isa_add11_pad                                          ; 1       ;
+; start_cycle_pad                                        ; 1       ;
+; bd_oe_pad                                              ; 1       ;
+; clk_25mhz_pad                                          ; 1       ;
+; vsync_pad~0                                            ; 1       ;
+; hsync_pad~0                                            ; 1       ;
+; dio10to17_pad[7]~7                                     ; 1       ;
+; dio10to17_pad[6]~6                                     ; 1       ;
+; dio10to17_pad[5]~5                                     ; 1       ;
+; dio10to17_pad[4]~4                                     ; 1       ;
+; dio10to17_pad[3]~3                                     ; 1       ;
+; dio10to17_pad[2]~2                                     ; 1       ;
+; dio10to17_pad[1]~1                                     ; 1       ;
+; dio10to17_pad[0]~0                                     ; 1       ;
+; dio0to8_pad[8]~8                                       ; 1       ;
+; dio0to8_pad[7]~7                                       ; 1       ;
+; dio0to8_pad[6]~6                                       ; 1       ;
+; dio0to8_pad[5]~5                                       ; 1       ;
+; dio0to8_pad[4]~4                                       ; 1       ;
+; dio0to8_pad[3]~3                                       ; 1       ;
+; fl_d_pad[6]~6                                          ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[7]~5              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[6]~6              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[6]~6              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[6]~7              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[5]~5              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[5]~6              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[4]~5              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[4]~5              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[3]~4              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[3]~4              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[3]~4              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[3]~4              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[2]~3              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[2]~3              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[2]~3              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[2]~3              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[1]~2              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[1]~2              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[1]~2              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[1]~2              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[0]~1              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[0]~1              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[0]~1              ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[0]~1              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|slow_clk~0          ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[0]~21       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|slow_clk~0          ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[0]~21       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|slow_clk~0          ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[0]~21       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|slow_clk~0          ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[0]~21       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[4]~1 ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|duty_cycle_reg[5]~0 ; 1       ;
+; ts7300_usercore:usercore|WideNor0~6                    ; 1       ;
+; bd_oe_negedge~0                                        ; 1       ;
+; start_cycle_negedge_q~0                                ; 1       ;
+; bd_oe_posedge~0                                        ; 1       ;
+; bd_oe_negedge_q~0                                      ; 1       ;
+; ts7300_usercore:usercore|PWM_enable_A~0                ; 1       ;
+; ep93xx_end~1                                           ; 1       ;
+; ep93xx_end~0                                           ; 1       ;
+; start_cycle_negedge_q                                  ; 1       ;
+; epwbm_done32~0                                         ; 1       ;
+; ts7300_usercore:usercore|PWM_enable_D~0                ; 1       ;
+; ts7300_usercore:usercore|PWM_enable_C~0                ; 1       ;
+; ts7300_usercore:usercore|PWM_not_reset~0               ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~3            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~2            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~1            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|Equal0~0            ; 1       ;
+; ts7300_usercore:usercore|PWM_enable_B~0                ; 1       ;
+; ts7300_usercore:usercore|Selector0~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector0~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector0~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[15]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[15]               ; 1       ;
+; ts7300_usercore:usercore|Selector0~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[15]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[15]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~16         ; 1       ;
+; epwbm_dat_o[15]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector1~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector1~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector1~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector1~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[14]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[14]               ; 1       ;
+; ts7300_usercore:usercore|Selector1~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[14]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[14]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~15         ; 1       ;
+; epwbm_dat_o[14]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector2~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector2~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector2~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector2~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[13]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[13]               ; 1       ;
+; ts7300_usercore:usercore|Selector2~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[13]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[13]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~14         ; 1       ;
+; epwbm_dat_o[13]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector3~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector3~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector3~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector3~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[12]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[12]               ; 1       ;
+; ts7300_usercore:usercore|Selector3~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[12]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[12]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~13         ; 1       ;
+; epwbm_dat_o[12]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector4~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector4~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector4~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector4~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[11]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[11]               ; 1       ;
+; ts7300_usercore:usercore|Selector4~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[11]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[11]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~12         ; 1       ;
+; epwbm_dat_o[11]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector5~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector5~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector5~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector5~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[10]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[10]               ; 1       ;
+; ts7300_usercore:usercore|Selector5~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[10]               ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[10]               ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~11         ; 1       ;
+; epwbm_dat_o[10]                                        ; 1       ;
+; ts7300_usercore:usercore|Selector6~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector6~2                   ; 1       ;
+; ts7300_usercore:usercore|dio2_enable[9]                ; 1       ;
+; ts7300_usercore:usercore|vga_enable[9]                 ; 1       ;
+; ts7300_usercore:usercore|Selector6~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[9]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[9]                ; 1       ;
+; ts7300_usercore:usercore|Selector6~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[9]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[9]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~10         ; 1       ;
+; epwbm_dat_o[9]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector7~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector7~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector7~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector7~1                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEA[8]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEB[8]                ; 1       ;
+; ts7300_usercore:usercore|Selector7~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[8]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[8]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~9          ; 1       ;
+; epwbm_dat_o[8]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector8~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector8~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector8~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector8~1                   ; 1       ;
+; ts7300_usercore:usercore|Selector8~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[7]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[7]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~8          ; 1       ;
+; epwbm_dat_o[7]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector9~4                   ; 1       ;
+; ts7300_usercore:usercore|Selector9~3                   ; 1       ;
+; ts7300_usercore:usercore|Selector9~2                   ; 1       ;
+; ts7300_usercore:usercore|Selector9~1                   ; 1       ;
+; ts7300_usercore:usercore|Selector9~0                   ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[6]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[6]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~7          ; 1       ;
+; epwbm_dat_o[6]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector10~4                  ; 1       ;
+; ts7300_usercore:usercore|Selector10~3                  ; 1       ;
+; ts7300_usercore:usercore|Selector10~2                  ; 1       ;
+; ts7300_usercore:usercore|Selector10~1                  ; 1       ;
+; ts7300_usercore:usercore|Selector10~0                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[5]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[5]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~6          ; 1       ;
+; epwbm_dat_o[5]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector11~4                  ; 1       ;
+; ts7300_usercore:usercore|Selector11~3                  ; 1       ;
+; ts7300_usercore:usercore|Selector11~2                  ; 1       ;
+; ts7300_usercore:usercore|Selector11~1                  ; 1       ;
+; ts7300_usercore:usercore|Selector11~0                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[4]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[4]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~5          ; 1       ;
+; epwbm_dat_o[4]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector12~5                  ; 1       ;
+; ts7300_usercore:usercore|Selector12~4                  ; 1       ;
+; ts7300_usercore:usercore|Selector12~3                  ; 1       ;
+; ts7300_usercore:usercore|Selector12~2                  ; 1       ;
+; ts7300_usercore:usercore|Selector12~1                  ; 1       ;
+; ts7300_usercore:usercore|Selector12~0                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[3]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[3]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~4          ; 1       ;
+; epwbm_dat_o[3]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector13~5                  ; 1       ;
+; ts7300_usercore:usercore|Selector13~4                  ; 1       ;
+; ts7300_usercore:usercore|Selector13~3                  ; 1       ;
+; ts7300_usercore:usercore|dio2_enable[2]                ; 1       ;
+; ts7300_usercore:usercore|Selector13~2                  ; 1       ;
+; ts7300_usercore:usercore|Selector13~1                  ; 1       ;
+; ts7300_usercore:usercore|Selector13~0                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[2]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[2]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~3          ; 1       ;
+; epwbm_dat_o[2]                                         ; 1       ;
+; ts7300_usercore:usercore|Selector14~5                  ; 1       ;
+; ts7300_usercore:usercore|Selector14~4                  ; 1       ;
+; ts7300_usercore:usercore|Selector14~3                  ; 1       ;
+; ts7300_usercore:usercore|dio2_enable[1]                ; 1       ;
+; ts7300_usercore:usercore|Selector14~2                  ; 1       ;
+; ts7300_usercore:usercore|Selector14~1                  ; 1       ;
+; ts7300_usercore:usercore|Selector14~0                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[1]                ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[1]                ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~2          ; 1       ;
+; epwbm_dat_o[1]                                         ; 1       ;
+; start_cycle_posedge_q~0                                ; 1       ;
+; epwbm_stb_o~0                                          ; 1       ;
+; ts7300_usercore:usercore|Selector15~9                  ; 1       ;
+; ts7300_usercore:usercore|WideNor0~4                    ; 1       ;
+; ts7300_usercore:usercore|WideNor0~3                    ; 1       ;
+; ts7300_usercore:usercore|WideNor0~2                    ; 1       ;
+; ts7300_usercore:usercore|Selector15~8                  ; 1       ;
+; ts7300_usercore:usercore|Selector15~7                  ; 1       ;
+; ts7300_usercore:usercore|dio2_enable[0]                ; 1       ;
+; ts7300_usercore:usercore|Selector15~6                  ; 1       ;
+; ts7300_usercore:usercore|Selector15~5                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLEC[0]                ; 1       ;
+; ts7300_usercore:usercore|Selector15~4                  ; 1       ;
+; ts7300_usercore:usercore|DUTY_CYCLED[0]                ; 1       ;
+; ts7300_usercore:usercore|Selector15~3                  ; 1       ;
+; ts7300_usercore:usercore|Equal13~0                     ; 1       ;
+; ts7300_usercore:usercore|Selector15~2                  ; 1       ;
+; ts7300_usercore:usercore|Equal12~0                     ; 1       ;
+; ts7300_usercore:usercore|Selector15~1                  ; 1       ;
+; ts7300_usercore:usercore|Equal14~0                     ; 1       ;
+; ts7300_usercore:usercore|Selector15~0                  ; 1       ;
+; ts7300_usercore:usercore|Equal2~0                      ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|datlatch~0          ; 1       ;
+; epwbm_dat_o[0]                                         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|slow_clk            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|pulse~0             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[0]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[1]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[2]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[3]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[4]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[5]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[6]   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|duty_cycle_reg[7]   ; 1       ;
+; start_cycle_negedge_aset                               ; 1       ;
+; epwbm_done~0                                           ; 1       ;
+; ep93xx_address[1]                                      ; 1       ;
+; ts7300_usercore:usercore|Equal0~3                      ; 1       ;
+; ep93xx_address[20]                                     ; 1       ;
+; ep93xx_address[19]                                     ; 1       ;
+; ep93xx_address[18]                                     ; 1       ;
+; ep93xx_address[21]                                     ; 1       ;
+; ts7300_usercore:usercore|Equal0~2                      ; 1       ;
+; ep93xx_address[17]                                     ; 1       ;
+; ep93xx_address[16]                                     ; 1       ;
+; ep93xx_address[15]                                     ; 1       ;
+; ep93xx_address[14]                                     ; 1       ;
+; ts7300_usercore:usercore|Equal0~1                      ; 1       ;
+; ep93xx_address[13]                                     ; 1       ;
+; ep93xx_address[12]                                     ; 1       ;
+; ep93xx_address[11]                                     ; 1       ;
+; ep93xx_address[10]                                     ; 1       ;
+; ts7300_usercore:usercore|Equal0~0                      ; 1       ;
+; ep93xx_address[9]                                      ; 1       ;
+; ep93xx_address[8]                                      ; 1       ;
+; ep93xx_address[7]                                      ; 1       ;
+; ep93xx_address[6]                                      ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|slow_clk            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|pulse~0             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|slow_clk            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|pulse~0             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|slow_clk            ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|pulse~0             ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[15]~15   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[15]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[14]~14   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[14]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[13]~13   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[13]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[12]~12   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[12]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[11]~11   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[11]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[10]~10   ; 1       ;
+; ts7300_usercore:usercore|dummyreg[10]                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[9]~9     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[9]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[8]~8     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[8]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[7]~7     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[7]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[6]~6     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[6]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[5]~5     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[5]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[4]~4     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[4]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[3]~3     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[3]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[2]~2     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[2]                   ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[1]~1     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[1]                   ; 1       ;
+; start_cycle_posedge~0                                  ; 1       ;
+; wb32_bridge:epwbm_wb32m_bridgecore|wb16_dat_o[0]~0     ; 1       ;
+; ts7300_usercore:usercore|dummyreg[0]                   ; 1       ;
+; ts7300_usercore:usercore|misc_reg[1]                   ; 1       ;
+; ts7300_usercore:usercore|misc_reg[0]                   ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|pwm_out_sig         ; 1       ;
+; ts7300_usercore:usercore|vga_reg[8]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[7]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[6]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[5]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[3]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[4]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[2]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[1]                    ; 1       ;
+; ts7300_usercore:usercore|vga_reg[0]                    ; 1       ;
+; ts7300_usercore:usercore|misc_reg[3]                   ; 1       ;
+; ts7300_usercore:usercore|misc_reg[2]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[15]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[14]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[13]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[12]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[11]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[10]                  ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[8]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[7]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[6]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[5]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[4]                   ; 1       ;
+; ts7300_usercore:usercore|dio2_reg[3]                   ; 1       ;
+; ep93xx_dat_latch[15]                                   ; 1       ;
+; ep93xx_dat_latch[14]                                   ; 1       ;
+; ep93xx_dat_latch[13]                                   ; 1       ;
+; ep93xx_dat_latch[12]                                   ; 1       ;
+; ep93xx_dat_latch[11]                                   ; 1       ;
+; ep93xx_dat_latch[10]                                   ; 1       ;
+; ep93xx_dat_latch[9]                                    ; 1       ;
+; ep93xx_dat_latch[8]                                    ; 1       ;
+; ep93xx_dat_latch[7]                                    ; 1       ;
+; ep93xx_dat_latch[6]                                    ; 1       ;
+; ep93xx_dat_latch[5]                                    ; 1       ;
+; ep93xx_dat_latch[4]                                    ; 1       ;
+; ep93xx_dat_latch[3]                                    ; 1       ;
+; ep93xx_dat_latch[2]                                    ; 1       ;
+; ep93xx_dat_latch[1]                                    ; 1       ;
+; ep93xx_dat_latch[0]                                    ; 1       ;
+; sdram_clk_pad~0                                        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~30             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~29             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~28             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~27             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~26             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~25             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~24             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~23             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~22             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~21             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~20             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~19             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~18             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~17             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~16             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~15             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~14             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~13             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~12             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~11             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~10             ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~9              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~8              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~7              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~6              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~5              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~4              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~3              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~2              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~1              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|Add0~0              ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[7]~19       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[6]~18       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[6]~17       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[5]~16       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[5]~15       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[4]~14       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[4]~13       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[3]~12       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[3]~11       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[2]~10       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[2]~9        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[1]~8        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|counter[1]~7        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[7]~19       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[6]~18       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[6]~17       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[5]~16       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[5]~15       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[4]~14       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[4]~13       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[3]~12       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[3]~11       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[2]~10       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[2]~9        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[1]~8        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|counter[1]~7        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[7]~19       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[6]~18       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[6]~17       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[5]~16       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[5]~15       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[4]~14       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[4]~13       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[3]~12       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[3]~11       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[2]~10       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[2]~9        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[1]~8        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|counter[1]~7        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[7]~19       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[6]~18       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[6]~17       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[5]~16       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[5]~15       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[4]~14       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[4]~13       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[3]~12       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[3]~11       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[2]~10       ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[2]~9        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[1]~8        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|counter[1]~7        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~14        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~13        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~11        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~9         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~7         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~5         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~3         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_1|LessThan0~1         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~14        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~13        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~11        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~9         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~7         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~5         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~3         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_4|LessThan0~1         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~14        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~13        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~11        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~9         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~7         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~5         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~3         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_3|LessThan0~1         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~14        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~13        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~11        ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~9         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~7         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~5         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~3         ; 1       ;
+; ts7300_usercore:usercore|pwm:PWM_2|LessThan0~1         ; 1       ;
++--------------------------------------------------------+---------+
 
 
-+-----------------------------------------------------+
-; Other Routing Usage Summary                         ;
-+-----------------------------+-----------------------+
-; Other Routing Resource Type ; Usage                 ;
-+-----------------------------+-----------------------+
-; Block interconnects         ; 430 / 26,052 ( 2 % )  ;
-; C16 interconnects           ; 42 / 1,156 ( 4 % )    ;
-; C4 interconnects            ; 331 / 17,952 ( 2 % )  ;
-; Direct links                ; 56 / 26,052 ( < 1 % ) ;
-; Global clocks               ; 3 / 8 ( 38 % )        ;
-; Local interconnects         ; 69 / 8,256 ( < 1 % )  ;
-; R24 interconnects           ; 46 / 1,020 ( 5 % )    ;
-; R4 interconnects            ; 428 / 22,440 ( 2 % )  ;
-+-----------------------------+-----------------------+
++------------------------------------------------------+
+; Other Routing Usage Summary                          ;
++-----------------------------+------------------------+
+; Other Routing Resource Type ; Usage                  ;
++-----------------------------+------------------------+
+; Block interconnects         ; 704 / 26,052 ( 3 % )   ;
+; C16 interconnects           ; 41 / 1,156 ( 4 % )     ;
+; C4 interconnects            ; 430 / 17,952 ( 2 % )   ;
+; Direct links                ; 123 / 26,052 ( < 1 % ) ;
+; Global clocks               ; 7 / 8 ( 88 % )         ;
+; Local interconnects         ; 176 / 8,256 ( 2 % )    ;
+; R24 interconnects           ; 40 / 1,020 ( 4 % )     ;
+; R4 interconnects            ; 490 / 22,440 ( 2 % )   ;
++-----------------------------+------------------------+
 
 
 +----------------------------------------------------------------------------+
 ; LAB Logic Elements                                                         ;
 +---------------------------------------------+------------------------------+
-; Number of Logic Elements  (Average = 10.14) ; Number of LABs  (Total = 21) ;
+; Number of Logic Elements  (Average = 10.25) ; Number of LABs  (Total = 40) ;
 +---------------------------------------------+------------------------------+
 ; 1                                           ; 1                            ;
-; 2                                           ; 1                            ;
-; 3                                           ; 1                            ;
-; 4                                           ; 1                            ;
-; 5                                           ; 2                            ;
+; 2                                           ; 5                            ;
+; 3                                           ; 2                            ;
+; 4                                           ; 2                            ;
+; 5                                           ; 1                            ;
 ; 6                                           ; 2                            ;
 ; 7                                           ; 1                            ;
 ; 8                                           ; 1                            ;
-; 9                                           ; 0                            ;
-; 10                                          ; 0                            ;
-; 11                                          ; 0                            ;
-; 12                                          ; 1                            ;
-; 13                                          ; 2                            ;
-; 14                                          ; 0                            ;
-; 15                                          ; 0                            ;
-; 16                                          ; 8                            ;
+; 9                                           ; 1                            ;
+; 10                                          ; 2                            ;
+; 11                                          ; 2                            ;
+; 12                                          ; 3                            ;
+; 13                                          ; 1                            ;
+; 14                                          ; 1                            ;
+; 15                                          ; 1                            ;
+; 16                                          ; 14                           ;
 +---------------------------------------------+------------------------------+
 
 
 +-------------------------------------------------------------------+
 ; LAB-wide Signals                                                  ;
 +------------------------------------+------------------------------+
-; LAB-wide Signals  (Average = 1.71) ; Number of LABs  (Total = 21) ;
+; LAB-wide Signals  (Average = 1.93) ; Number of LABs  (Total = 40) ;
 +------------------------------------+------------------------------+
-; 1 Async. clear                     ; 2                            ;
-; 1 Clock                            ; 18                           ;
-; 1 Clock enable                     ; 10                           ;
-; 2 Clock enables                    ; 3                            ;
-; 2 Clocks                           ; 3                            ;
+; 1 Async. clear                     ; 9                            ;
+; 1 Clock                            ; 30                           ;
+; 1 Clock enable                     ; 21                           ;
+; 1 Sync. clear                      ; 1                            ;
+; 2 Clock enables                    ; 7                            ;
+; 2 Clocks                           ; 9                            ;
 +------------------------------------+------------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Signals Sourced                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Signals Sourced  (Average = 16.81) ; Number of LABs  (Total = 21) ;
+; Number of Signals Sourced  (Average = 16.20) ; Number of LABs  (Total = 40) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
 ; 1                                            ; 0                            ;
 ; 2                                            ; 1                            ;
-; 3                                            ; 0                            ;
-; 4                                            ; 1                            ;
-; 5                                            ; 1                            ;
+; 3                                            ; 1                            ;
+; 4                                            ; 4                            ;
+; 5                                            ; 2                            ;
 ; 6                                            ; 1                            ;
-; 7                                            ; 0                            ;
-; 8                                            ; 2                            ;
-; 9                                            ; 2                            ;
-; 10                                           ; 0                            ;
-; 11                                           ; 0                            ;
-; 12                                           ; 1                            ;
+; 7                                            ; 1                            ;
+; 8                                            ; 1                            ;
+; 9                                            ; 0                            ;
+; 10                                           ; 2                            ;
+; 11                                           ; 1                            ;
+; 12                                           ; 2                            ;
 ; 13                                           ; 0                            ;
-; 14                                           ; 1                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 0                            ;
-; 17                                           ; 0                            ;
-; 18                                           ; 0                            ;
+; 14                                           ; 0                            ;
+; 15                                           ; 2                            ;
+; 16                                           ; 1                            ;
+; 17                                           ; 1                            ;
+; 18                                           ; 1                            ;
 ; 19                                           ; 1                            ;
-; 20                                           ; 0                            ;
+; 20                                           ; 4                            ;
 ; 21                                           ; 1                            ;
-; 22                                           ; 2                            ;
+; 22                                           ; 3                            ;
 ; 23                                           ; 0                            ;
 ; 24                                           ; 1                            ;
-; 25                                           ; 1                            ;
-; 26                                           ; 2                            ;
-; 27                                           ; 0                            ;
-; 28                                           ; 0                            ;
-; 29                                           ; 1                            ;
-; 30                                           ; 1                            ;
+; 25                                           ; 2                            ;
+; 26                                           ; 1                            ;
+; 27                                           ; 2                            ;
+; 28                                           ; 2                            ;
+; 29                                           ; 0                            ;
+; 30                                           ; 0                            ;
 ; 31                                           ; 0                            ;
-; 32                                           ; 1                            ;
+; 32                                           ; 2                            ;
 +----------------------------------------------+------------------------------+
 
 
 +--------------------------------------------------------------------------------+
 ; LAB Signals Sourced Out                                                        ;
 +-------------------------------------------------+------------------------------+
-; Number of Signals Sourced Out  (Average = 8.81) ; Number of LABs  (Total = 21) ;
+; Number of Signals Sourced Out  (Average = 7.97) ; Number of LABs  (Total = 40) ;
 +-------------------------------------------------+------------------------------+
 ; 0                                               ; 0                            ;
-; 1                                               ; 1                            ;
-; 2                                               ; 2                            ;
-; 3                                               ; 0                            ;
-; 4                                               ; 2                            ;
+; 1                                               ; 2                            ;
+; 2                                               ; 7                            ;
+; 3                                               ; 4                            ;
+; 4                                               ; 4                            ;
 ; 5                                               ; 1                            ;
 ; 6                                               ; 2                            ;
-; 7                                               ; 2                            ;
+; 7                                               ; 1                            ;
 ; 8                                               ; 2                            ;
 ; 9                                               ; 1                            ;
-; 10                                              ; 1                            ;
-; 11                                              ; 0                            ;
-; 12                                              ; 0                            ;
-; 13                                              ; 1                            ;
+; 10                                              ; 4                            ;
+; 11                                              ; 1                            ;
+; 12                                              ; 1                            ;
+; 13                                              ; 2                            ;
 ; 14                                              ; 1                            ;
-; 15                                              ; 1                            ;
+; 15                                              ; 0                            ;
 ; 16                                              ; 4                            ;
+; 17                                              ; 1                            ;
+; 18                                              ; 0                            ;
+; 19                                              ; 0                            ;
+; 20                                              ; 1                            ;
+; 21                                              ; 0                            ;
+; 22                                              ; 1                            ;
 +-------------------------------------------------+------------------------------+
 
 
 +-----------------------------------------------------------------------------+
 ; LAB Distinct Inputs                                                         ;
 +----------------------------------------------+------------------------------+
-; Number of Distinct Inputs  (Average = 15.90) ; Number of LABs  (Total = 21) ;
+; Number of Distinct Inputs  (Average = 15.60) ; Number of LABs  (Total = 40) ;
 +----------------------------------------------+------------------------------+
 ; 0                                            ; 0                            ;
 ; 1                                            ; 0                            ;
 ; 2                                            ; 0                            ;
-; 3                                            ; 2                            ;
-; 4                                            ; 1                            ;
-; 5                                            ; 0                            ;
+; 3                                            ; 3                            ;
+; 4                                            ; 4                            ;
+; 5                                            ; 1                            ;
 ; 6                                            ; 0                            ;
-; 7                                            ; 2                            ;
+; 7                                            ; 3                            ;
 ; 8                                            ; 0                            ;
-; 9                                            ; 0                            ;
-; 10                                           ; 0                            ;
+; 9                                            ; 1                            ;
+; 10                                           ; 1                            ;
 ; 11                                           ; 4                            ;
-; 12                                           ; 2                            ;
+; 12                                           ; 1                            ;
 ; 13                                           ; 0                            ;
 ; 14                                           ; 1                            ;
-; 15                                           ; 0                            ;
-; 16                                           ; 0                            ;
+; 15                                           ; 1                            ;
+; 16                                           ; 1                            ;
 ; 17                                           ; 0                            ;
-; 18                                           ; 0                            ;
+; 18                                           ; 4                            ;
 ; 19                                           ; 0                            ;
 ; 20                                           ; 1                            ;
-; 21                                           ; 1                            ;
-; 22                                           ; 1                            ;
-; 23                                           ; 2                            ;
-; 24                                           ; 0                            ;
-; 25                                           ; 0                            ;
-; 26                                           ; 0                            ;
-; 27                                           ; 0                            ;
+; 21                                           ; 0                            ;
+; 22                                           ; 4                            ;
+; 23                                           ; 1                            ;
+; 24                                           ; 1                            ;
+; 25                                           ; 1                            ;
+; 26                                           ; 1                            ;
+; 27                                           ; 1                            ;
 ; 28                                           ; 0                            ;
 ; 29                                           ; 2                            ;
-; 30                                           ; 1                            ;
-; 31                                           ; 1                            ;
+; 30                                           ; 3                            ;
 +----------------------------------------------+------------------------------+
 
 
@@ -1768,7 +2100,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Fitter
     Info: Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Feb 11 12:14:44 2014
+    Info: Processing started: Mon Mar  3 13:50:39 2014
 Info: Command: quartus_fit --read_settings_files=off --write_settings_files=off ts7300_opencore -c ts7300_top
 Critical Warning (138069): Setting INCREMENTAL_COMPILATION to "OFF" is no longer supported. Assignment is ignored. To disable partitions, set the IGNORE_PARTITIONS global assignment to "ON" instead.
 Info (119006): Selected device EP2C8Q208C8 for design "ts7300_top"
@@ -1794,21 +2126,37 @@ Info (176353): Automatically promoted node bd_oe_pad (placed in PIN 27 (CLK2, LV
     Info (176355): Automatically promoted destinations to use location or clock signal Global Clock CLKCTRL_G3
     Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
         Info (176357): Destination node ep93xx_databus_oe~0
+Info (176353): Automatically promoted node ts7300_usercore:usercore|pwm:PWM_1|slow_clk 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node ts7300_usercore:usercore|pwm:PWM_1|slow_clk~0
+Info (176353): Automatically promoted node ts7300_usercore:usercore|pwm:PWM_2|slow_clk 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node ts7300_usercore:usercore|pwm:PWM_2|slow_clk~0
+Info (176353): Automatically promoted node ts7300_usercore:usercore|pwm:PWM_3|slow_clk 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node ts7300_usercore:usercore|pwm:PWM_3|slow_clk~0
+Info (176353): Automatically promoted node ts7300_usercore:usercore|pwm:PWM_4|slow_clk 
+    Info (176355): Automatically promoted destinations to use location or clock signal Global Clock
+    Info (176356): Following destination nodes may be non-global or may not use global or regional clocks
+        Info (176357): Destination node ts7300_usercore:usercore|pwm:PWM_4|slow_clk~0
 Info (176233): Starting register packing
 Warning (176250): Ignoring invalid fast I/O register assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
 Info (176235): Finished register packing
     Extra Info (176219): No registers were packed into other blocks
 Warning (15064): PLL "pll:clkgencore|altpll:altpll_component|pll" output port clk[1] feeds output pin "clk_75mhz_pad" via non-dedicated routing -- jitter performance depends on switching rate of other design elements. Use PLL dedicated clock outputs to ensure jitter performance
-Info (171121): Fitter preparation operations ending: elapsed time is 00:00:01
+Info (171121): Fitter preparation operations ending: elapsed time is 00:00:02
 Info (170189): Fitter placement preparation operations beginning
 Info (170190): Fitter placement preparation operations ending: elapsed time is 00:00:00
 Info (170191): Fitter placement operations beginning
 Info (170137): Fitter placement was successful
-Info (170192): Fitter placement operations ending: elapsed time is 00:00:01
+Info (170192): Fitter placement operations ending: elapsed time is 00:00:03
 Info (170193): Fitter routing operations beginning
 Info (170195): Router estimated average interconnect usage is 2% of the available device resources
-    Info (170196): Router estimated peak interconnect usage is 5% of the available device resources in the region that extends from location X23_Y10 to location X34_Y19
-Info (170194): Fitter routing operations ending: elapsed time is 00:00:02
+    Info (170196): Router estimated peak interconnect usage is 7% of the available device resources in the region that extends from location X11_Y10 to location X22_Y19
+Info (170194): Fitter routing operations ending: elapsed time is 00:00:03
 Info (170199): The Fitter performed an Auto Fit compilation.  Optimizations were skipped to reduce compilation time.
     Info (170201): Optimizations that may affect the design's routability were skipped
 Info (306004): Started post-fitting delay annotation
@@ -1929,10 +2277,13 @@ Warning (306006): Found 113 output pins without output pin load capacitance assi
 Info (306005): Delay annotation completed successfully
 Info (306004): Started post-fitting delay annotation
 Info (306005): Delay annotation completed successfully
-Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:01
+Info (11218): Fitter post-fit operations ending: elapsed time is 00:00:02
 Warning (171167): Found invalid Fitter assignments. See the Ignored Assignments panel in the Fitter Compilation Report for more information.
-Warning (169064): Following 28 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
+Warning (169064): Following 32 pins have no output enable or a GND or VCC output enable - later changes to this connectivity may change fitting results
     Info (169065): Pin eth_mdio_pad has a permanently disabled output enable
+    Info (169065): Pin dio0to8_pad[0] has a permanently enabled output enable
+    Info (169065): Pin dio0to8_pad[1] has a permanently enabled output enable
+    Info (169065): Pin dio0to8_pad[2] has a permanently enabled output enable
     Info (169065): Pin sdram_data_pad[0] has a permanently disabled output enable
     Info (169065): Pin sdram_data_pad[1] has a permanently disabled output enable
     Info (169065): Pin sdram_data_pad[2] has a permanently disabled output enable
@@ -1960,18 +2311,19 @@ Warning (169064): Following 28 pins have no output enable or a GND or VCC output
     Info (169065): Pin mux_pad[1] has a permanently disabled output enable
     Info (169065): Pin mux_pad[2] has a permanently disabled output enable
     Info (169065): Pin mux_pad[3] has a permanently disabled output enable
+    Info (169065): Pin green_pad[4] has a permanently enabled output enable
 Warning (169174): The Reserve All Unused Pins setting has not been specified, and will default to 'As output driving ground'.
-Info (144001): Generated suppressed messages file /home/luke/Downloads/ts7300_top_restored/ts7300_top.fit.smsg
+Info (144001): Generated suppressed messages file /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.fit.smsg
 Info: Quartus II 64-Bit Fitter was successful. 0 errors, 9 warnings
-    Info: Peak virtual memory: 599 megabytes
-    Info: Processing ended: Tue Feb 11 12:14:57 2014
-    Info: Elapsed time: 00:00:13
-    Info: Total CPU time (on all processors): 00:00:09
+    Info: Peak virtual memory: 594 megabytes
+    Info: Processing ended: Mon Mar  3 13:50:59 2014
+    Info: Elapsed time: 00:00:20
+    Info: Total CPU time (on all processors): 00:00:17
 
 
 +----------------------------+
 ; Fitter Suppressed Messages ;
 +----------------------------+
-The suppressed messages can be found in /home/luke/Downloads/ts7300_top_restored/ts7300_top.fit.smsg.
+The suppressed messages can be found in /home/luke/embedded-co-design/ts7300_top_restored/ts7300_top.fit.smsg.
 
 

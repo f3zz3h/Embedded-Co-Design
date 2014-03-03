@@ -1,0 +1,323 @@
+-- Copyright (C) 1991-2005 Altera Corporation
+-- Your use of Altera Corporation's design tools, logic functions 
+-- and other software and tools, and its AMPP partner logic 
+-- functions, and any output files any of the foregoing 
+-- (including device programming or simulation files), and any 
+-- associated documentation or information are expressly subject 
+-- to the terms and conditions of the Altera Program License 
+-- Subscription Agreement, Altera MegaCore Function License 
+-- Agreement, or other applicable license agreement, including, 
+-- without limitation, that your use is for the sole purpose of 
+-- programming logic devices manufactured by Altera and sold by 
+-- Altera or its authorized distributors.  Please refer to the 
+-- applicable agreement for further details.
+--B1_pwm_out is pwm:inst|pwm_out
+--operation mode is normal
+
+B1_pwm_out_lut_out = pwm_en & (B1L73 & B1_pwm_out # !B1L1);
+B1_pwm_out = DFFE(B1_pwm_out_lut_out, clk, reset_n, , );
+
+
+--B1_counter[0] is pwm:inst|counter[0]
+--operation mode is counter
+
+B1_counter[0]_lut_out = !B1_counter[0];
+B1_counter[0]_reg_input = B1L2 & B1_counter[0]_lut_out;
+B1_counter[0] = DFFE(B1_counter[0]_reg_input, clk, reset_n, , pwm_en);
+
+--B1L52 is pwm:inst|counter[0]~85
+--operation mode is counter
+
+B1L52 = CARRY(B1_counter[0]);
+
+
+--B1_counter[1] is pwm:inst|counter[1]
+--operation mode is counter
+
+B1_counter[1]_lut_out = B1_counter[1] $ (B1L52);
+B1_counter[1]_reg_input = B1L2 & B1_counter[1]_lut_out;
+B1_counter[1] = DFFE(B1_counter[1]_reg_input, clk, reset_n, , pwm_en);
+
+--B1L72 is pwm:inst|counter[1]~88
+--operation mode is counter
+
+B1L72 = CARRY(!B1L52 # !B1_counter[1]);
+
+
+--B1_counter[2] is pwm:inst|counter[2]
+--operation mode is counter
+
+B1_counter[2]_lut_out = B1_counter[2] $ (!B1L72);
+B1_counter[2]_reg_input = B1L2 & B1_counter[2]_lut_out;
+B1_counter[2] = DFFE(B1_counter[2]_reg_input, clk, reset_n, , pwm_en);
+
+--B1L92 is pwm:inst|counter[2]~91
+--operation mode is counter
+
+B1L92 = CARRY(B1_counter[2] & (!B1L72));
+
+
+--B1_counter[3] is pwm:inst|counter[3]
+--operation mode is counter
+
+B1_counter[3]_lut_out = B1_counter[3] $ (B1L92);
+B1_counter[3]_reg_input = B1L2 & B1_counter[3]_lut_out;
+B1_counter[3] = DFFE(B1_counter[3]_reg_input, clk, reset_n, , pwm_en);
+
+--B1L13 is pwm:inst|counter[3]~94
+--operation mode is counter
+
+B1L13 = CARRY(!B1L92 # !B1_counter[3]);
+
+
+--B1L63 is pwm:inst|pwm_out~130
+--operation mode is normal
+
+B1L63 = B1_counter[0] # B1_counter[1] # B1_counter[2] # B1_counter[3];
+
+
+--B1_counter[4] is pwm:inst|counter[4]
+--operation mode is counter
+
+B1_counter[4]_lut_out = B1_counter[4] $ (!B1L13);
+B1_counter[4]_reg_input = B1L2 & B1_counter[4]_lut_out;
+B1_counter[4] = DFFE(B1_counter[4]_reg_input, clk, reset_n, , pwm_en);
+
+--B1L33 is pwm:inst|counter[4]~97
+--operation mode is counter
+
+B1L33 = CARRY(B1_counter[4] & (!B1L13));
+
+
+--B1_counter[5] is pwm:inst|counter[5]
+--operation mode is normal
+
+B1_counter[5]_lut_out = B1_counter[5] $ (B1L33);
+B1_counter[5]_reg_input = B1L2 & B1_counter[5]_lut_out;
+B1_counter[5] = DFFE(B1_counter[5]_reg_input, clk, reset_n, , pwm_en);
+
+
+--B1L73 is pwm:inst|pwm_out~131
+--operation mode is normal
+
+B1L73 = B1L63 # B1_counter[4] # B1_counter[5];
+
+
+--B1L1 is pwm:inst|LessThan~148
+--operation mode is normal
+
+B1L1 = B1_counter[5] & duty[5] & B1L4 # !B1_counter[5] & (duty[5] # B1L4);
+
+
+--B1L2 is pwm:inst|LessThan~152
+--operation mode is normal
+
+B1L2 = B1_counter[5] & clk_div[5] & B1L6 # !B1_counter[5] & (clk_div[5] # B1L6);
+
+
+--B1L3 is pwm:inst|LessThan~156
+--operation mode is arithmetic
+
+B1L3 = B1_counter[4] & duty[4] & !B1L8 # !B1_counter[4] & (duty[4] # !B1L8);
+
+--B1L4 is pwm:inst|LessThan~158
+--operation mode is arithmetic
+
+B1L4 = CARRY(B1_counter[4] & duty[4] & !B1L8 # !B1_counter[4] & (duty[4] # !B1L8));
+
+
+--B1L5 is pwm:inst|LessThan~160
+--operation mode is arithmetic
+
+B1L5 = B1_counter[4] & clk_div[4] & !B1L01 # !B1_counter[4] & (clk_div[4] # !B1L01);
+
+--B1L6 is pwm:inst|LessThan~162
+--operation mode is arithmetic
+
+B1L6 = CARRY(B1_counter[4] & clk_div[4] & !B1L01 # !B1_counter[4] & (clk_div[4] # !B1L01));
+
+
+--B1L7 is pwm:inst|LessThan~164
+--operation mode is arithmetic
+
+B1L7 = B1_counter[3] & duty[3] & B1L21 # !B1_counter[3] & (duty[3] # B1L21);
+
+--B1L8 is pwm:inst|LessThan~166
+--operation mode is arithmetic
+
+B1L8 = CARRY(B1_counter[3] & (!B1L21 # !duty[3]) # !B1_counter[3] & !duty[3] & !B1L21);
+
+
+--B1L9 is pwm:inst|LessThan~168
+--operation mode is arithmetic
+
+B1L9 = B1_counter[3] & clk_div[3] & B1L41 # !B1_counter[3] & (clk_div[3] # B1L41);
+
+--B1L01 is pwm:inst|LessThan~170
+--operation mode is arithmetic
+
+B1L01 = CARRY(B1_counter[3] & (!B1L41 # !clk_div[3]) # !B1_counter[3] & !clk_div[3] & !B1L41);
+
+
+--B1L11 is pwm:inst|LessThan~172
+--operation mode is arithmetic
+
+B1L11 = B1_counter[2] & duty[2] & !B1L61 # !B1_counter[2] & (duty[2] # !B1L61);
+
+--B1L21 is pwm:inst|LessThan~174
+--operation mode is arithmetic
+
+B1L21 = CARRY(B1_counter[2] & duty[2] & !B1L61 # !B1_counter[2] & (duty[2] # !B1L61));
+
+
+--B1L31 is pwm:inst|LessThan~176
+--operation mode is arithmetic
+
+B1L31 = B1_counter[2] & clk_div[2] & !B1L81 # !B1_counter[2] & (clk_div[2] # !B1L81);
+
+--B1L41 is pwm:inst|LessThan~178
+--operation mode is arithmetic
+
+B1L41 = CARRY(B1_counter[2] & clk_div[2] & !B1L81 # !B1_counter[2] & (clk_div[2] # !B1L81));
+
+
+--B1L51 is pwm:inst|LessThan~180
+--operation mode is arithmetic
+
+B1L51 = B1_counter[1] & duty[1] & B1L02 # !B1_counter[1] & (duty[1] # B1L02);
+
+--B1L61 is pwm:inst|LessThan~182
+--operation mode is arithmetic
+
+B1L61 = CARRY(B1_counter[1] & (!B1L02 # !duty[1]) # !B1_counter[1] & !duty[1] & !B1L02);
+
+
+--B1L71 is pwm:inst|LessThan~184
+--operation mode is arithmetic
+
+B1L71 = B1_counter[1] & clk_div[1] & B1L22 # !B1_counter[1] & (clk_div[1] # B1L22);
+
+--B1L81 is pwm:inst|LessThan~186
+--operation mode is arithmetic
+
+B1L81 = CARRY(B1_counter[1] & (!B1L22 # !clk_div[1]) # !B1_counter[1] & !clk_div[1] & !B1L22);
+
+
+--B1L91 is pwm:inst|LessThan~188
+--operation mode is arithmetic
+
+B1L91 = !B1_counter[0] & duty[0];
+
+--B1L02 is pwm:inst|LessThan~190
+--operation mode is arithmetic
+
+B1L02 = CARRY(!B1_counter[0] & duty[0]);
+
+
+--B1L12 is pwm:inst|LessThan~192
+--operation mode is arithmetic
+
+B1L12 = !B1_counter[0] & clk_div[0];
+
+--B1L22 is pwm:inst|LessThan~194
+--operation mode is arithmetic
+
+B1L22 = CARRY(!B1_counter[0] & clk_div[0]);
+
+
+--pwm_en is pwm_en
+--operation mode is input
+
+pwm_en = INPUT();
+
+
+--clk is clk
+--operation mode is input
+
+clk = INPUT();
+
+
+--reset_n is reset_n
+--operation mode is input
+
+reset_n = INPUT();
+
+
+--duty[5] is duty[5]
+--operation mode is input
+
+duty[5] = INPUT();
+
+
+--clk_div[5] is clk_div[5]
+--operation mode is input
+
+clk_div[5] = INPUT();
+
+
+--duty[4] is duty[4]
+--operation mode is input
+
+duty[4] = INPUT();
+
+
+--clk_div[4] is clk_div[4]
+--operation mode is input
+
+clk_div[4] = INPUT();
+
+
+--duty[3] is duty[3]
+--operation mode is input
+
+duty[3] = INPUT();
+
+
+--clk_div[3] is clk_div[3]
+--operation mode is input
+
+clk_div[3] = INPUT();
+
+
+--duty[2] is duty[2]
+--operation mode is input
+
+duty[2] = INPUT();
+
+
+--clk_div[2] is clk_div[2]
+--operation mode is input
+
+clk_div[2] = INPUT();
+
+
+--duty[1] is duty[1]
+--operation mode is input
+
+duty[1] = INPUT();
+
+
+--clk_div[1] is clk_div[1]
+--operation mode is input
+
+clk_div[1] = INPUT();
+
+
+--duty[0] is duty[0]
+--operation mode is input
+
+duty[0] = INPUT();
+
+
+--clk_div[0] is clk_div[0]
+--operation mode is input
+
+clk_div[0] = INPUT();
+
+
+--pwm_out is pwm_out
+--operation mode is output
+
+pwm_out = OUTPUT(B1_pwm_out);
+
+

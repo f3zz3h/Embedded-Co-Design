@@ -6,8 +6,6 @@
 #include<string.h>
 
 #define GPIOBASE	0x80840000
-#define MODELBASE       0x22000000
-#define TS7300  0x03
 #define PADR	0
 #define PADDR	(0x10 / sizeof(unsigned int))
 #define PAMASK  0x7F  
@@ -19,9 +17,9 @@
 
 // These delay values are calibrated for the EP9301 
 // CPU running at 166 Mhz, but should work also at 200 Mhz
-#define SETUP	15
-#define PULSE	36
-#define HOLD	22
+#define SETUP	100
+#define PULSE	100
+#define HOLD	100
 
 #define COUNTDOWN(x)	asm volatile ( \
   "1:\n"\
@@ -129,13 +127,10 @@ unsigned int lcdwait(void) {
 	int i, dat, tries = 0;
 	unsigned int ctrl = *phdr;
 
+	/* Clearing paddr and pcddr registers? */
 	*paddr = 0x00;//*paddr & ~PAMASK;  // port A to inputs
 	*pcddr = 0x00;//*pcddr & ~PCMASK;  // port C to inputs
-
-	printf("LCD Wait - paddr = 0x%x, pcddr = 0x%x\n", *paddr, *pcddr);
-	
-	ctrl = *phdr;
-	
+		
 	do {
 		// step 1, apply RS & WR
 		ctrl |= 0x30; // de-assert WR
@@ -211,7 +206,7 @@ void command(unsigned int cmd) {
 	COUNTDOWN(i);
 }
 
-void writechars(unsigned char *dat) {
+void writechars(unsigned char *text) {
 	int i;
 	unsigned int ctrl = *phdr;
 
@@ -227,12 +222,13 @@ void writechars(unsigned char *dat) {
 	
 		*padr = *padr & ~PAMASK;
 		*pcdr = *pcdr & ~PCMASK;
-		*padr = *padr | (*dat & PAMASK);
-		*pcdr = *pcdr | ((*dat >> 7) & PCMASK);
+		*padr = *padr | (*text & PAMASK);
+		*pcdr = *pcdr | ((*text >> 7) & PCMASK);
 		
-		printf("Warite Chars pre increcment dat -- dat = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *dat, *padr, *pcdr);
+		printf("Text = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *text, *padr, *pcdr);
 		
-		*dat++;
+		//Incrementing the character
+		*text++;
 	
 		ctrl |= 0x10; // assert RS
 		ctrl &= ~0x20; // assert WR
@@ -257,5 +253,5 @@ void writechars(unsigned char *dat) {
 		// step 6, wait
 		i = HOLD;
 		COUNTDOWN(i);
-	} while(*dat);
+	} while(*text);
 }

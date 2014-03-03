@@ -3,51 +3,123 @@ TimeQuest Timing Analyzer Summary
 ------------------------------------------------------------
 
 Type  : Slow Model Setup 'clkgencore|altpll_component|pll|clk[1]'
-Slack : -6.055
-TNS   : -593.978
+Slack : -6.955
+TNS   : -911.769
+
+Type  : Slow Model Setup 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -5.770
+TNS   : -31.626
+
+Type  : Slow Model Setup 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -5.184
+TNS   : -32.208
+
+Type  : Slow Model Setup 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -4.954
+TNS   : -30.898
+
+Type  : Slow Model Setup 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -4.420
+TNS   : -31.404
 
 Type  : Slow Model Setup 'bd_oe_pad'
-Slack : -0.807
-TNS   : -1.320
+Slack : -0.819
+TNS   : -1.326
 
 Type  : Slow Model Setup 'start_cycle_pad'
 Slack : 0.235
 TNS   : 0.000
 
 Type  : Slow Model Hold 'clkgencore|altpll_component|pll|clk[1]'
-Slack : -1.820
-TNS   : -1.841
+Slack : -3.588
+TNS   : -16.530
 
 Type  : Slow Model Hold 'start_cycle_pad'
-Slack : -0.337
-TNS   : -0.337
+Slack : -0.301
+TNS   : -0.301
 
 Type  : Slow Model Hold 'bd_oe_pad'
 Slack : 0.499
 TNS   : 0.000
+
+Type  : Slow Model Hold 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Hold 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Hold 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : 0.499
+TNS   : 0.000
+
+Type  : Slow Model Hold 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : 0.753
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -3.833
+TNS   : -3.833
+
+Type  : Slow Model Recovery 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -3.461
+TNS   : -3.461
+
+Type  : Slow Model Recovery 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -3.453
+TNS   : -3.453
+
+Type  : Slow Model Recovery 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -3.092
+TNS   : -3.092
 
 Type  : Slow Model Recovery 'ep93xx_end_q'
 Slack : -1.452
 TNS   : -1.452
 
 Type  : Slow Model Recovery 'start_cycle_pad'
-Slack : 1.330
+Slack : 1.027
 TNS   : 0.000
 
 Type  : Slow Model Recovery 'bd_oe_pad'
-Slack : 1.425
+Slack : 1.367
+TNS   : 0.000
+
+Type  : Slow Model Recovery 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 9.125
 TNS   : 0.000
 
 Type  : Slow Model Removal 'bd_oe_pad'
-Slack : -1.191
-TNS   : -2.382
+Slack : -1.133
+TNS   : -2.266
 
 Type  : Slow Model Removal 'start_cycle_pad'
-Slack : -1.096
-TNS   : -1.096
+Slack : -0.793
+TNS   : -0.793
+
+Type  : Slow Model Removal 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 1.346
+TNS   : 0.000
 
 Type  : Slow Model Removal 'ep93xx_end_q'
 Slack : 1.686
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : 2.827
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : 3.188
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : 3.196
+TNS   : 0.000
+
+Type  : Slow Model Removal 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : 3.568
 TNS   : 0.000
 
 Type  : Slow Model Minimum Pulse Width 'start_cycle_pad'
@@ -57,6 +129,22 @@ TNS   : -39.041
 Type  : Slow Model Minimum Pulse Width 'bd_oe_pad'
 Slack : -1.941
 TNS   : -4.909
+
+Type  : Slow Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -0.742
+TNS   : -13.356
+
+Type  : Slow Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -0.742
+TNS   : -13.356
+
+Type  : Slow Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -0.742
+TNS   : -13.356
+
+Type  : Slow Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -0.742
+TNS   : -13.356
 
 Type  : Slow Model Minimum Pulse Width 'ep93xx_end_q'
 Slack : -0.742
@@ -70,12 +158,28 @@ Type  : Slow Model Minimum Pulse Width 'clk_25mhz_pad'
 Slack : 20.000
 TNS   : 0.000
 
+Type  : Fast Model Setup 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -2.302
+TNS   : -15.094
+
+Type  : Fast Model Setup 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -2.145
+TNS   : -15.161
+
+Type  : Fast Model Setup 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -1.991
+TNS   : -14.839
+
 Type  : Fast Model Setup 'clkgencore|altpll_component|pll|clk[1]'
-Slack : -1.756
-TNS   : -166.471
+Slack : -1.951
+TNS   : -257.829
+
+Type  : Fast Model Setup 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -1.847
+TNS   : -14.975
 
 Type  : Fast Model Setup 'bd_oe_pad'
-Slack : 0.059
+Slack : 0.053
 TNS   : 0.000
 
 Type  : Fast Model Setup 'start_cycle_pad'
@@ -83,39 +187,95 @@ Slack : 0.665
 TNS   : 0.000
 
 Type  : Fast Model Hold 'clkgencore|altpll_component|pll|clk[1]'
-Slack : -1.265
-TNS   : -2.134
+Slack : -1.950
+TNS   : -10.434
 
 Type  : Fast Model Hold 'start_cycle_pad'
-Slack : -0.541
-TNS   : -0.541
+Slack : -0.523
+TNS   : -0.523
 
 Type  : Fast Model Hold 'bd_oe_pad'
 Slack : 0.215
 TNS   : 0.000
 
+Type  : Fast Model Hold 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : 0.215
+TNS   : 0.000
+
+Type  : Fast Model Hold 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : 0.245
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -1.818
+TNS   : -1.818
+
+Type  : Fast Model Recovery 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -1.710
+TNS   : -1.710
+
+Type  : Fast Model Recovery 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -1.699
+TNS   : -1.699
+
+Type  : Fast Model Recovery 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -1.597
+TNS   : -1.597
+
 Type  : Fast Model Recovery 'ep93xx_end_q'
-Slack : -0.336
-TNS   : -0.336
+Slack : -0.337
+TNS   : -0.337
 
 Type  : Fast Model Recovery 'start_cycle_pad'
-Slack : 1.200
+Slack : 1.121
 TNS   : 0.000
 
 Type  : Fast Model Recovery 'bd_oe_pad'
-Slack : 1.217
+Slack : 1.215
+TNS   : 0.000
+
+Type  : Fast Model Recovery 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 11.804
 TNS   : 0.000
 
 Type  : Fast Model Removal 'bd_oe_pad'
-Slack : -0.837
-TNS   : -1.674
+Slack : -0.835
+TNS   : -1.670
 
 Type  : Fast Model Removal 'start_cycle_pad'
-Slack : -0.820
-TNS   : -0.820
+Slack : -0.741
+TNS   : -0.741
+
+Type  : Fast Model Removal 'clkgencore|altpll_component|pll|clk[1]'
+Slack : 0.586
+TNS   : 0.000
 
 Type  : Fast Model Removal 'ep93xx_end_q'
-Slack : 0.716
+Slack : 0.717
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : 1.478
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : 1.580
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : 1.591
+TNS   : 0.000
+
+Type  : Fast Model Removal 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : 1.699
 TNS   : 0.000
 
 Type  : Fast Model Minimum Pulse Width 'start_cycle_pad'
@@ -125,6 +285,22 @@ TNS   : -26.380
 Type  : Fast Model Minimum Pulse Width 'bd_oe_pad'
 Slack : -1.380
 TNS   : -3.380
+
+Type  : Fast Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_1|slow_clk'
+Slack : -0.500
+TNS   : -9.000
+
+Type  : Fast Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_2|slow_clk'
+Slack : -0.500
+TNS   : -9.000
+
+Type  : Fast Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_3|slow_clk'
+Slack : -0.500
+TNS   : -9.000
+
+Type  : Fast Model Minimum Pulse Width 'ts7300_usercore:usercore|pwm:PWM_4|slow_clk'
+Slack : -0.500
+TNS   : -9.000
 
 Type  : Fast Model Minimum Pulse Width 'ep93xx_end_q'
 Slack : -0.500

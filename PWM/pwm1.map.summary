@@ -1,0 +1,13 @@
+Flow Status : Successful - Tue Nov  7 16:05:25 2006
+Quartus II Version : 5.0 Build 171 11/03/2005 SP 2 SJ Full Version
+Revision Name : pwm1
+Top-level Entity Name : pwm1
+Family : APEX20KE
+Device : EP20K200EFC484-2X
+Timing Models : Final
+Met timing requirements : N/A
+Total logic elements : 21
+Total pins : 16
+Total virtual pins : 0
+Total memory bits : 0
+Total PLLs : 0
