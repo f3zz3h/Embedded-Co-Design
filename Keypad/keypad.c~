@@ -100,13 +100,13 @@ int main(int argc, char *argv[])
  */
 void toggle_io(volatile unsigned int *port)
 {
-	int keyval = 0;
-	int temp_key = 0;
 	int flag = 0;
 
 	while (1) 
-	{
-		flag = 0;
+	{	
+		int keyval = 0;
+		int temp_key = 0;
+	
 		*port = 0x0000000E<<5;
 		usleep(1000);
 
