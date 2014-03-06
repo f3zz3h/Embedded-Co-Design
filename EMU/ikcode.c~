@@ -128,15 +128,34 @@ int main( void )
 	int rows4 = 14;
 	int colsread;
 
+/*PWM Definitions with respect to Nigels PWM module taken from the DE0 Board. Four copies made, one for each of the servos in the EMU arm*/
+
+	IOWR_ALTERA_AVALON_PWM_CLK_DIV(MY_PWM_0_BASE, 100);
+	IOWR_ALTERA_AVALON_PWM_PERIOD(MY_PWM_0_BASE, 1000);
+	IOWR_ALTERA_AVALON_PWM_CONTROL(MY_PWM_0_BASE, 1); 
+
+	IOWR_ALTERA_AVALON_PWM_CLK_DIV(MY_PWM_1_BASE, 100);
+	IOWR_ALTERA_AVALON_PWM_PERIOD(MY_PWM_1_BASE, 1000);
+	IOWR_ALTERA_AVALON_PWM_CONTROL(MY_PWM_1_BASE, 1); 
+
+	IOWR_ALTERA_AVALON_PWM_CLK_DIV(MY_PWM_2_BASE, 100);
+	IOWR_ALTERA_AVALON_PWM_PERIOD(MY_PWM_2_BASE, 1000);
+	IOWR_ALTERA_AVALON_PWM_CONTROL(MY_PWM_2_BASE, 1); 
+
+	IOWR_ALTERA_AVALON_PWM_CLK_DIV(MY_PWM_3_BASE, 100);
+	IOWR_ALTERA_AVALON_PWM_PERIOD(MY_PWM_3_BASE, 1000);
+	IOWR_ALTERA_AVALON_PWM_CONTROL(MY_PWM_3_BASE, 1);  
+
 	int angle4in = 0;   
 
 	/*Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings*/   
  	ikrun(xE,yE,zE,angle4in);
   
+	////ADDED BELOW - 2 LINES
 	/*Sets the elbow to its zero start position based on the Inverse Kinematics*/
 
 	elbow = 82;
-	Write_PWM(MY_PWM_2_BASE, elbow);
+	IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_2_BASE, elbow);
 
 	/////////////////////////////////
 	while(1)
@@ -144,14 +163,14 @@ int main( void )
 
 		/* The Rows Relate to original kepypad - may need to change the if statements on each call*/
 		///////////////////////////////ROW1 ////////////////////////       
-		Read_Keypad(ROWS_BASE, rows1); 
+		IOWR_ALTERA_AVALON_PIO_DATA(ROWS_BASE, rows1); 
 		colsread = IORD_ALTERA_AVALON_PIO_DATA(COLLS_BASE);       
 		
 		if(colsread == 7)   //possible 7,11,13,14
 		{
 			elbow = 100;
 			//elbow = elbow - 5;
-			Write_PWM(MY_PWM_2_BASE, elbow);
+			IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_2_BASE, elbow);
 		}
 
 		if(colsread == 11)
@@ -164,11 +183,11 @@ int main( void )
 		{
 			elbow = 50;
 			//elbow = elbow + 5;
-			Write_PWM(MY_PWM_2_BASE, elbow);
+			IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_2_BASE, elbow);
 		}
  
 		///////////////////////////////ROW2/////////////////////////////   
-		Read_Keypad(ROWS_BASE, rows2 ); 
+		IOWR_ALTERA_AVALON_PIO_DATA(ROWS_BASE, rows2 ); 
 		colsread = IORD_ALTERA_AVALON_PIO_DATA
 		(COLLS_BASE);       
 		
@@ -184,7 +203,7 @@ int main( void )
 			yE = 0;    //Y position relative to centre of 				     //robot base
 			zE = 15;   //Z
 			elbow = 82;
-			Write_PWM(MY_PWM_2_BASE, elbow);
+			IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_2_BASE, elbow);
 			ikrun(xE,yE,zE,angle4in);
 		}
 
@@ -195,7 +214,7 @@ int main( void )
 		} 
 		
 		///////////////////////////////ROW3///////////////////////////// 
-		Read_Keypad(ROWS_BASE, rows3 ); 
+		IOWR_ALTERA_AVALON_PIO_DATA(ROWS_BASE, rows3 ); 
 		colsread = IORD_ALTERA_AVALON_PIO_DATA 	   		        (COLLS_BASE);       
 		
 		if(colsread == 7)   //possible 7,11,13,14
@@ -214,7 +233,7 @@ int main( void )
 		}
  
 		///////////////////////////////ROW4///////////////////////////// 
-		Read_Keypad(ROWS_BASE, rows4 ); 
+		IOWR_ALTERA_AVALON_PIO_DATA(ROWS_BASE, rows4 ); 
 		colsread = IORD_ALTERA_AVALON_PIO_DATA				   (COLLS_BASE);       
 		
 		if(colsread == 7)   //possible 7,11,13,14
@@ -321,9 +340,9 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 
 /*Send the move commands to each of the servos, Base, Shoulder,Gripper. The Elbow is currently controlled directly at the function call of the correct keypad press - only moves to two static positions*/
                        
-	Write_PWM(MY_PWM_0_BASE, base);
-	Write_PWM(MY_PWM_1_BASE, shoulder);
-	Write_PWM(MY_PWM_3_BASE, gripper);             
+	IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_0_BASE, base);
+	IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_1_BASE, shoulder);
+	IOWR_ALTERA_AVALON_PWM_DUTY(MY_PWM_3_BASE, gripper);             
 }
 
 /*Mapping function from Arduino Library*/    
