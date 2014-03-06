@@ -12,29 +12,67 @@ Todo: Same output to all 4 PWMs
 #include <unistd.h>
 #include <signal.h>
 
+int fd;        /* /dev/mem file descriptor  */
+int page_size = getpagesize();
+volatile unsigned int *mem_addr  = NULL;
+unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
 
+#define ENABLE 0x1
+#define DISABLE 0x0
+
+#define DATA_A 0x06
+#define DATA_B 0x07
+#define DATA_C 0x08
+#define DATA_D 0x09
+
+#define PWM_A_ENABLE_REG 0x0A
+#define PWM_B_ENABLE_REG 0x0B
+#define PWM_C_ENABLE_REG 0x0C
+#define PWM_D_ENABLE_REG 0x0D
+#define RESET_REG 0x0E
+
+const void Write_PWM(int output_servo, int value);
+
+const void Write_PWM(int output_servo, int value)
+{
+	volatile unsigned int *pwm;
+	volatile unsigned int *pwm_enable;
+	volatile unsigned int *pwm_reset_n;
+	
+	/* Choose output reg, assign correct address' */
+	switch (output_servo)
+	{
+		case 0 : pwm = mem_addr + DATA_A;
+			 pwm_enable = mem_addr + PWM_A_ENABLE_REG;
+				break;
+		case 1 : pwm = mem_addr + DATA_B;
+			 pwm_enable = mem_addr + PWM_B_ENABLE_REG;
+				break;
+		case 2 : pwm = mem_addr + DATA_C;
+			 pwm_enable = mem_addr + PWM_C_ENABLE_REG;
+				break;
+		case 3 : pwm = mem_addr + DATA_C;
+			 pwm_enable = mem_addr + PWM_C_ENABLE_REG;
+				break;
+		default : printf("Attempted to use invalid PWM");
+	}
+
+	/* Enable PWM, reset and write value to reg*/
+	*pwm_enable = ENABLE;
+	pwm_reset_n = mem_addr + RESET_REG;
+	*pwm = value;
+
+	/* Print to see whats happening */	
+	printf("Writing to pwm %d with value %d", (int)*pwm, value);
+
+	/* Give it time to process request */
+	usleep(50000);
+
+	/* Disable PWM */
+	*pwm_enable = DISABLE;
+}
 int main(int argc, char *argv[])
 {
-	int fd;        /* /dev/mem file descriptor  */
-	int page_size = getpagesize();
-	unsigned int *mem_addr  = NULL;
-	unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
-
-	volatile unsigned int *pwm_A;
-	volatile unsigned int *pwm_B;
-	volatile unsigned int *pwm_C;
-	volatile unsigned int *pwm_D;
-	volatile unsigned int *pwm_reset_n;
-	volatile unsigned int *pwm_A_enable;
-	volatile unsigned int *pwm_B_enable;
-	volatile unsigned int *pwm_C_enable;
-	volatile unsigned int *pwm_D_enable;
-
-	if (argc < 2)
-	{
-		printf("Error: No Value, Enter a PWM value\n");
-		return 0;
-	}
 
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -46,7 +84,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 	
-	mem_addr = (int *)mmap(
+	mem_addr = (unsigned int *)mmap(
 		0,
 		page_size,
 		PROT_READ|PROT_WRITE,
@@ -61,43 +99,13 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	printf("%x: %x \n",(int)mem_addr,*(mem_addr));
+	if (argc < 2)
+	{
+		printf("Error: No Value, Enter a PWM value\n");
+		return 0;
+	}
 
-	/**********************************************
-	* set up the pointers to the registers that
-	* have been created in the fpga. Then make
-	* all configurable pins outputs.
-	**********************************************/
-
-	/* IO registers */
-	pwm_A = mem_addr + 0x06;
-	pwm_B = mem_addr + 0x07;
-	pwm_C = mem_addr + 0x08;
-	pwm_D = mem_addr + 0x09;
-	pwm_reset_n = mem_addr + 0x0E;
-	pwm_A_enable = mem_addr + 0x0A;
-	pwm_B_enable = mem_addr + 0x0B;
-	pwm_C_enable = mem_addr + 0x0C;
-	pwm_D_enable = mem_addr + 0x0D;
-
-	/*Enable PWM registers if previously disabled*/
-	*pwm_A_enable = 0x1;
-	*pwm_B_enable = 0x1;
-	*pwm_C_enable = 0x1;
-	*pwm_D_enable = 0x1;
-
-	printf("Writing PWM Value 0x%x to header pin 1\n" ,atoi(argv[1]));
-	*pwm_A = atoi(argv[1]);
-	*pwm_B = atoi(argv[1]);
-	*pwm_C = atoi(argv[1]);
-	*pwm_D = atoi(argv[1]);
-
-	usleep(5000000);
-
-	*pwm_A_enable = 0x0;
-	*pwm_B_enable = 0x0;
-	*pwm_C_enable = 0x0;
-	*pwm_D_enable = 0x0;
+	Write_PWM(0,35);
 
 	return 0;
 }

@@ -16,8 +16,7 @@ CFLAGS += -Wall -O2
 
 # Test programs
 PROGRAMS = \
-	lcd \
-	lcdmesg
+	pwm \
 
 default: programs
 
