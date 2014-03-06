@@ -12,20 +12,23 @@ int Read_Keypad()
 	volatile unsigned int *vga_reg;      /* only bits 14-0 valid */
 	volatile unsigned int *enable_vga;   /* only bits 14-0 valid */
 	
+	/* Set up the pointers to the registers that have been created in the FPGA. Then, make all configurable pins outputs.*/
 	/* IO registers */
 	vga_reg = mem_addr + 0x00;
 	enable_vga = mem_addr + 0x01;
-
+	
+	/* DIO direction configuration*/
+	/* The hardware will ignore attempts to modify reserved I/O pins to make life easier for the programmer.
+	   Just remember to mask out invalid bits on a register read.*/
 	*enable_vga  = 0x000001E0;  /* bits 5-8*/
 
 	int flag = 0;
 	int keyval = 0;
 	int temp_key = 0;
 
-	*vga_reg = 0x0000000E<<5;
+	*vga_reg = 0x0000000E<<5; // bitshift column 1 five bits to the left
 	usleep(1000);
-
-	temp_key = (*vga_reg & 0x000001eF);
+	temp_key = (*vga_reg & 0x000001eF); // mask column (bits 5-8) and row (bits 0-3)
 
 	if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
 	{
@@ -37,7 +40,7 @@ int Read_Keypad()
 	usleep(1000);
 	temp_key = (*vga_reg & 0x000001eF);
 
-	if ((keyval != temp_key) && ((temp_key &0x0000000F) < 0xF))
+	if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
 	{
 		keyval = temp_key;
 		flag = 1;
@@ -47,7 +50,7 @@ int Read_Keypad()
 	usleep(1000);
 	temp_key = (*vga_reg & 0x000001eF);
 
-	if ((keyval != temp_key) && ((temp_key &0x0000000F) < 0xF))
+	if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
 	{
 		keyval = temp_key;
 		flag = 1;
@@ -57,13 +60,13 @@ int Read_Keypad()
 	usleep(1);
 	temp_key = (*vga_reg & 0x000001eF);
 
-	if ((keyval != temp_key) && ((temp_key &0x0000000F) < 0xF))
+	if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
 	{
 		keyval = temp_key;
 		flag = 1;
 	}
 
-	if(flag)
+	if (flag)
 	{
 		switch (keyval) 
 		{
@@ -115,7 +118,8 @@ int Read_Keypad()
 			case 0xEE : 
 				printf("16\n");
 				return KEY_16;
-			default : printf("Default.\n");
+			default : 
+				printf("Default.\n");
 				return 0;
 		}
 	}
