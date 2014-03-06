@@ -251,6 +251,19 @@ begin
   headerpin_o(22) <= '0';               -- GND
   headerpin_o(40) <= '0';               -- +3.3v
 
+   -----------------------------------------------------------------------------
+  -- read values on the IO pins; the special pins are handled in ts7300_top.v
+  -----------------------------------------------------------------------------
+  vga_read(0)  <= headerpin_i(1);       -- blu0    
+  vga_read(1)  <= headerpin_i(3);       -- blu1
+  vga_read(2)  <= headerpin_i(5);       -- blu2
+  vga_read(3)  <= headerpin_i(7);       -- blu3
+  vga_read(4)  <= headerpin_i(9);       -- blu4
+  vga_read(5)  <= headerpin_i(11);      -- grn0
+  vga_read(6)  <= headerpin_i(13);      -- grn1
+  vga_read(7)  <= headerpin_i(15);      -- grn2
+  vga_read(8)  <= headerpin_i(17);      -- grn3
+  
   dio2_read(0)  <= headerpin_i(21);     -- DIO2
   dio2_read(1)  <= headerpin_i(23);     -- DIO2
   dio2_read(2)  <= headerpin_i(25);     -- DIO2

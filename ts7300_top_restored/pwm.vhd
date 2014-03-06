@@ -60,7 +60,7 @@ begin  -- process pulse
 		if clk'event and clk = '1' then
 			duty_cycle_reg <= unsigned(duty_cycle (7 downto 0));
 			
-			if clock_div = conv_unsigned(X"00C8",16) then --clock speed
+			if clock_div = conv_unsigned(X"0B00",16) then --clock speed
 				clock_div <= conv_unsigned(X"0000",16);
 				slow_clk <= not slow_clk; -- toggle
 			else

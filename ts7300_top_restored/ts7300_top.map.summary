@@ -1,10 +1,10 @@
-Analysis & Synthesis Status : Successful - Mon Mar  3 13:50:29 2014
+Analysis & Synthesis Status : Successful - Thu Mar  6 12:52:03 2014
 Quartus II 64-Bit Version : 12.1 Build 243 01/31/2013 SP 1 SJ Web Edition
 Revision Name : ts7300_top
 Top-level Entity Name : ts7300_top
 Family : Cyclone II
-Total logic elements : 466
-    Total combinational functions : 308
+Total logic elements : 467
+    Total combinational functions : 309
     Dedicated logic registers : 304
 Total registers : 304
 Total pins : 138

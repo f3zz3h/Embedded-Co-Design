@@ -88,9 +88,16 @@ int main(int argc, char *argv[])
 
 	printf("Writing PWM Value 0x%x to header pin 1\n" ,atoi(argv[1]));
 	*pwm_A = atoi(argv[1]);
-	usleep(500000);
+	*pwm_B = atoi(argv[1]);
+	*pwm_C = atoi(argv[1]);
+	*pwm_D = atoi(argv[1]);
+
+	usleep(5000000);
 
 	*pwm_A_enable = 0x0;
+	*pwm_B_enable = 0x0;
+	*pwm_C_enable = 0x0;
+	*pwm_D_enable = 0x0;
 
 	return 0;
 }

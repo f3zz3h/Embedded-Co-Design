@@ -16,229 +16,27 @@
 #include <stdlib.h>
 #include <math.h>
 
+#include "emu.h"
 
-/* Scheduler includes. */
-//#include "FreeRTOS.h"
-//#include "task.h"
-//#include "queue.h"
-//#include "semphr.h"
 
-/* Altera specific includes*/
-/* probably shouldn't mix FreeRTOS and Altera type defs. :( */
-//#include "system.h"
-
-/* Altera HAL includes for timestamp timer */
-//#include "sys/alt_timestamp.h"
-/* use alt_timestamp_start, alt_timestamp,alt_timestamp_freq */
-
-#include "pwm.h"
-
-/* Globals and type definitions */
-
-typedef struct
+//DUMMY FUCNTIONS UNTIL READ AND WRITE IS PROPERLY WRITTEN
+int Read_Keypad()
 {
-	short sTaskID;
-	short sLEDdata; 
-} xData;
+	int keypad_val = 1;
 
-xSemaphoreHandle xMutex;
-xQueueHandle xQueue;
-static portCHAR cBuffer[2000];
-
-//Inverse Kinematic Specific Definitions
-
-#define QUEUE_LENGTH 3
-#define  QUEUE_ITEM_SIZE  sizeof(xData)
-#define l1  0.15    //lenght of link1 - between floor and robot base
-#define l2  0.1     //lenght of link2
-#define l3  0.12    //lenght of link3
-#define l4  0.07    //lenght of link4
-#define pi  3.1415926535897
-
-/* Task and Function Declarations */
-
-void ikrun(double xE, double yE, double zE,int angle4in);
-
-/* functions */
-
-void vConfigureTimerForRunTimeStats(void);
-int map(int x, int in_min, int in_max, int out_min, int out_max);
-/*********************************************************
- * MAIN 
- * *******************************************************/
- 
-/////////////////////////ANGLES///////////////////////////
-double angle1 = 0;     //angle of rotation at the base
-double angle2a = 0;    //1st possible angle of rotation at 					  //shoulder 
-double angle2b = 0;    //2nd possible angle of rotation at 					  //shoulder 
-double angle3a = 0;    //1st possible angle of rotation at 					  //elbow  - matches 2b
-double angle3b = 0;    //2nd possible angle of rotation at 					  //elbow - matches 2a
-double angle4a = 0;    //wrist angle - place holder, never 					  //used
-
-////////Place holder variables for calculations////////////
-
-double xEik = 0 ;    
-double yEik = 0;
-double zEik = 0;
-
-double x4ik = 0;
-double y4ik = 0;
-double z4ik = 0;
-double cq1 = 0;
-double sq1 = 0;
-double x4 = 0;  //wrist X positions 
-double y4 = 0;  //wrist Y positions 
-double z4 = 0;  //wrist Z positions 
-
-double c3 = 0;
-double s3a = 0;
-double s3b = 0;
-
-double cq3 = 0;
-double sq3 = 0;
-double k1 = 0;
-double k2 = 0;
-double r = 0;
-double val5 = 0;
-double val6 = 0;
-double val7 = 0;
-double val8 = 0;
-
-double xEholder;
-double yEholder;
-double zEholder;
-
-int angle1int, angle2bint, angle3aint, angle4int, base, elbow, shoulder, gripper;
-
-double xE;     //X position relative to centre of robot base
-double yE;    //Y position relative to centre of robot base
-double zE;   //Z position relative to centre of robot base
-
-int main( void )
+	return keypad_val;
+}
+void Write_PWM(int output_servo, int value)
 {
-	xE = 29;     //X position relative to centre of robot base
-	yE = 0;    //Y position relative to centre of robot base
-	zE = 15;   //Z position relative to centre of robot base
+	printf("Servo to write to: %d, Servo movement value %d", output_servo, value);
 
-/*The rows below relate to the keypad used so may have to be changed for us dependent how we end up defining our key presses*/
-
-	int rows1 = 7;
-	int rows2 = 11;
-	int rows3 = 13;
-	int rows4 = 14;
-	int colsread;
-
-	int angle4in = 0;   
-
-	/*Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings*/   
- 	ikrun(xE,yE,zE,angle4in);
-  
-	/*Sets the elbow to its zero start position based on the Inverse Kinematics*/
-
-	elbow = 82;
-	Write_PWM(MY_PWM_2_BASE, elbow);
-
-	/////////////////////////////////
-	while(1)
-	{
-
-		/* The Rows Relate to original kepypad - may need to change the if statements on each call*/
-		///////////////////////////////ROW1 ////////////////////////       
-		Read_Keypad(ROWS_BASE, rows1); 
-		colsread = IORD_ALTERA_AVALON_PIO_DATA(COLLS_BASE);       
-		
-		if(colsread == 7)   //possible 7,11,13,14
-		{
-			elbow = 100;
-			//elbow = elbow - 5;
-			Write_PWM(MY_PWM_2_BASE, elbow);
-		}
-
-		if(colsread == 11)
-		{  
-			zE = zE - 3;
-			ikrun(xE,yE,zE,angle4in);
-		}
-
-		if(colsread == 13)
-		{
-			elbow = 50;
-			//elbow = elbow + 5;
-			Write_PWM(MY_PWM_2_BASE, elbow);
-		}
- 
-		///////////////////////////////ROW2/////////////////////////////   
-		Read_Keypad(ROWS_BASE, rows2 ); 
-		colsread = IORD_ALTERA_AVALON_PIO_DATA
-		(COLLS_BASE);       
-		
-		if(colsread == 7)   //possible 7,11,13,14
-		{
-			yE = yE + 4;
-			ikrun(xE,yE,zE,angle4in);
-		}
-
-		if(colsread == 11)
-		{  
-			xE = 29;   //X position relative to centre of 				     // robot base
-			yE = 0;    //Y position relative to centre of 				     //robot base
-			zE = 15;   //Z
-			elbow = 82;
-			Write_PWM(MY_PWM_2_BASE, elbow);
-			ikrun(xE,yE,zE,angle4in);
-		}
-
-		if(colsread == 13)
-		{
-			yE = yE - 4;
-			ikrun(xE,yE,zE,angle4in);  
-		} 
-		
-		///////////////////////////////ROW3///////////////////////////// 
-		Read_Keypad(ROWS_BASE, rows3 ); 
-		colsread = IORD_ALTERA_AVALON_PIO_DATA 	   		        (COLLS_BASE);       
-		
-		if(colsread == 7)   //possible 7,11,13,14
-		{
-
-		}
-
-		if(colsread == 11)
-		{  
-			zE = zE + 3;
-			ikrun(xE,yE,zE,angle4in);
-		}
-
-		if(colsread == 13)
-		{
-		}
- 
-		///////////////////////////////ROW4///////////////////////////// 
-		Read_Keypad(ROWS_BASE, rows4 ); 
-		colsread = IORD_ALTERA_AVALON_PIO_DATA				   (COLLS_BASE);       
-		
-		if(colsread == 7)   //possible 7,11,13,14
-		{
-			angle4in = 0;
-			ikrun(xE,yE,zE,angle4in);
-		}
-
-		if(colsread == 11)
-		{  
-		}
-
-		if(colsread == 13)
-		{
-			angle4in = 1;
-			ikrun(xE,yE,zE,angle4in);
-		} 
-	}
 }
 
-//Inverse Kinematics function
 
+//Inverse Kinematics function
 void ikrun(double xE, double yE, double zE, int angle4in)
 {
+	
 	xE = xE / 100;   //convert to meters
 	yE = yE / 100;
 	zE = zE / 100; 
@@ -251,7 +49,7 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 	angle1 = atan2(yEik,xEik);
 	cq1 = cos(angle1);
 	sq1 = sin(angle1);
-	angle1  = angle1 *(180/pi);  
+	angle1  = angle1 *(180/M_PI);  
 
 	x4 = (xE - (l4*cq1))/cq1;  //wrist positions  T14
 	y4 = 0;
@@ -270,25 +68,25 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 	    	s3a = 0;
 		s3a = sqrt(s3a);
 		s3b = -1* s3a;
-		angle3a = (atan2(s3a,c3))/(pi/180);
-		angle3b = (atan2(s3b,c3))/(pi/180);
+		angle3a = (atan2(s3a,c3))/(M_PI/180);
+		angle3b = (atan2(s3b,c3))/(M_PI/180);
 	}
   
 
 	//angle 2
-	cq3 = cos((angle3a)*(pi/180));
-	sq3 = sin((angle3a)*(pi/180));
+	cq3 = cos((angle3a)*(M_PI/180));
+	sq3 = sin((angle3a)*(M_PI/180));
 	k1 = l2+l3*c3;
 	k2 = l3*s3b;
 	r = sqrt((k1*k1) + (k2*k2));
 	val5 = (z4ik/r)/(x4ik/r);
 	val6 = (k2/k1);
 	angle2a = (atan2((z4ik/r),(x4ik/r)))-(atan2(k2,k1));
-	angle2a = angle2a/(pi/180);
+	angle2a = angle2a/(M_PI/180);
 	val7 = (z4ik/r)/(x4ik/r);
 	val8 = ((-1*k2)/k1);
 	angle2b = (atan2((z4ik/r),(x4ik/r)))-(atan2((-1*k2),k1));
-	angle2b = angle2b/(pi/180);
+	angle2b = angle2b/(M_PI/180);
     
 	angle1int = (int)floor(angle1);
 	angle2bint = (int)floor(angle2b);
@@ -302,9 +100,9 @@ void ikrun(double xE, double yE, double zE, int angle4in)
             
 	if((angle1int <= 45 && angle1int >= -45) && (angle2bint <= 45 && angle2bint >= -45) )
   	{
-		base = map(angle1int,-45,45,50,100);
-		shoulder= map(angle2bint,45,-45,50,100);
-		gripper = map(angle4int,0,1,50,100);
+		base = map(angle1int,-45,45,SERVO_MIN,SERVO_MAX);
+		shoulder= map(angle2bint,45,-45,SERVO_MIN,SERVO_MAX);
+		gripper = map(angle4int,0,1,SERVO_MIN,SERVO_MAX);
 		xEholder = (xE * 100) -5;
 		yEholder = (yE * 100) -5;
 		zEholder = (zE * 100) -5;
@@ -321,12 +119,12 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 
 /*Send the move commands to each of the servos, Base, Shoulder,Gripper. The Elbow is currently controlled directly at the function call of the correct keypad press - only moves to two static positions*/
                        
-	Write_PWM(MY_PWM_0_BASE, base);
-	Write_PWM(MY_PWM_1_BASE, shoulder);
-	Write_PWM(MY_PWM_3_BASE, gripper);             
+	Write_PWM(BASE, base);
+	Write_PWM(SHOULDER, shoulder);
+	Write_PWM(GRIPPER, gripper);             
 }
 
-/*Mapping function from Arduino Library*/    
+/*MapM_PIng function from Arduino Library*/    
  
 /****************************************************
  * Map
@@ -335,15 +133,84 @@ int map(int x, int in_min, int in_max, int out_min, int out_max)
 {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
 }
-
-/*Some random function that is required by the PWM module*/
-/*************************************************
- * Send Task
- ************************************************/
-
-void vConfigureTimerForRunTimeStats(void)
-{
-     /* use alt_timestamp_start, alt_timestamp,alt_timestamp_freq */    
-     alt_timestamp_start();
- }
  
+/*********************************************************
+ * MAIN 
+ * ******************************************************* */
+int main( void )
+{
+	xE = XE_START;   //X position relative to centre of robot base
+	yE = YE_START;    //Y position relative to centre of robot base
+	zE = ZE_START;   //Z position relative to centre of robot base
+
+	int key_val;
+	int angle4in = 0;   
+	int servo_val;
+
+	/* Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings */   
+ 	ikrun(xE,yE,zE,angle4in);
+  
+	/* Sets the elbow to its zero start position based on the Inverse Kinematics */
+
+	servo_val = SERVO_MID;
+	Write_PWM(ELBOW, servo_val);
+
+	/////////////////////////////////
+	while(1)
+	{
+		/* Read the keypad and switch over its return value */
+		key_val = Read_Keypad();
+		
+		switch (key_val)
+		{
+			//Row 1 [ 1 - 4 ]
+			case 1 : Write_PWM(SHOULDER, SERVO_MAX);
+					break;
+			case 2 : zE = zE - 3;
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 3 : Write_PWM(SHOULDER, SERVO_MIN);
+					break;
+			case 4 : 
+					break;
+			//Row 2 [ 5 - 8 ]
+			case 5 : yE = yE + 4;
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 6 : xE = 29;   //X position relative to centre of 				     // robot base
+				yE = 0;    //Y position relative to centre of 				     //robot base
+				zE = 15;   //Z
+				Write_PWM(ELBOW, SERVO_MID);
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 7 : yE = yE - 4;
+				ikrun(xE,yE,zE,angle4in);  
+					break;
+			case 8 : 
+					break;
+			//Row 3 [ 9 - 12 ]
+			case 9 : 
+					break;
+			case 10 : zE = zE + 3;
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 11 : 
+					break;
+			case 12 : 
+					break;
+			//Row 4 [ 13 - 16]
+			case 13 : angle4in = 0;
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 14 : 
+					break;
+			case 15 : angle4in = 1;
+				ikrun(xE,yE,zE,angle4in);
+					break;
+			case 16 : 
+					break;
+					
+		}
+	}
+}
+
