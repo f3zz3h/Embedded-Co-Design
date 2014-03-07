@@ -1,7 +1,5 @@
-/* Based from Nigel's toggle_leds.c
+/* Based from Nigel's toggle_leds.c */
 
-Todo: Same output to all 4 PWMs
- */
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -12,6 +10,7 @@ Todo: Same output to all 4 PWMs
 #include <unistd.h>
 #include <signal.h>
 
+#include "global.h"
 #include "pwm.h"
 
 void Write_PWM(int output_servo, int value)

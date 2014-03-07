@@ -1,4 +1,6 @@
-#include <keypad.h>
+#include "global.h"
+#include "keypad.h"
+
 
 /****************************************************************
  * Read_Keypad:							*

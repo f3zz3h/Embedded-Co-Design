@@ -1,3 +1,7 @@
+#ifndef KEYPAD_H
+#define KEYPAD_H
+
+
 #include <stdio.h>
 #include <errno.h>
 #include <string.h>
@@ -26,4 +30,6 @@
 #define KEY_15 15
 #define KEY_16 16
 
-int Read_Keypad(); /* Loop for scanning keypad values */
+#endif
+
+

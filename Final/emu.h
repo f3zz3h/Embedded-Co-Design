@@ -1,3 +1,6 @@
+#ifndef EMU_H
+#define EMU_H
+
 
 //Inverse Kinematic Specific Definitions
 #define l1  0.15    //link1 - between floor and robot base
@@ -18,15 +21,16 @@
 #define ELBOW 2
 #define GRIPPER 3
 
+/* ToDO: This should allow us to us M_PI but it doesn't seem to work with some compilers
+ * so for now we are defining it ourselves
+ */
 #define _USE_MATH_DEFINES
-
-/* functions */
-int map(int x, int in_min, int in_max, int out_min, int out_max);
-void ikrun(double xE, double yE, double zE,int angle4in);
-
+#define M_PI 3.14
  
 /* *********************************************************
- * GLOBAL VARIABLES
+ * GLOBAL VARIABLES -- ToDo: Shouldn't really be doing assignments in headers, no need to extern though.
+ * 							We should check that these are always initialised before use in code and then
+ * 							remove assignments here
  * ********************************************************* */
 /////////////////////////ANGLES///////////////////////////
 double angle1 = 0;     //angle of rotation at the base
@@ -36,7 +40,7 @@ double angle3a = 0;    //1st possible angle of rotation at 					  //elbow  - mat
 double angle3b = 0;    //2nd possible angle of rotation at 					  //elbow - matches 2a
 double angle4a = 0;    //wrist angle - place holder, never 					  //used
 
-double xEik = 0 ;    
+double xEik;
 double yEik = 0;
 double zEik = 0;
 
@@ -74,3 +78,5 @@ double yE;    //Y position relative to centre of robot base
 double zE;    //Z position relative to centre of robot base
 
 int base = 0, shoulder = 0, elbow = 0, gripper = 0;
+
+#endif

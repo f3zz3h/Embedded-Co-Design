@@ -1,27 +1,25 @@
-# Makefile
-#
-# User-space programs makefile
-#
-# To build these programs for the ARM target, the
-# environment variable CROSS_COMPILE must be defined.
-# eg.
-#
-# export CROSS_COMPILE=arm-unknown-linux-gnu-
-#
-# and PATH needs to include the path to the compiler.
-#
+CC = gcc
+CFLAGS = -Wall -O2
+LIBS = -lm
+INCLUDES= 
+TARGET = ik
+SRCS = main.c emu.c keypad.c pwm.c  
+#lcd.c
+OBJS = $(SRCS:.c=.o)
 
-CC = $(CROSS_COMPILE)gcc
-CFLAGS += -Wall -O2
+.PHONY: depend clean
 
-# Test programs
-PROGRAMS = \
-	pwm \
-	pwm_cmd
+all: $(TARGET)
+	@echo Complete.
 
-default: programs
+$(TARGET): $(OBJS)
+	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(OBJS) $(LIBS)
 
-programs: $(PROGRAMS)
+.c.o:
+	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
 
 clean:
-	rm -rf $(PROGRAMS) *.o 
+	$(RM) *.o *~ $(MAIN)
+
+depend: $(SRCS)
+	makedepend $(INCLUDES) $^
