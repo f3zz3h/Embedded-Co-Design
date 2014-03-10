@@ -1,26 +1,13 @@
 /* Standard includes. */
-#include <stddef.h>
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
-#include <math.h>
-#include <errno.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <unistd.h>
-//#include <signal.h>
 
-//#include "emu.c"
-//#include "keypad.c"
-//#include "lcd.c"
-//#include "pwm.c"
+
 #include "global.h"
-#include "emu.h"
+
 
 volatile unsigned int *mem_addr  = NULL;
 unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
-/*********************************************************
+
+/* ********************************************************
  * MAIN 
  * ******************************************************* */
 int main( void )

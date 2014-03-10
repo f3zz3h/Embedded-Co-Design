@@ -13,7 +13,7 @@ Todo: Same output to all 4 PWMs
 #include <signal.h>
 
 int fd;        /* /dev/mem file descriptor  */
-int page_size = getpagesize();
+
 volatile unsigned int *mem_addr  = NULL;
 unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
 
@@ -74,6 +74,7 @@ void Write_PWM(int output_servo, int value)
 }
 int main(int argc, char *argv[])
 {
+	int page_size = getpagesize();
 
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);

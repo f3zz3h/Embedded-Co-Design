@@ -125,5 +125,6 @@ int Read_Keypad()
 				return 0;
 		}
 	}
+	return 0;
 }
 

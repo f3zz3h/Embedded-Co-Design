@@ -1,7 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -O2
 LIBS = -lm
-INCLUDES= 
 TARGET = ik
 SRCS = main.c emu.c keypad.c pwm.c  
 #lcd.c
@@ -13,10 +12,10 @@ all: $(TARGET)
 	@echo Complete.
 
 $(TARGET): $(OBJS)
-	$(CC) $(CFLAGS) $(INCLUDES) -o $(TARGET) $(OBJS) $(LIBS)
+	$(CC) $(CFLAGS) -o $(TARGET) $(OBJS) $(LIBS)
 
 .c.o:
-	$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 	$(RM) *.o *~ $(MAIN)

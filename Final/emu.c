@@ -1,7 +1,5 @@
-#include "emu.h"
+//#include "emu.h"
 #include "global.h"
-//#include "keypad.c"
-//#include "pwm.c"
 
 //Inverse Kinematics function
 void emu_ikrun(double xE, double yE, double zE, int angle4in)

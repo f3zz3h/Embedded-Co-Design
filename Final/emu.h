@@ -1,7 +1,6 @@
 #ifndef EMU_H
 #define EMU_H
 
-
 //Inverse Kinematic Specific Definitions
 #define l1  0.15    //link1 - between floor and robot base
 #define l2  0.1     //link2
@@ -25,47 +24,47 @@
  * so for now we are defining it ourselves
  */
 #define _USE_MATH_DEFINES
-#define M_PI 3.14
+//#define M_PI 3.14
  
 /* *********************************************************
- * GLOBAL VARIABLES -- ToDo: Shouldn't really be doing assignments in headers, no need to extern though.
- * 							We should check that these are always initialised before use in code and then
- * 							remove assignments here
+ * GLOBAL VARIABLES -- ToDo: Shouldn't really be doing assignments in headers.
+ * 			We should check that these are always initialised before use in code and then
+ * 			remove assignments here
  * ********************************************************* */
 /////////////////////////ANGLES///////////////////////////
-double angle1 = 0;     //angle of rotation at the base
-double angle2a = 0;    //1st possible angle of rotation at 					  //shoulder 
-double angle2b = 0;    //2nd possible angle of rotation at 					  //shoulder 
-double angle3a = 0;    //1st possible angle of rotation at 					  //elbow  - matches 2b
-double angle3b = 0;    //2nd possible angle of rotation at 					  //elbow - matches 2a
-double angle4a = 0;    //wrist angle - place holder, never 					  //used
+double angle1;     //angle of rotation at the base
+double angle2a;    //1st possible angle of rotation at 					  //shoulder 
+double angle2b;    //2nd possible angle of rotation at 					  //shoulder 
+double angle3a;    //1st possible angle of rotation at 					  //elbow  - matches 2b
+double angle3b;    //2nd possible angle of rotation at 					  //elbow - matches 2a
+double angle4a;    //wrist angle - place holder, never 					  //used
 
 double xEik;
-double yEik = 0;
-double zEik = 0;
+double yEik;
+double zEik;
 
-double x4ik = 0;
-double y4ik = 0;
-double z4ik = 0;
-double cq1 = 0;
-double sq1 = 0;
-double x4 = 0;  //wrist X positions 
-double y4 = 0;  //wrist Y positions 
-double z4 = 0;  //wrist Z positions 
+double x4ik;
+double y4ik;
+double z4ik;
+double cq1;
+double sq1;
+double x4;  //wrist X positions 
+double y4;  //wrist Y positions 
+double z4;  //wrist Z positions 
 
-double c3 = 0;
-double s3a = 0;
-double s3b = 0;
+double c3;
+double s3a;
+double s3b;
 
-double cq3 = 0;
-double sq3 = 0;
-double k1 = 0;
-double k2 = 0;
-double r = 0;
-double val5 = 0;
-double val6 = 0;
-double val7 = 0;
-double val8 = 0;
+double cq3;
+double sq3;
+double k1;
+double k2;
+double r;
+double val5;
+double val6;
+double val7;
+double val8;
 
 double xEholder;
 double yEholder;
@@ -77,6 +76,7 @@ double xE;    //X position relative to centre of robot base
 double yE;    //Y position relative to centre of robot base
 double zE;    //Z position relative to centre of robot base
 
-int base = 0, shoulder = 0, elbow = 0, gripper = 0;
+int base, shoulder, elbow, gripper;
+int angle4in;
 
 #endif

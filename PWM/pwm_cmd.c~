@@ -61,7 +61,7 @@ int main(int argc, char *argv[])
 		return -1;
 	}
 
-	printf("%x: %x \n",(int)mem_addr,*(mem_addr));
+	printf("%x: %x \n",(unsigned int)mem_addr,*(mem_addr));
 
 	/**********************************************
 	* set up the pointers to the registers that
