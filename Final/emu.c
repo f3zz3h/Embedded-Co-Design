@@ -1,7 +1,8 @@
-#include "emu.h"
+//#include "emu.h"
+#include "global.h"
 
 //Inverse Kinematics function
-void ikrun(double xE, double yE, double zE, int angle4in)
+void emu_ikrun(double xE, double yE, double zE, int angle4in)
 {
 
 	xE = xE / 100;   //convert to meters
@@ -67,9 +68,9 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 
 	if((angle1int <= 45 && angle1int >= -45) && (angle2bint <= 45 && angle2bint >= -45) )
   	{
-		base = map(angle1int,-45,45,SERVO_MIN,SERVO_MAX);
-		shoulder= map(angle2bint,45,-45,SERVO_MIN,SERVO_MAX);
-		gripper = map(angle4int,0,1,SERVO_MIN,SERVO_MAX);
+		base = emu_map(angle1int,-45,45,SERVO_MIN,SERVO_MAX);
+		shoulder= emu_map(angle2bint,45,-45,SERVO_MIN,SERVO_MAX);
+		gripper = emu_map(angle4int,0,1,SERVO_MIN,SERVO_MAX);
 		xEholder = (xE * 100) -5;
 		yEholder = (yE * 100) -5;
 		zEholder = (zE * 100) -5;
@@ -96,7 +97,19 @@ void ikrun(double xE, double yE, double zE, int angle4in)
 /****************************************************
  * Map
  ***************************************************/
-int map(int x, int in_min, int in_max, int out_min, int out_max)
+int emu_map(int x, int in_min, int in_max, int out_min, int out_max)
 {
 	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+}
+
+void emu_intialize()
+{
+	xE = XE_START;   //X position relative to centre of robot base
+	yE = YE_START;    //Y position relative to centre of robot base
+	zE = ZE_START;   //Z position relative to centre of robot base
+
+
+
+	/* Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings */
+ 	emu_ikrun(xE,yE,zE,angle4in);
 }

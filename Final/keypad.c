@@ -1,4 +1,6 @@
-#include <keypad.h>
+#include "global.h"
+#include "keypad.h"
+
 
 /****************************************************************
  * Read_Keypad:							*
@@ -123,5 +125,6 @@ int Read_Keypad()
 				return 0;
 		}
 	}
+	return 0;
 }
 

@@ -1,3 +1,6 @@
+#ifndef PWM_H
+#define PWM_H
+
 #define ENABLE 0x1
 #define DISABLE 0x0
 
@@ -12,4 +15,4 @@
 #define PWM_D_ENABLE_REG 0x0D
 #define RESET_REG 0x0E
 
-void Write_PWM(int output_servo, int value);
+#endif

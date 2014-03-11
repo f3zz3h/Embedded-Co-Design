@@ -31,9 +31,9 @@ unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
 #define PWM_D_ENABLE_REG 0x0D
 #define RESET_REG 0x0E
 
-const void Write_PWM(int output_servo, int value);
+void Write_PWM(int output_servo, int value);
 
-const void Write_PWM(int output_servo, int value)
+void Write_PWM(int output_servo, int value)
 {
 	volatile unsigned int *pwm;
 	volatile unsigned int *pwm_enable;
@@ -55,6 +55,7 @@ const void Write_PWM(int output_servo, int value)
 			 pwm_enable = mem_addr + PWM_C_ENABLE_REG;
 				break;
 		default : printf("Attempted to use invalid PWM");
+			return;
 	}
 
 	/* Enable PWM, reset and write value to reg*/
