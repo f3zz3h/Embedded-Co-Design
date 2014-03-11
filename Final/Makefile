@@ -1,9 +1,9 @@
 CC = gcc
 CFLAGS = -Wall -O2
 LIBS = -lm
-TARGET = ik
+TARGET = release-0.1
 SRCS = main.c emu.c keypad.c pwm.c  
-#lcd.c
+# // ToDo: lcd.c needs adding to the mix
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: depend clean
@@ -18,7 +18,7 @@ $(TARGET): $(OBJS)
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	$(RM) *.o *~ $(MAIN)
+	$(RM) *.o *~ $(TARGET)
 
 depend: $(SRCS)
 	makedepend $(INCLUDES) $^
