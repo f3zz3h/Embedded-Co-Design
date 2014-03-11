@@ -1,18 +1,6 @@
 #ifndef KEYPAD_H
 #define KEYPAD_H
 
-
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <ctype.h>   /* toupper */
-#include <signal.h>
-
 #define KEY_1 1
 #define KEY_2 2
 #define KEY_3 3

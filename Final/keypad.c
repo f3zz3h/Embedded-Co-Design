@@ -3,11 +3,12 @@
 
 
 /****************************************************************
- * Read_Keypad:							*
- * Writes a walking 0 to bits 5 - 8 then tests the key value to *
- * see which column button is pressed.			        *
- * E = 1110, D = 1101, B = 1011, 7 = 0111 then shift left 5.	*
- * 								*
+ * Read_Keypad:
+ * Writes a walking 0 to bits 5 - 8 then tests the key value to
+ * see which column button is pressed.
+ * E = 1110, D = 1101, B = 1011, 7 = 0111 then shift left 5.
+ *
+ * 	ToDo: Check return values of 0 as errors and do somethign about it
 ****************************************************************/
 int Read_Keypad()
 {
@@ -73,56 +74,41 @@ int Read_Keypad()
 		switch (keyval) 
 		{
 			case 0x1C7 : 
-				printf("1\n");
 				return KEY_1;
 			case 0x1A7 :
-				printf("2\n");
 				return KEY_2;
 			case 0x167 :
-				printf("3\n");
 				return KEY_3;
 			case 0xE7 : 
-				printf("4\n");
 				return KEY_4;
 			case 0x1CB :
-				printf("5\n");
 				return KEY_5;
 			case 0x1AB :
-				printf("6\n");
 				return KEY_6;
 			case 0x16B :
-				printf("7\n");
 				return KEY_7;
 			case 0xEB : 
-				printf("8\n");
 				return KEY_8;
 			case 0x1CD :
-				printf("9\n");
 				return KEY_9; 
 			case 0x1AD : 
-				printf("10\n");
 				return KEY_10;
 			case 0x16D :
-				printf("11\n");
 				return KEY_11; 
 			case 0xED : 
-				printf("12\n");
 				return KEY_12;
-			case 0x1CE : 
-				printf("13\n");
+			case 0x1CE :
 				return KEY_13;
 			case 0x1AE : 
-				printf("14\n");
 				return KEY_14;
 			case 0x16E : 
-				printf("15\n");
 				return KEY_15;
 			case 0xEE : 
-				printf("16\n");
 				return KEY_16;
 			default : 
-				printf("Default.\n");
-				return 0;
+				/* ToDO: add cases for multiple key presses for arm movements */
+				printf("Keyval not defined = %x", keyval);
+				return keyval;
 		}
 	}
 	return 0;

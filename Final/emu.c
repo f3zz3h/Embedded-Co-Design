@@ -1,17 +1,24 @@
 //#include "emu.h"
 #include "global.h"
 
-//Inverse Kinematics function
+/* WHOLE DOCUMENT - ToDo: Refactor, Rename and comment all of the code
+ */
+/* Inverse Kinematics function - Kerrim Morris, Luke Hart, Joe Ellis, Lukasz Matchzak
+ *
+ * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
+ */
 void emu_ikrun(double xE, double yE, double zE, int angle4in)
 {
+	int base, shoulder, elbow, gripper;
 
-	xE = xE / 100;   //convert to meters
-	yE = yE / 100;
-	zE = zE / 100;
+	/* convert to meters */
+	xE /= 100;
+	yE /= 100;
+	zE /= 100;
+
 	xEik = xE;
 	yEik = yE;
 	zEik = zE;
-
 
 	//angle1
 	angle1 = atan2(yEik,xEik);
@@ -64,42 +71,40 @@ void emu_ikrun(double xE, double yE, double zE, int angle4in)
 	int angle2aint = (int)floor(angle2a);
 	int angle3bint = (int)floor(angle3b);
 
-	/*Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos*/
-
+	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
 	if((angle1int <= 45 && angle1int >= -45) && (angle2bint <= 45 && angle2bint >= -45) )
   	{
-		base = emu_map(angle1int,-45,45,SERVO_MIN,SERVO_MAX);
-		shoulder= emu_map(angle2bint,45,-45,SERVO_MIN,SERVO_MAX);
-		gripper = emu_map(angle4int,0,1,SERVO_MIN,SERVO_MAX);
+		base = emu_map(angle1int);
+		shoulder = emu_map(angle2bint);
+		gripper = emu_map(angle4int);// 0 - 1 min and max not the angles soo need to fix this
+		//???????????????
 		xEholder = (xE * 100) -5;
 		yEholder = (yE * 100) -5;
 		zEholder = (zE * 100) -5;
 	}
-
-	/*If the move command is outside of the operating envelope of the servos make the Inverse Kinematic coordinates for xE, yE and zE equal to the last in-range values as dictated by XXHolder*/
-
-	if(angle1int > 45 || angle1int < -45 || angle2bint > 45 || angle2bint < -45 )
+	/* If the move command is outside of the operating envelope of the servos make the
+	 * Inverse Kinematic coordinates for xE, yE and zE equal to the last in-range values
+	 * as dictated by *Eholder */
+	else 	//if(angle1int > 45 || angle1int < -45 || angle2bint > 45 || angle2bint < -45 )
 	{
 		xE = xEholder;
 		yE = yEholder;
 		zE = zEholder;
 	}
 
-/*Send the move commands to each of the servos, Base, Shoulder,Gripper. The Elbow is currently controlled directly at the function call of the correct keypad press - only moves to two static positions*/
-
+	/* Send the move commands to each of the servos, Base, Shoulder, Gripper. The Elbow is currently controlled
+	 * directly at the function call of the correct keypad press - only moves to two static positions*/
 	Write_PWM(BASE, base);
 	Write_PWM(SHOULDER, shoulder);
 	Write_PWM(GRIPPER, gripper);
 }
 
-/*MapM_PIng function from Arduino Library*/
-
 /****************************************************
  * Map
  ***************************************************/
-int emu_map(int x, int in_min, int in_max, int out_min, int out_max)
+int emu_map(int x)
 {
-	return (x - in_min) * (out_max - out_min) / (in_max - in_min) + out_min;
+	return (x - MIN_ANGLE) * (SERVO_MAX - SERVO_MIN) / (MAX_ANGLE - MIN_ANGLE) + SERVO_MIN;
 }
 
 void emu_intialize()
@@ -107,8 +112,6 @@ void emu_intialize()
 	xE = XE_START;   //X position relative to centre of robot base
 	yE = YE_START;    //Y position relative to centre of robot base
 	zE = ZE_START;   //Z position relative to centre of robot base
-
-
 
 	/* Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings */
  	emu_ikrun(xE,yE,zE,angle4in);

@@ -15,23 +15,14 @@
 #define YE_START 0 
 #define	ZE_START 15
 
-#define BASE 0
-#define SHOULDER 1
-#define ELBOW 2
-#define GRIPPER 3
+#define MAX_ANGLE 45
+#define MIN_ANGLE -45
 
-/* ToDO: This should allow us to us M_PI but it doesn't seem to work with some compilers
- * so for now we are defining it ourselves
- */
 #define _USE_MATH_DEFINES
-//#define M_PI 3.14
  
 /* *********************************************************
- * GLOBAL VARIABLES -- ToDo: Shouldn't really be doing assignments in headers.
- * 			We should check that these are always initialised before use in code and then
- * 			remove assignments here
+ * GLOBAL VARIABLES
  * ********************************************************* */
-/////////////////////////ANGLES///////////////////////////
 double angle1;     //angle of rotation at the base
 double angle2a;    //1st possible angle of rotation at 					  //shoulder 
 double angle2b;    //2nd possible angle of rotation at 					  //shoulder 
@@ -76,7 +67,6 @@ double xE;    //X position relative to centre of robot base
 double yE;    //Y position relative to centre of robot base
 double zE;    //Z position relative to centre of robot base
 
-int base, shoulder, elbow, gripper;
 int angle4in;
 
 #endif

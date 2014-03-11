@@ -1,6 +1,11 @@
 #ifndef GLOBAL_H
 #define GLOBAL_H
 
+#define BASE 0
+#define SHOULDER 1
+#define ELBOW 2
+#define GRIPPER 3
+
 int fd;        /* /dev/mem file descriptor  */
 
 extern volatile unsigned int *mem_addr;

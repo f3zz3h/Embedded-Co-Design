@@ -1,14 +1,5 @@
 /* Based from Nigel's toggle_leds.c */
 
-#include <stdio.h>
-#include <errno.h>
-#include <string.h>
-#include <fcntl.h>
-#include <sys/ioctl.h>
-#include <sys/mman.h>
-#include <stdlib.h>
-#include <unistd.h>
-#include <signal.h>
 
 #include "global.h"
 #include "pwm.h"
@@ -22,17 +13,17 @@ void Write_PWM(int output_servo, int value)
 	/* Choose output reg, assign correct address' */
 	switch (output_servo)
 	{
-		case 0 : pwm = mem_addr + DATA_A;
+		case BASE : pwm = mem_addr + DATA_A;
 			 pwm_enable = mem_addr + PWM_A_ENABLE_REG;
 				break;
-		case 1 : pwm = mem_addr + DATA_B;
+		case SHOULDER : pwm = mem_addr + DATA_B;
 			 pwm_enable = mem_addr + PWM_B_ENABLE_REG;
 				break;
-		case 2 : pwm = mem_addr + DATA_C;
+		case ELBOW : pwm = mem_addr + DATA_C;
 			 pwm_enable = mem_addr + PWM_C_ENABLE_REG;
 				break;
-		case 3 : pwm = mem_addr + DATA_C;
-			 pwm_enable = mem_addr + PWM_C_ENABLE_REG;
+		case GRIPPER : pwm = mem_addr + DATA_D;
+			 pwm_enable = mem_addr + PWM_D_ENABLE_REG;
 				break;
 		default : printf("Attempted to use invalid PWM");
 			return;
