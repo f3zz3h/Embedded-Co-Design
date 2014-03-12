@@ -6,6 +6,10 @@
 #define ELBOW 2
 #define GRIPPER 3
 
+#define X 0
+#define Y 1
+#define Z 2
+
 int fd;        /* /dev/mem file descriptor  */
 
 extern volatile unsigned int *mem_addr;
@@ -21,13 +25,12 @@ extern unsigned int mem_phys; /*base for opencore reg */
 #include <sys/ioctl.h>
 #include <sys/mman.h>
 #include <unistd.h>
-#include "emu.h"
 
 /* Function decelerations */
 void Write_PWM(int output_servo, int value);
 int Read_Keypad();
-int emu_map(int x, int in_min, int in_max, int out_min, int out_max);
-void emu_ikrun(double xE, double yE, double zE, int angle4in);
+int emu_map(int x);
+void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle);
 void emu_intialize();
 
 #endif

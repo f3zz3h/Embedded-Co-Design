@@ -1,95 +1,114 @@
-//#include "emu.h"
 #include "global.h"
-
+#include "emu.h"
 /* WHOLE DOCUMENT - ToDo: Refactor, Rename and comment all of the code
  */
 /* Inverse Kinematics function - Kerrim Morris, Luke Hart, Joe Ellis, Lukasz Matchzak
  *
  * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
  */
-void emu_ikrun(double xE, double yE, double zE, int angle4in)
+
+int square(int x)
 {
-	int base, shoulder, elbow, gripper;
+   return x * x;
+}
+/* xyz pointer is an array of [x,y,z] and current[x,y,z] is the previous values ..
+ * grabber angle is the grabber opening amount i believe?
+ *
+ */
+void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle)
+{
+	int i;
+	int base = 0, shoulder = 0, gripper = 0 ; // elbow, NOT USED
+	float cq1 = 0.0, c3 = 0.0, s3a = 0.0, s3b = 0.0, k1 = 0.0;
+	float k2 = 0.0;
+	float xyz_pos_meters[3];
 
-	/* convert to meters */
-	xE /= 100;
-	yE /= 100;
-	zE /= 100;
+	double base_angle;     //angle of rotation at the base
+	double angle2 = 0.0;    //2nd possible angle of rotation at shoulder
 
-	xEik = xE;
-	yEik = yE;
-	zEik = zE;
+	double x4;  //wrist X positions
+	double z4;  //wrist Z positions
 
-	//angle1
-	angle1 = atan2(yEik,xEik);
-	cq1 = cos(angle1);
-	sq1 = sin(angle1);
-	angle1  = angle1 *(180/M_PI);
+	double r;
 
-	x4 = (xE - (l4*cq1))/cq1;  //wrist positions  T14
-	y4 = 0;
-	z4 = zE - l1;
+	/* change to meters */
+	for (i = 0; i < 3 ; i++)
+	{
+		xyz_pos_meters[i] = xyz_pos[i] / 100;
+	}
 
-	x4ik = x4;
-	y4ik = y4;
-	z4ik = z4;
+	/* base_angle - base */
+	base_angle = atan2(xyz_pos_meters[Y],xyz_pos_meters[X]);
+	cq1 = cos(base_angle);
+	base_angle  = base_angle *(180/M_PI);
 
-	//angle 3
-	c3 = ((x4ik*x4ik) + (z4ik*z4ik) - (l2*l2) - (l3*l3))/(2*l2*l3);
-	s3a = (1-(c3*c3));
+	x4 = (xyz_pos_meters[X] - (l4*cq1))/cq1;  //wrist positions  T14
 
+	/* not used */
+	//y4 = 0;
+	z4 = xyz_pos_meters[Z] - l1;
+
+	//angle 3 - Elbow
+	c3 = (square(x4) + square(z4) - square(l2) - square(l3)) / (2*l2*l3);
+	s3a = (1-(square(c3)));
+
+	/* ToDO: so let me get this right
+	 * if s3a less than 0
+	 * then make it zero
+	 * then sq root 0 which is 0
+	 * then multiply 0 by -1 which equals 0
+	 * then atan2(0,c3) = elbow angle 1
+	 * then atan2(0 c3) = elbow angle 2
+	 * THEN after all of this you dont use these values ANYWHERE??
 	if (s3a < 0)
 	{
-	    	s3a = 0;
+	    s3a = 0;
 		s3a = sqrt(s3a);
 		s3b = -1* s3a;
-		angle3a = (atan2(s3a,c3))/(M_PI/180);
-		angle3b = (atan2(s3b,c3))/(M_PI/180);
+		elbow_angle_1 = (atan2(s3a,c3))/(M_PI/180);
+		elbow_angle_2 = (atan2(s3b,c3))/(M_PI/180);
 	}
 
 
-	//angle 2
-	cq3 = cos((angle3a)*(M_PI/180));
-	sq3 = sin((angle3a)*(M_PI/180));
+	ALL I CAN SEE THIS DOING IS
+	if s3a < 0 then s3b = 0
+	SO HAVE PUT THIS CODE BELOW
+	*/
+	if (s3a < 0) s3b = 0;
+
+	/* angle 2 - shoulder */
 	k1 = l2+l3*c3;
 	k2 = l3*s3b;
-	r = sqrt((k1*k1) + (k2*k2));
-	val5 = (z4ik/r)/(x4ik/r);
-	val6 = (k2/k1);
-	angle2a = (atan2((z4ik/r),(x4ik/r)))-(atan2(k2,k1));
+	r = sqrt(square(k1) + square(k2));
+	/* NOT BEING USED??
+	angle2a = (atan2((z4/r),(x4/r)))-(atan2(k2,k1));
 	angle2a = angle2a/(M_PI/180);
-	val7 = (z4ik/r)/(x4ik/r);
-	val8 = ((-1*k2)/k1);
-	angle2b = (atan2((z4ik/r),(x4ik/r)))-(atan2((-1*k2),k1));
-	angle2b = angle2b/(M_PI/180);
+	angle2a = (int)floor(angle2a);
+	*/
 
-	angle1int = (int)floor(angle1);
-	angle2bint = (int)floor(angle2b);
-	angle3aint = (int)floor(angle3a);
-	angle4int = angle4in;
+	angle2 = (atan2((z4/r),(x4/r)))-(atan2((-1*k2),k1));
+	angle2 = angle2/(M_PI/180);
+	angle2 = (int)floor(angle2);
 
-	int angle2aint = (int)floor(angle2a);
-	int angle3bint = (int)floor(angle3b);
+	base_angle = (int)floor(base_angle);
+
+	//angle3aint = (int)floor(elbow_angle_1);
+
+	//int angle2aint = (int)floor(angle2a);
+	//int angle3bint = (int)floor(elbow_angle_2);
 
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
-	if((angle1int <= 45 && angle1int >= -45) && (angle2bint <= 45 && angle2bint >= -45) )
+	if((base_angle <= 45 && base_angle >= -45) && (angle2 <= 45 && angle2 >= -45) )
   	{
-		base = emu_map(angle1int);
-		shoulder = emu_map(angle2bint);
-		gripper = emu_map(angle4int);// 0 - 1 min and max not the angles soo need to fix this
-		//???????????????
-		xEholder = (xE * 100) -5;
-		yEholder = (yE * 100) -5;
-		zEholder = (zE * 100) -5;
-	}
-	/* If the move command is outside of the operating envelope of the servos make the
-	 * Inverse Kinematic coordinates for xE, yE and zE equal to the last in-range values
-	 * as dictated by *Eholder */
-	else 	//if(angle1int > 45 || angle1int < -45 || angle2bint > 45 || angle2bint < -45 )
-	{
-		xE = xEholder;
-		yE = yEholder;
-		zE = zEholder;
+		base = emu_map(base_angle);
+		shoulder = emu_map(angle2);
+		gripper = emu_map(grabber_angle);// 0 - 1 min and max not the angles soo need to fix this
+
+		/* ToDo: Why 5 ? ? ? */
+		for (i = 0; i < 3 ; i++)
+		{
+			xyz_pos[i] -= 5;
+		}
 	}
 
 	/* Send the move commands to each of the servos, Base, Shoulder, Gripper. The Elbow is currently controlled
@@ -107,12 +126,9 @@ int emu_map(int x)
 	return (x - MIN_ANGLE) * (SERVO_MAX - SERVO_MIN) / (MAX_ANGLE - MIN_ANGLE) + SERVO_MIN;
 }
 
-void emu_intialize()
+void emu_intialize(float* xyz_pos)
 {
-	xE = XE_START;   //X position relative to centre of robot base
-	yE = YE_START;    //Y position relative to centre of robot base
-	zE = ZE_START;   //Z position relative to centre of robot base
-
-	/* Call of Inverse Kinematic function to set the start position of the EMU arm using the previously defined angle settings */
- 	emu_ikrun(xE,yE,zE,angle4in);
+	xyz_pos[X] = X_START;   //X position relative to centre of robot base
+	xyz_pos[Y] = Y_START;    //Y position relative to centre of robot base
+	xyz_pos[Z] = Z_START;   //Z position relative to centre of robot base
 }

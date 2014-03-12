@@ -11,62 +11,14 @@
 #define SERVO_MAX 34
 #define SERVO_MID 28
 
-#define	XE_START 29
-#define YE_START 0 
-#define	ZE_START 15
+#define	X_START 29
+#define Y_START 0 
+#define	Z_START 15
 
 #define MAX_ANGLE 45
 #define MIN_ANGLE -45
 
 #define _USE_MATH_DEFINES
- 
-/* *********************************************************
- * GLOBAL VARIABLES
- * ********************************************************* */
-double angle1;     //angle of rotation at the base
-double angle2a;    //1st possible angle of rotation at 					  //shoulder 
-double angle2b;    //2nd possible angle of rotation at 					  //shoulder 
-double angle3a;    //1st possible angle of rotation at 					  //elbow  - matches 2b
-double angle3b;    //2nd possible angle of rotation at 					  //elbow - matches 2a
-double angle4a;    //wrist angle - place holder, never 					  //used
 
-double xEik;
-double yEik;
-double zEik;
-
-double x4ik;
-double y4ik;
-double z4ik;
-double cq1;
-double sq1;
-double x4;  //wrist X positions 
-double y4;  //wrist Y positions 
-double z4;  //wrist Z positions 
-
-double c3;
-double s3a;
-double s3b;
-
-double cq3;
-double sq3;
-double k1;
-double k2;
-double r;
-double val5;
-double val6;
-double val7;
-double val8;
-
-double xEholder;
-double yEholder;
-double zEholder;
-
-int angle1int, angle2bint, angle3aint, angle4int;
-
-double xE;    //X position relative to centre of robot base
-double yE;    //Y position relative to centre of robot base
-double zE;    //Z position relative to centre of robot base
-
-int angle4in;
 
 #endif
