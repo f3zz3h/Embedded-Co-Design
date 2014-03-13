@@ -10,6 +10,10 @@
 #define Y 1
 #define Z 2
 
+#define SERVO_MIN 21
+#define SERVO_MAX 34
+#define SERVO_MID 28
+
 int fd;        /* /dev/mem file descriptor  */
 
 extern volatile unsigned int *mem_addr;

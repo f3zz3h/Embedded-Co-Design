@@ -1,6 +1,5 @@
 /* Based from Nigel's toggle_leds.c */
 
-
 #include "global.h"
 #include "pwm.h"
 

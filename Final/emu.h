@@ -7,10 +7,6 @@
 #define l3  0.12    //link3
 #define l4  0.07    //link4
 
-#define SERVO_MIN 21
-#define SERVO_MAX 34
-#define SERVO_MID 28
-
 #define	X_START 29
 #define Y_START 0 
 #define	Z_START 15
@@ -20,5 +16,6 @@
 
 #define _USE_MATH_DEFINES
 
+int square(int x);
 
 #endif

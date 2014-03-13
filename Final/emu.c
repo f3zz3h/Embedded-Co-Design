@@ -6,7 +6,6 @@
  *
  * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
  */
-
 int square(int x)
 {
    return x * x;
@@ -43,48 +42,22 @@ void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle)
 	base_angle  = base_angle *(180/M_PI);
 
 	x4 = (xyz_pos_meters[X] - (l4*cq1))/cq1;  //wrist positions  T14
-
-	/* not used */
-	//y4 = 0;
 	z4 = xyz_pos_meters[Z] - l1;
 
 	//angle 3 - Elbow
 	c3 = (square(x4) + square(z4) - square(l2) - square(l3)) / (2*l2*l3);
 	s3a = (1-(square(c3)));
 
-	/* ToDO: so let me get this right
-	 * if s3a less than 0
-	 * then make it zero
-	 * then sq root 0 which is 0
-	 * then multiply 0 by -1 which equals 0
-	 * then atan2(0,c3) = elbow angle 1
-	 * then atan2(0 c3) = elbow angle 2
-	 * THEN after all of this you dont use these values ANYWHERE??
+	/* 2 positions for elbow??  */
 	if (s3a < 0)
 	{
-	    s3a = 0;
-		s3a = sqrt(s3a);
-		s3b = -1* s3a;
-		elbow_angle_1 = (atan2(s3a,c3))/(M_PI/180);
-		elbow_angle_2 = (atan2(s3b,c3))/(M_PI/180);
+		s3b = 0;
 	}
-
-
-	ALL I CAN SEE THIS DOING IS
-	if s3a < 0 then s3b = 0
-	SO HAVE PUT THIS CODE BELOW
-	*/
-	if (s3a < 0) s3b = 0;
 
 	/* angle 2 - shoulder */
 	k1 = l2+l3*c3;
 	k2 = l3*s3b;
 	r = sqrt(square(k1) + square(k2));
-	/* NOT BEING USED??
-	angle2a = (atan2((z4/r),(x4/r)))-(atan2(k2,k1));
-	angle2a = angle2a/(M_PI/180);
-	angle2a = (int)floor(angle2a);
-	*/
 
 	angle2 = (atan2((z4/r),(x4/r)))-(atan2((-1*k2),k1));
 	angle2 = angle2/(M_PI/180);
@@ -92,17 +65,12 @@ void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle)
 
 	base_angle = (int)floor(base_angle);
 
-	//angle3aint = (int)floor(elbow_angle_1);
-
-	//int angle2aint = (int)floor(angle2a);
-	//int angle3bint = (int)floor(elbow_angle_2);
-
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
 	if((base_angle <= 45 && base_angle >= -45) && (angle2 <= 45 && angle2 >= -45) )
   	{
 		base = emu_map(base_angle);
 		shoulder = emu_map(angle2);
-		gripper = emu_map(grabber_angle);// 0 - 1 min and max not the angles soo need to fix this
+		gripper = emu_map(grabber_angle);/* ToDo: 0 - 1 min and max not the angles soo need to fix this */
 
 		/* ToDo: Why 5 ? ? ? */
 		for (i = 0; i < 3 ; i++)
