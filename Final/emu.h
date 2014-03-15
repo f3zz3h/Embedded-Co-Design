@@ -8,7 +8,7 @@
 #define l4  0.07    //link4
 
 #define	X_START 29
-#define Y_START 0 
+#define Y_START 1
 #define	Z_START 15
 
 #define MAX_ANGLE 45

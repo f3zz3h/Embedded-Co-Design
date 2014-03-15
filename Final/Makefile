@@ -1,6 +1,6 @@
 CC = gcc
 CFLAGS = -Wall -O2
-LIBS = -lm
+LIBS = -lm -pthread
 TARGET = release-0.1
 SRCS = main.c emu.c keypad.c pwm.c  
 # // ToDo: lcd.c needs adding to the mix

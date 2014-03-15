@@ -14,7 +14,7 @@ int square(int x)
  * grabber angle is the grabber opening amount i believe?
  *
  */
-void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle)
+void emu_ikrun(float* xyz_pos, int grabber_angle)
 {
 	int i;
 	int base = 0, shoulder = 0, gripper = 0 ; // elbow, NOT USED
@@ -65,25 +65,25 @@ void emu_ikrun(float* xyz_pos, float* current_xyz, int grabber_angle)
 
 	base_angle = (int)floor(base_angle);
 
+	printf("Base angle: %d, Angle 2:%d",base_angle, angle2);
+
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
 	if((base_angle <= 45 && base_angle >= -45) && (angle2 <= 45 && angle2 >= -45) )
   	{
 		base = emu_map(base_angle);
 		shoulder = emu_map(angle2);
 		gripper = emu_map(grabber_angle);/* ToDo: 0 - 1 min and max not the angles soo need to fix this */
-
-		/* ToDo: Why 5 ? ? ? */
-		for (i = 0; i < 3 ; i++)
-		{
-			xyz_pos[i] -= 5;
-		}
 	}
 
 	/* Send the move commands to each of the servos, Base, Shoulder, Gripper. The Elbow is currently controlled
 	 * directly at the function call of the correct keypad press - only moves to two static positions*/
+	/* Print to see whats happening */
 	Write_PWM(BASE, base);
+	//printf("Writing to BASE with value %d\n", base);
 	Write_PWM(SHOULDER, shoulder);
+	//printf("Writing to SHOULDER with value %d\n", shoulder);
 	Write_PWM(GRIPPER, gripper);
+	//printf("Writing to GRIPPER with value %d\n", gripper);
 }
 
 /****************************************************
