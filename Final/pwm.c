@@ -73,10 +73,5 @@ int Read_PWM(int servo)
 
 	/* Enable PWM, read value from reg*/
 	*pwm_enable = ENABLE;
-	value = *pwm;
-
-	/* Print to see whats happening */
-	//printf("Reading pwm value as :%d\n", value);
-
-	return value;
+	return *pwm;
 }

@@ -50,7 +50,7 @@ int main( void )
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);
 
-	int sVal = SERVO_MID-3, eVal = SERVO_MID, bVal = SERVO_MID, gVal = SERVO_MID;
+	int sVal = SERVO_MID-3, eVal = SERVO_MID, bVal = SERVO_MID, gVal = SERVO_MAX;
 
 	while(1)
 	{
@@ -72,7 +72,7 @@ int main( void )
 					//emu_intialize(xyz_pos);
 					break;
 			case 2 : if (sVal < SERVO_MAX) sVal++;
-					if (eVal > SERVO_MIIN) eVal--;
+					//if (eVal > SERVO_MIN) eVal--;
 					//xyz_pos[Y] = xyz_pos[Y] - 5;
 
 					break;
@@ -109,7 +109,7 @@ int main( void )
 			case 9 : //PLAYBACK
 					break;
 			case 10 : if (sVal > SERVO_MIN) sVal--;
-					if (eVal < SERVO_MAX) eVal++;
+					//if (eVal < SERVO_MAX) eVal++;
 				//xyz_pos[Y] = xyz_pos[Y] + 5;
 
 					break;
@@ -129,9 +129,10 @@ int main( void )
 					for (i = 0; i < 3 ; i++)
 					{
 						printf("XYZ[%d]: %f\n\n", i, xyz_pos[i]);
+						printf("Servo:%d: %d\n\n", i, Read_PWM(i));
 					}
 					break;
-			default : printf("Key val not defined = %x\n", temp_key);
+			default : break; printf("Key val not defined = %x\n", temp_key);
 					
 		}
 
