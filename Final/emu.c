@@ -6,7 +6,7 @@
  *
  * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
  */
-int square(int x)
+float square(float x)
 {
    return x * x;
 }
@@ -14,26 +14,24 @@ int square(int x)
  * grabber angle is the grabber opening amount i believe?
  *
  */
-void emu_ikrun(float* xyz_pos, int grabber_angle)
+void emu_ikrun(float xyz_pos[3], int* servo_vals)
 {
 	int i;
-	int base = 0, shoulder = 0, gripper = 0 ; // elbow, NOT USED
-	float cq1 = 0.0, c3 = 0.0, s3a = 0.0, s3b = 0.0, k1 = 0.0;
+	int shoulder_angle_int, base_angle_int, elbow_angle_int;
+	float cq1 = 0.0, c3 = 0.0, elbow_step_1 = 0.0, k1 = 0.0;
 	float k2 = 0.0;
 	float xyz_pos_meters[3];
+	float q3a;
+	float elbow_angle, base_angle, shoulder_angle;    //2nd possible angle of rotation at shoulder
 
-	double base_angle;     //angle of rotation at the base
-	double angle2 = 0.0;    //2nd possible angle of rotation at shoulder
-
-	double x4;  //wrist X positions
-	double z4;  //wrist Z positions
-
-	double r;
+	float x4,z4;  //wrist X,Y positions
+	float ref_dist;
 
 	/* change to meters */
 	for (i = 0; i < 3 ; i++)
 	{
-		xyz_pos_meters[i] = xyz_pos[i] / 100;
+		/* These values checked and are correct */
+		xyz_pos_meters[i] = xyz_pos[i];// / 100;
 	}
 
 	/* base_angle - base */
@@ -46,44 +44,37 @@ void emu_ikrun(float* xyz_pos, int grabber_angle)
 
 	//angle 3 - Elbow
 	c3 = (square(x4) + square(z4) - square(l2) - square(l3)) / (2*l2*l3);
-	s3a = (1-(square(c3)));
+	elbow_step_1 = sqrt(1-(square(c3)));
+	float elbow_step_2 = -sqrt(1-(square(c3)));
 
-	/* 2 positions for elbow??  */
-	if (s3a < 0)
-	{
-		s3b = 0;
-	}
+	q3a = atan2(elbow_step_1, c3);
+	//q3b = atan2(elbow_step_2, c3);
 
+	elbow_angle = q3a * (180/M_PI);
 	/* angle 2 - shoulder */
 	k1 = l2+l3*c3;
-	k2 = l3*s3b;
-	r = sqrt(square(k1) + square(k2));
+	k2 = l3*elbow_step_2;
 
-	angle2 = (atan2((z4/r),(x4/r)))-(atan2((-1*k2),k1));
-	angle2 = angle2/(M_PI/180);
-	angle2 = (int)floor(angle2);
+	ref_dist = sqrt(square(k1) + square(k2));
 
-	base_angle = (int)floor(base_angle);
+	shoulder_angle = (atan2((z4/ref_dist),(x4/ref_dist)))-(atan2((-1*k2),k1));
+	shoulder_angle = shoulder_angle/(M_PI/180);
 
-	printf("Base angle: %d, Angle 2:%d",base_angle, angle2);
+	shoulder_angle_int = (int)floor(shoulder_angle);
+	base_angle_int = (int)floor(base_angle);
+	elbow_angle_int = (int)floor(elbow_angle);
+
+	printf("\nBase angle: %u\nShoulder Angle:%u\nEblow Angle: %u\n\n",base_angle_int, shoulder_angle_int,elbow_angle_int);
 
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
-	if((base_angle <= 45 && base_angle >= -45) && (angle2 <= 45 && angle2 >= -45) )
+	if(((base_angle_int <= MAX_ANGLE)   &&(base_angle_int > MIN_ANGLE)) &&
+			((shoulder_angle_int <= MAX_ANGLE) && (shoulder_angle_int >= MIN_ANGLE)))
   	{
-		base = emu_map(base_angle);
-		shoulder = emu_map(angle2);
-		gripper = emu_map(grabber_angle);/* ToDo: 0 - 1 min and max not the angles soo need to fix this */
+		servo_vals[BASE] = emu_map(base_angle_int);
+		servo_vals[SHOULDER] = emu_map(shoulder_angle_int);
+		servo_vals[ELBOW] = emu_map(elbow_angle_int);
 	}
 
-	/* Send the move commands to each of the servos, Base, Shoulder, Gripper. The Elbow is currently controlled
-	 * directly at the function call of the correct keypad press - only moves to two static positions*/
-	/* Print to see whats happening */
-	Write_PWM(BASE, base);
-	//printf("Writing to BASE with value %d\n", base);
-	Write_PWM(SHOULDER, shoulder);
-	//printf("Writing to SHOULDER with value %d\n", shoulder);
-	Write_PWM(GRIPPER, gripper);
-	//printf("Writing to GRIPPER with value %d\n", gripper);
 }
 
 /****************************************************
@@ -94,9 +85,11 @@ int emu_map(int x)
 	return (x - MIN_ANGLE) * (SERVO_MAX - SERVO_MIN) / (MAX_ANGLE - MIN_ANGLE) + SERVO_MIN;
 }
 
-void emu_intialize(float* xyz_pos)
+void emu_intialize(float* xyz_pos, int* sVals)
 {
-	xyz_pos[X] = X_START;   //X position relative to centre of robot base
+	xyz_pos[X] = X_START;   //X position relative to centre of robot base //ToDo: On return this value if lost
 	xyz_pos[Y] = Y_START;    //Y position relative to centre of robot base
 	xyz_pos[Z] = Z_START;   //Z position relative to centre of robot base
+	sVals[GRIPPER] = SERVO_MAX;
+
 }

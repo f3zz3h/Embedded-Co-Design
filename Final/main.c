@@ -14,10 +14,13 @@ pthread_mutex_t keypad_mutex = PTHREAD_MUTEX_INITIALIZER;
 int main( void )
 {
 	float xyz_pos[3];
+	int sVals[4]; //Servo int write values
 	int page_size = getpagesize();
-	int i, grabber_val = 0;
+	int i;
 	int temp_key = 0;
 	pthread_t keypad_thread;
+
+	int eVal, bVal, gVal, sVal;
 
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -44,46 +47,42 @@ int main( void )
 		return -1;
 	}
 
-	//Intialize the emu array
-	//emu_intialize(xyz_pos);
+	/* Intialize the emu array */
+	emu_intialize(xyz_pos, sVals);
 
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);
 
-	int sVal = SERVO_MID-3, eVal = SERVO_MID, bVal = SERVO_MID, gVal = SERVO_MAX;
-
 	while(1)
 	{
 
-		/* Run the inverse kinematics */
-		Write_PWM(ELBOW, eVal);
-		Write_PWM(SHOULDER, sVal );
-		Write_PWM(BASE, bVal);
-		Write_PWM(GRIPPER, gVal);
-		//emu_ikrun(xyz_pos,grabber_val);
+		emu_ikrun(xyz_pos,sVals);
+
+		for (i = 0; i < 4; i++)
+		{
+
+			printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
+			Write_PWM(i, sVals[i]);
+		}
 
 		switch (temp_key)
 		{
 			//Row 1 [ 1 - 4 ]
-			case 1 : sVal = SERVO_MID-3;
-					 eVal = SERVO_MID;
-					 bVal = SERVO_MID;
-					 gVal = SERVO_MID;
-					//emu_intialize(xyz_pos);
+			case 1 : emu_intialize(xyz_pos, sVals);
 					break;
-			case 2 : if (sVal < SERVO_MAX) sVal++;
+			case 2 : //xyz_pos[Y] -= 0.02;
+					//if (sVal < SERVO_MAX) sVal++;
 					//if (eVal > SERVO_MIN) eVal--;
 					//xyz_pos[Y] = xyz_pos[Y] - 5;
 
 					break;
-			case 3 : //GRABBER open or close
-					if ( gVal == SERVO_MIN)
+			case 3 : if ( sVals[GRIPPER] == SERVO_MIN)
 					{
-						gVal = SERVO_MAX;
+						sVals[GRIPPER] = SERVO_MAX;
 					}
 					else
 					{
-						gVal = SERVO_MIN;
+						sVals[GRIPPER]= SERVO_MIN;
 					}
 					break;
 			case 4 : xyz_pos[Z] = xyz_pos[Z] + 5;
@@ -126,11 +125,12 @@ int main( void )
 					break;
 			case 16 ://MENU STUFF (FOR NOW JUST PRINT)
 
-					for (i = 0; i < 3 ; i++)
+					for (i = 0; i < 4 ; i++)
 					{
-						printf("XYZ[%d]: %f\n\n", i, xyz_pos[i]);
+						//printf("XYZ[%d]: %f\n\n", i, xyz_pos[i]);
 						printf("Servo:%d: %d\n\n", i, Read_PWM(i));
 					}
+					sleep(1);
 					break;
 			default : break; printf("Key val not defined = %x\n", temp_key);
 					

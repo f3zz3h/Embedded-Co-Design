@@ -39,8 +39,8 @@ int key_val;
 void Write_PWM(int output_servo, int value);
 void* Read_Keypad();
 int emu_map(int x);
-void emu_ikrun(float* xyz_pos, int grabber_angle);
-void emu_intialize(float* xyz_pos);
+void emu_ikrun(float xyz_pos[3], int* servo_vals);
+void emu_intialize(float* xyz_pos, int* servo_vals);
 int Read_PWM(int servo);
 
 #endif
