@@ -70,7 +70,7 @@ int main( void )
 			//Row 1 [ 1 - 4 ]
 			case 1 : emu_intialize(xyz_pos, sVals);
 					break;
-			case 2 : xyz_pos[Y] -= 0.02; //PROBABLY BEST TO FUNCTIONALIZE TO KEEP WITHIN CONSTRAINTS
+			case 2 : xyz_pos[Y] -= 0.02;
 					//if (sVal < SERVO_MAX) sVal++;
 					//if (eVal > SERVO_MIN) eVal--;
 					//xyz_pos[Y] = xyz_pos[Y] - 5;
