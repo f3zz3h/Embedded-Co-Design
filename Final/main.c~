@@ -48,9 +48,6 @@ int main( void )
 	/* Intialize the emu array */
 	emu_intialize(xyz_pos, sVals);
 
-	/* Initialize the LCD screen */
-	lcdinit();
-
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);
 

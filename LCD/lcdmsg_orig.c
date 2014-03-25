@@ -6,6 +6,8 @@
 #include<string.h>
 
 #define GPIOBASE	0x80840000
+#define MODELBASE       0x22000000
+#define TS7300  0x03
 #define PADR	0
 #define PADDR	(0x10 / sizeof(unsigned int))
 #define PAMASK  0x7F  
@@ -17,9 +19,9 @@
 
 // These delay values are calibrated for the EP9301 
 // CPU running at 166 Mhz, but should work also at 200 Mhz
-#define SETUP	100
-#define PULSE	100
-#define HOLD	100
+#define SETUP	15
+#define PULSE	36
+#define HOLD	22
 
 #define COUNTDOWN(x)	asm volatile ( \
   "1:\n"\
@@ -28,6 +30,8 @@
   : "=r" ((x)) : "r" ((x)) \
 );
 
+volatile unsigned int *model_ptr;
+unsigned int model;
 volatile unsigned int *gpio;
 volatile unsigned int *phdr;
 volatile unsigned int *phddr;
@@ -38,6 +42,7 @@ volatile unsigned int *paddr;
 
 void command(unsigned int);
 void writechars(unsigned char *);
+unsigned int lcdwait(void);
 void lcdinit(void);
 
 /* This program takes lines from stdin and prints them to the
@@ -57,7 +62,8 @@ int main(int argc, char **argv) {
 	}
 	if (argc > 2) {
 		writechars(argv[1]);
-		command(0xC0); // set DDRAM addr to second row
+		lcdwait();
+		command(0xa8); // set DDRAM addr to second row
 		writechars(argv[2]);
 	}
 	if (argc >= 2) return 0;
@@ -65,14 +71,14 @@ int main(int argc, char **argv) {
 	while(!feof(stdin)) {
 		unsigned char buf[512];
 
+		lcdwait();
 		if (i) {
 			// XXX: this seek addr may be different for different
 			// LCD sizes!  -JO
-			command(0xC0); // set DDRAM addr to second row
-		} 
-		//else {
-		//	command(0x1); // return home
-		//}
+			command(0xa8); // set DDRAM addr to second row
+		} else {
+			command(0x2); // return home
+		}
 		i = i ^ 0x1;
 		if (fgets(buf, sizeof(buf), stdin) != NULL) {
 			unsigned int len;
@@ -90,21 +96,31 @@ void lcdinit(void) {
 
 	gpio = (unsigned int *)mmap(0, getpagesize(), 
 	  PROT_READ|PROT_WRITE, MAP_SHARED, fd, GPIOBASE);
-	
+	model_ptr = (unsigned int *)mmap(0, getpagesize(), 
+	  PROT_READ|PROT_WRITE, MAP_SHARED, fd, MODELBASE);
+
+	model = *model_ptr & 0x03;
+
 	phdr = &gpio[PHDR];
 	padr = &gpio[PADR];
 	paddr = &gpio[PADDR];
 	
-	pcdr = &gpio[PCDR];
-	pcddr = &gpio[PCDDR];
-	
+	if(model == TS7300) {
+		pcdr = &gpio[PCDR];
+		pcddr = &gpio[PCDDR];
+	}
+
 	phddr = &gpio[PHDDR];
 	
-	*paddr & ~PAMASK;  // port A to inputs
-	*pcddr & ~PCMASK;  // port C to inputs
+	if(model == TS7300) {
+		*paddr & ~PAMASK;  // port A to inputs
+		*pcddr & ~PCMASK;  // port C to inputs
 //printf("CLEARED, paddr = 0x%x, pcddr = 0x%x\n", *paddr, *pcddr);
+	} else {
+		*paddr = 0x0;  // All of port A to inputs
+	}
 
-	*phddr |= 0x38;string to byte array // bits 3:5 of port H to outputs
+	*phddr |= 0x38; // bits 3:5 of port H to outputs
 	*phdr &= ~0x18; // de-assert EN, de-assert RS
 	usleep(15000);
 	command(0x38); // two rows, 5x7, 8 bit
@@ -113,33 +129,95 @@ void lcdinit(void) {
 	usleep(100);
 	command(0x38); // two rows, 5x7, 8 bit
 	command(0x6); // cursor increment mode
-	usleep(2000);
+	lcdwait();
 	command(0x1); // clear display
-	usleep(2000);
-	command(0xF); // display on, blink off, cursor off
-	usleep(2000);
-	command(0x3C); // Number of lines = 2 + font size = 5x11
-	usleep(2000);
+	lcdwait();
+	command(0xc); // display on, blink off, cursor off
+	lcdwait();
 	command(0x2); // return home
+}
+
+unsigned int lcdwait(void) {
+	int i, dat, tries = 0;
+	unsigned int ctrl = *phdr;
+
+	if(model == TS7300) {
+		*paddr = 0x00;//*paddr & ~PAMASK;  // port A to inputs
+		*pcddr = 0x00;//*pcddr & ~PCMASK;  // port C to inputs
+//printf("CLEARED, paddr = 0x%x, pcddr = 0x%x\n", *paddr, *pcddr);
+	} else {
+		*paddr = 0x0;  // All of port A to inputs
+	}
+
+	ctrl = *phdr;
+	
+	do {
+		// step 1, apply RS & WR
+		ctrl |= 0x30; // de-assert WR
+		ctrl &= ~0x10; // de-assert RS
+		*phdr = ctrl;
+
+		// step 2, wait
+		i = SETUP;
+		COUNTDOWN(i);
+
+		// step 3, assert EN
+		ctrl |= 0x8;
+		*phdr = ctrl;
+
+		// step 4, wait
+		i = PULSE;
+		COUNTDOWN(i);
+
+		// step 5, de-assert EN, read result
+
+		if(model == TS7300) {
+		  dat = (*padr & PAMASK) | ((*pcdr & PCMASK) << 7);  
+
+//printf("dat = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", dat, *padr, *pcdr);
+		} else {
+		  dat = *padr;
+		}
+
+
+		ctrl &= ~0x8; // de-assert EN
+		*phdr = ctrl;
+
+		// step 6, wait
+		i = HOLD;
+		COUNTDOWN(i);
+	} while (dat & 0x80 && tries++ < 1000);
+	return dat;
 }
 
 void command(unsigned int cmd) {
 	int i;
 	unsigned int ctrl = *phdr;
 
-	*paddr = *paddr | PAMASK; //set port A to outputs
-	*pcddr = *pcddr | PCMASK; //set port C to outputs
-
-	printf("SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
+	if(model == TS7300) {
+		*paddr = *paddr | PAMASK; //set port A to outputs
+		*pcddr = *pcddr | PCMASK; //set port C to outputs
+//printf("SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
+	} else {
+		*paddr = 0xff; // set port A to outputs
+	}
 	
 	// step 1, apply RS & WR, send data
-	*padr = *padr & ~PAMASK;
-	*pcdr = *pcdr & ~PCMASK;
-	*padr = (*padr & ~PAMASK) | (cmd & PAMASK);
-	//if bit 7 of cmd is set the set bit 0 of pcdr
-	//if bit 7 of cmd is clear then clear bit 0 of pcdr
-	*pcdr = *pcdr | (cmd >> 7);
+	if(model == TS7300) {
+//printf("*padr = 0x%x, *pcdr = 0x%x\n", *padr, *pcdr);
+		*padr = *padr & ~PAMASK;
+		*pcdr = *pcdr & ~PCMASK;
+		*padr = (*padr & ~PAMASK) | (cmd & PAMASK);
+//if bit 7 of cmd is set the set bit 0 of pcdr
+//if bit 7 of cmd is clear then clear bit 0 of pcdr
+		*pcdr = *pcdr | (cmd >> 7);
 		
+
+//printf("cmd = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", cmd, *padr, *pcdr);
+	} else {
+		*padr = cmd;
+	}
+
 	ctrl &= ~0x30; // de-assert RS, assert WR
 	*phdr = ctrl;
 
@@ -164,28 +242,33 @@ void command(unsigned int cmd) {
 	COUNTDOWN(i);
 }
 
-void writechars(unsigned char *text) {
+void writechars(unsigned char *dat) {
 	int i;
 	unsigned int ctrl = *phdr;
 
-	do 
-	{
+	do {
+		lcdwait();
+
+	if(model == TS7300) {
 		*paddr = *paddr | PAMASK; //set port A to outputs
 		*pcddr = *pcddr | PCMASK; //set port C to outputs
+//printf("SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
+	} else {
+		*paddr = 0xff; // set port A to outputs
+	}
 
-		printf("WriteChars() SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
-
-		// step 1, apply RS & WR, send data
+	// step 1, apply RS & WR, send data
+	if(model == TS7300) {
 
 		*padr = *padr & ~PAMASK;
 		*pcdr = *pcdr & ~PCMASK;
-		*padr = *padr | (*text & PAMASK);
-		*pcdr = *pcdr | ((*text >> 7) & PCMASK);
-
-		printf("Text = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *text, *padr, *pcdr);
-
-		//Incrementing the character
-		*text++;
+		*padr = *padr | (*dat & PAMASK);
+		*pcdr = *pcdr | ((*dat >> 7) & PCMASK);
+//printf("dat = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *dat, *padr, *pcdr);
+		*dat++;
+	} else {
+		*padr = *dat++;
+	}
 
 		ctrl |= 0x10; // assert RS
 		ctrl &= ~0x20; // assert WR
@@ -210,5 +293,5 @@ void writechars(unsigned char *text) {
 		// step 6, wait
 		i = HOLD;
 		COUNTDOWN(i);
-	} while(*text);
+	} while(*dat);
 }

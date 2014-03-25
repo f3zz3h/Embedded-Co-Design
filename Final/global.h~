@@ -46,6 +46,7 @@ void emu_intialize(float* xyz_pos, int* servo_vals);
 int Read_PWM(int servo);
 void ik_update_xyz(float* xyz_pos,int which,int change);
 void invert_gripper(int* sVals);
+void command(unsigned int);
 void writechars(unsigned char *);
 void lcdinit();
 
