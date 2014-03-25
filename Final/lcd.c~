@@ -11,8 +11,13 @@
 
 void lcdinit() 
 {
-	gpio = (unsigned int *)mmap(0, getpagesize(), 
-	  PROT_READ|PROT_WRITE, MAP_SHARED, fd, GPIOBASE);
+	gpio = (unsigned int *)mmap(
+	0, 
+	getpagesize(), 
+	PROT_READ|PROT_WRITE, 
+	MAP_SHARED, 
+	fd, 
+	GPIOBASE);
 	
 	phdr = &gpio[PHDR];
 	padr = &gpio[PADR];
@@ -27,7 +32,7 @@ void lcdinit()
 	*pcddr & ~PCMASK;  // port C to inputs
 //printf("CLEARED, paddr = 0x%x, pcddr = 0x%x\n", *paddr, *pcddr);
 
-	*phddr |= 0x38;string to byte array // bits 3:5 of port H to outputs
+	*phddr |= 0x38; // bits 3:5 of port H to outputs
 	*phdr &= ~0x18; // de-assert EN, de-assert RS
 	usleep(15000);
 	command(0x38); // two rows, 5x7, 8 bit
@@ -136,4 +141,6 @@ void writechars(unsigned char *text) {
 		i = HOLD;
 		COUNTDOWN(i);
 	} while(*text);
+
+	pthread_exit(NULL);
 }

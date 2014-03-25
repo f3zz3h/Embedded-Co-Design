@@ -19,6 +19,7 @@ int main( void )
 	int i;
 	int temp_key = 0;
 	pthread_t keypad_thread;
+	pthread_t lcd_thread;
 
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -56,7 +57,8 @@ int main( void )
 
 	while(1)
 	{
-
+		/* Read the keypad and switch over its return value */
+		pthread_create(&lcd_thread, NULL, writechars, NULL);
 		emu_ikrun(xyz_pos,sVals);
 
 		for (i = 0; i < 4; i++)
@@ -70,15 +72,18 @@ int main( void )
 			//Row 1 [ 1 - 4 ]
 			//Reset Posotion
 			case 1 : emu_intialize(xyz_pos, sVals);
+				*lcdMsg = RESETMSG;
 					break;
 			//Forward
 			case 2 : ik_update_xyz(xyz_pos,Z,INCREMENT);
+				*lcdMsg = FWDMSG;
 					break;
 			//Grab
 			case 3 : invert_gripper(sVals);
 
 			//Up
 			case 4 : ik_update_xyz(xyz_pos,Y,INCREMENT);
+				*lcdMsg = UPMSG;
 
 					break;
 			//Row 2 [ 5 - 8 ]

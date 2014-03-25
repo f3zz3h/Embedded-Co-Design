@@ -11,8 +11,13 @@
 
 void lcdinit() 
 {
-	gpio = (unsigned int *)mmap(0, getpagesize(), 
-	  PROT_READ|PROT_WRITE, MAP_SHARED, fd, GPIOBASE);
+	gpio = (unsigned int *)mmap(
+	0, 
+	getpagesize(), 
+	PROT_READ|PROT_WRITE, 
+	MAP_SHARED, 
+	fd, 
+	GPIOBASE);
 	
 	phdr = &gpio[PHDR];
 	padr = &gpio[PADR];
@@ -87,7 +92,7 @@ void command(unsigned int cmd) {
 	COUNTDOWN(i);
 }
 
-void writechars(unsigned char *text) {
+void* writechars(unsigned char *text) {
 	int i;
 	unsigned int ctrl = *phdr;
 
@@ -136,4 +141,6 @@ void writechars(unsigned char *text) {
 		i = HOLD;
 		COUNTDOWN(i);
 	} while(*text);
+
+	pthread_exit(NULL);
 }

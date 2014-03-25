@@ -29,6 +29,13 @@
 #define INCREMENT 1
 #define DECREMENT 0
 
+#define UPMSG "UP"
+#define FWDMSG "FORWARD"
+#define DOWNMSG "DOWN"
+#define LEFTMSG "LEFT"
+#define RIGHTMSG "RIGHT"
+#define RESETMSG "RESET"n
+
 int fd;        /* /dev/mem file descriptor  */
 
 extern volatile unsigned int *mem_addr;
@@ -36,6 +43,7 @@ extern unsigned int mem_phys; /* base for opencore reg */
 extern pthread_mutex_t keypad_mutex;
 
 int key_val;
+char *lcdMsg;
 
 /* Function decelerations */
 void Write_PWM(int output_servo, int value);
