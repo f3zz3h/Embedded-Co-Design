@@ -27,6 +27,10 @@
 #define SERVO_MAX 25
 #define SERVO_MID 20
 
+
+#define INCREMENT 1
+#define DECREMENT 0
+
 int fd;        /* /dev/mem file descriptor  */
 
 extern volatile unsigned int *mem_addr;
@@ -42,5 +46,7 @@ int emu_map(int x);
 void emu_ikrun(float xyz_pos[3], int* servo_vals);
 void emu_intialize(float* xyz_pos, int* servo_vals);
 int Read_PWM(int servo);
+void ik_update_xyz(float* xyz_pos,int which,int change);
+void invert_gripper(int* sVals);
 
 #endif

@@ -20,8 +20,6 @@ int main( void )
 	int temp_key = 0;
 	pthread_t keypad_thread;
 
-	int eVal, bVal, gVal, sVal;
-
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);
 
@@ -60,69 +58,66 @@ int main( void )
 
 		for (i = 0; i < 4; i++)
 		{
-
-			printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
+			//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
 			Write_PWM(i, sVals[i]);
 		}
 
 		switch (temp_key)
 		{
 			//Row 1 [ 1 - 4 ]
+			//Reset Posotion
 			case 1 : emu_intialize(xyz_pos, sVals);
 					break;
-			case 2 : xyz_pos[Y] -= 0.02; //PROBABLY BEST TO FUNCTIONALIZE TO KEEP WITHIN CONSTRAINTS
-					//if (sVal < SERVO_MAX) sVal++;
-					//if (eVal > SERVO_MIN) eVal--;
-					//xyz_pos[Y] = xyz_pos[Y] - 5;
+			//Forward
+			case 2 : ik_update_xyz(xyz_pos,Z,INCREMENT);
+					break;
+			//Grab
+			case 3 : invert_gripper(sVals);
 
-					break;
-			case 3 : if ( sVals[GRIPPER] == SERVO_MIN)
-					{
-						sVals[GRIPPER] = SERVO_MAX;
-					}
-					else
-					{
-						sVals[GRIPPER]= SERVO_MIN;
-					}
-					break;
-			case 4 : xyz_pos[Z] = xyz_pos[Z] + 5;
+			//Up
+			case 4 : ik_update_xyz(xyz_pos,Y,INCREMENT);
 
 					break;
 			//Row 2 [ 5 - 8 ]
-			case 5 : if (bVal < SERVO_MAX) bVal++;
-
-					//move left
-					//xyz_pos[X] = xyz_pos[X] + 5;
-
+			//Left
+			case 5 : ik_update_xyz(xyz_pos,X,DECREMENT);
 					break;
-			case 6 : //RECORD HERE!?
+			//Start recording
+			case 6 :
 					break;
-			case 7 : //Move right.
-				 	 if (bVal > SERVO_MIN) bVal--;
-					//xyz_pos[X] = xyz_pos[X] + 5;
+			//Right
+			case 7 : ik_update_xyz(xyz_pos,X,INCREMENT);
 					break;
-			case 8 : //MOVE DOWN!?
-				xyz_pos[Z] = xyz_pos[Z] - 5;
+			//Down
+			case 8 : ik_update_xyz(xyz_pos,Y,DECREMENT);
 					break;
 			//Row 3 [ 9 - 12 ]
-			case 9 : //PLAYBACK
+			//Playback
+			case 9 :
 					break;
-			case 10 : if (sVal > SERVO_MIN) sVal--;
-					//if (eVal < SERVO_MAX) eVal++;
-				//xyz_pos[Y] = xyz_pos[Y] + 5;
+			//Back
+			case 10 : ik_update_xyz(xyz_pos,Z,DECREMENT);
 
 					break;
-			case 11 : //MASTER STOP!!!
+			//Master Stop
+			case 11 :
+					printf ("You've chosen to kill me!");
+					////WILL SEND OFF TO SERVOS AND EXIT
 					break;
-			case 12 : //MENU STUFF
+			//Enter
+			case 12 :
 					break;
 			//Row 4 [ 13 - 16]
+			//Undefined
 			case 13 :
 					break;
+			//Undefined
 			case 14 : 
 					break;
+			//Undefined
 			case 15 :
 					break;
+			//Return
 			case 16 ://MENU STUFF (FOR NOW JUST PRINT)
 
 					for (i = 0; i < 4 ; i++)
@@ -144,6 +139,7 @@ int main( void )
 
 		if (key_val != 0)
 		{
+			/*TODO: IF KEYPAD VAL BEING UPDATE THIS MAY NOT WORK.. NEED TO CHECK THIS OUT */
 			pthread_mutex_lock(&keypad_mutex);
 			temp_key = key_val;
 			key_val = 0;

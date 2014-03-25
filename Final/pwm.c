@@ -48,7 +48,6 @@ void Write_PWM(int output_servo, int value)
 
 int Read_PWM(int servo)
 {
-	int value;
 	volatile unsigned int *pwm;
 	volatile unsigned int *pwm_enable;
 
