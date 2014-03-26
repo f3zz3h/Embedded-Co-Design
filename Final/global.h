@@ -34,7 +34,7 @@
 #define DOWNMSG "DOWN"
 #define LEFTMSG "LEFT"
 #define RIGHTMSG "RIGHT"
-#define RESETMSG "RESET"n
+#define RESETMSG "RESET"
 
 int fd;        /* /dev/mem file descriptor  */
 
@@ -45,6 +45,9 @@ extern pthread_mutex_t keypad_mutex;
 int key_val;
 char *lcdMsg;
 
+#define REPLAY_FILE "replay.txt"
+FILE *path;
+
 /* Function decelerations */
 void Write_PWM(int output_servo, int value);
 void* Read_Keypad();
@@ -54,7 +57,12 @@ void emu_intialize(float* xyz_pos, int* servo_vals);
 int Read_PWM(int servo);
 void ik_update_xyz(float* xyz_pos,int which,int change);
 void invert_gripper(int* sVals);
-void writechars(unsigned char *);
+/* lcd */
+void* writechars();
 void lcdinit();
+void lcd_message(char* msg);
+/*replay */
+int write_path(float* xyz_pos);
+int replay();
 
 #endif

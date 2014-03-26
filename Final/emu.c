@@ -64,7 +64,8 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 	base_angle_int = (int)floor(base_angle);
 	elbow_angle_int = (int)floor(elbow_angle);
 
-	sleep(2);
+	/* Todo: This needs taking out!! */
+	sleep(0.5);
 
 	printf("\nBase angle: %d\nShoulder Angle:%d\nEblow Angle: %d\n\n",base_angle_int, shoulder_angle_int,elbow_angle_int);
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */

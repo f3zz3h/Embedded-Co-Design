@@ -2,7 +2,7 @@ CC = gcc
 CFLAGS = -Wall -O2
 LIBS = -lm -pthread
 TARGET = release-0.1
-SRCS = main.c emu.c keypad.c pwm.c lcd.c
+SRCS = main.c emu.c keypad.c pwm.c lcd.c replay.c
 OBJS = $(SRCS:.c=.o)
 
 .PHONY: depend clean

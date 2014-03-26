@@ -1,36 +1,21 @@
 #include "global.h"
 #include "lcd.h"
 
-/* This program takes lines from stdin and prints them to the
- * 2 line LCD connected to the TS-7200 LCD header.  e.g
- *
- *    echo "hello world" | lcdmesg
- * 
- * It may need to be tweaked for different size displays
- */
+void lcdinit() {
+	gpio = (unsigned int *) mmap(0, getpagesize(), PROT_READ | PROT_WRITE,
+			MAP_SHARED, fd, GPIOBASE);
 
-void lcdinit() 
-{
-	gpio = (unsigned int *)mmap(
-	0, 
-	getpagesize(), 
-	PROT_READ|PROT_WRITE, 
-	MAP_SHARED, 
-	fd, 
-	GPIOBASE);
-	
 	phdr = &gpio[PHDR];
 	padr = &gpio[PADR];
 	paddr = &gpio[PADDR];
-	
+
 	pcdr = &gpio[PCDR];
 	pcddr = &gpio[PCDDR];
-	
+
 	phddr = &gpio[PHDDR];
-	
-	*paddr & ~PAMASK;  // port A to inputs
-	*pcddr & ~PCMASK;  // port C to inputs
-//printf("CLEARED, paddr = 0x%x, pcddr = 0x%x\n", *paddr, *pcddr);
+
+	*paddr & ~PAMASK; // port A to inputs
+	*pcddr & ~PCMASK; // port C to inputs
 
 	*phddr |= 0x38; // bits 3:5 of port H to outputs
 	*phdr &= ~0x18; // de-assert EN, de-assert RS
@@ -58,8 +43,6 @@ void command(unsigned int cmd) {
 	*paddr = *paddr | PAMASK; //set port A to outputs
 	*pcddr = *pcddr | PCMASK; //set port C to outputs
 
-	//printf("SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
-	
 	// step 1, apply RS & WR, send data
 	*padr = *padr & ~PAMASK;
 	*pcdr = *pcdr & ~PCMASK;
@@ -67,80 +50,87 @@ void command(unsigned int cmd) {
 	//if bit 7 of cmd is set the set bit 0 of pcdr
 	//if bit 7 of cmd is clear then clear bit 0 of pcdr
 	*pcdr = *pcdr | (cmd >> 7);
-		
+
 	ctrl &= ~0x30; // de-assert RS, assert WR
 	*phdr = ctrl;
 
 	// step 2, wait
 	i = SETUP;
-	COUNTDOWN(i);
+	countdown(i);
 
-	// step 3, assert EN
+	/* step 3, assert EN */
 	ctrl |= 0x8;
 	*phdr = ctrl;
 
-	// step 4, wait
+	/*  step 4, wait */
 	i = PULSE;
-	COUNTDOWN(i);
+	countdown(i);
 
-	// step 5, de-assert EN	
-	ctrl &= ~0x8; // de-assert EN
+	/* step 5, de-assert EN */
+	ctrl &= ~0x8; /*  de-assert EN */
 	*phdr = ctrl;
 
-	// step 6, wait 
+	/* step 6, wait */
 	i = HOLD;
-	COUNTDOWN(i);
+	countdown(i);
 }
-
-void* writechars(unsigned char *text) {
+void* writechars() {
 	int i;
 	unsigned int ctrl = *phdr;
 
 	command(0x1);
 
-	do 
-	{
+	do {
 		*paddr = *paddr | PAMASK; //set port A to outputs
 		*pcddr = *pcddr | PCMASK; //set port C to outputs
 
-		//printf("WriteChars() SET, *paddr = 0x%x, *pcddr = 0x%x\n", *paddr, *pcddr);
-
-		// step 1, apply RS & WR, send data
+		/* step 1, apply RS & WR, send data */
 
 		*padr = *padr & ~PAMASK;
 		*pcdr = *pcdr & ~PCMASK;
-		*padr = *padr | (*text & PAMASK);
-		*pcdr = *pcdr | ((*text >> 7) & PCMASK);
+		*padr = *padr | (*lcdMsg & PAMASK);
+		*pcdr = *pcdr | ((*lcdMsg >> 7) & PCMASK);
 
-		//printf("Text = 0x%x, *padr = 0x%x, *pcdr = 0x%x\n", *text, *padr, *pcdr);
+		/* Incrementing the character */
+		*lcdMsg++;
 
-		//Incrementing the character
-		*text++;
-
-		ctrl |= 0x10; // assert RS
-		ctrl &= ~0x20; // assert WR
+		ctrl |= 0x10; /* assert RS */
+		ctrl &= ~0x20; /* assert WR */
 		*phdr = ctrl;
 
 		// step 2
 		i = SETUP;
-		COUNTDOWN(i);
+		countdown(i);
 
-		// step 3, assert EN
+		/* step 3, assert EN */
 		ctrl |= 0x8;
 		*phdr = ctrl;
 
 		// step 4, wait 800 nS
 		i = PULSE;
-		COUNTDOWN(i);
+		countdown(i);
 
-		// step 5, de-assert EN	
+		/* step 5, de-assert EN */
 		ctrl &= ~0x8; // de-assert EN
 		*phdr = ctrl;
 
-		// step 6, wait
+		/* step 6, wait */
 		i = HOLD;
-		COUNTDOWN(i);
-	} while(*text);
+		countdown(i);
+	} while (*lcdMsg);
 
 	pthread_exit(NULL);
+}
+
+void lcd_message(char* msg) {
+	lcdMsg = malloc(strlen(msg) + 1);
+	strcpy(lcdMsg, msg);
+}
+void countdown(int limit)
+{
+	int i;
+	for (i = 0; i < limit; i++)
+	{
+		usleep(1);
+	}
 }

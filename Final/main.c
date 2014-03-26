@@ -72,18 +72,18 @@ int main( void )
 			//Row 1 [ 1 - 4 ]
 			//Reset Posotion
 			case 1 : emu_intialize(xyz_pos, sVals);
-				*lcdMsg = RESETMSG;
+			lcd_message(RESETMSG) ;
 					break;
 			//Forward
 			case 2 : ik_update_xyz(xyz_pos,Z,INCREMENT);
-				*lcdMsg = FWDMSG;
+			lcd_message(FWDMSG);
 					break;
 			//Grab
 			case 3 : invert_gripper(sVals);
 
 			//Up
 			case 4 : ik_update_xyz(xyz_pos,Y,INCREMENT);
-				*lcdMsg = UPMSG;
+			lcd_message(UPMSG);
 
 					break;
 			//Row 2 [ 5 - 8 ]
@@ -139,6 +139,12 @@ int main( void )
 					
 		}
 
+		if(lcdMsg)
+		{
+			free(lcdMsg);
+		}
+
+		/* todo: Functionalize this as it is effectively our keypad debounce */
 		if (temp_key != 0)
 		{
 			printf("KeyVal:%d\n", temp_key);
@@ -153,6 +159,8 @@ int main( void )
 			key_val = 0;
 			pthread_mutex_unlock(&keypad_mutex);
 		}
+
+
 	}
 
 }
