@@ -48,7 +48,11 @@ int main( void )
 
 	/* Intialize the emu array */
 	emu_intialize(xyz_pos, sVals);
-
+	for (i = 0; i < 4; i++)
+		{
+			//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
+			sVals[i] = SERVO_MID;
+		}
 	/* Initialize the LCD screen */
 	lcdinit();
 
@@ -57,15 +61,18 @@ int main( void )
 
 	while(1)
 	{
+#ifdef IKRUN
 		/* Read the keypad and switch over its return value */
 		//pthread_create(&lcd_thread, NULL, writechars, NULL);
 		emu_ikrun(xyz_pos,sVals);
+#endif
 
 		for (i = 0; i < 4; i++)
 		{
 			//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
 			Write_PWM(i, sVals[i]);
 		}
+
 #ifdef IKRUN
 		switch (temp_key)
 		{
