@@ -39,11 +39,7 @@ void Write_PWM(int output_servo, int value)
 	pwm_reset_n = mem_addr + RESET_REG;
 	*pwm = value;
 
-	/* Give it time to process request */
-	//usleep(5000);
-
-	/* Disable PWM */
-	//*pwm_enable = DISABLE;
+	usleep(100);
 }
 
 int Read_PWM(int servo)

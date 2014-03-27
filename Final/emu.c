@@ -16,9 +16,10 @@ float square(float x)
  */
 void emu_ikrun(float xyz_pos[3], int* servo_vals)
 {
+	system("clear");
 	int shoulder_angle_int, base_angle_int, elbow_angle_int;
 	float cq1, c3,  k1, k2;
-	float elbow_step_1, elbow_step_2;
+	float elbow_step_1; //, elbow_step_2; just inverse of step 1 so removed
 	float q3a;
 	float elbow_angle, base_angle, shoulder_angle;    //2nd possible angle of rotation at shoulder
 	float x4,z4;  //wrist X,Y positions
@@ -40,7 +41,7 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 	//printf("X4: %f, Z4: %f\n", x4, z4);
 	c3 = (square(x4) + square(z4) - square(l2) - square(l3)) / (2*l2*l3);
 	elbow_step_1 = sqrt(1-(square(c3)));
-	elbow_step_2 = -sqrt(1-(square(c3)));
+	//elbow_step_2 = -sqrt(1-(square(c3)));
 
 	//printf("C3: %f, ElStep1: %f,ElStep2: %f\n", c3, elbow_step_1, elbow_step_2);
 
@@ -50,7 +51,7 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 	//printf("q3a: %f, elbow_angle: %f\n", q3a, elbow_angle);
 	/* angle 2 - shoulder */
 	k1 = l2+l3*c3;
-	k2 = l3*elbow_step_2;
+	k2 = l3*(-1*elbow_step_1);
 
 	//printf("k1: %f, k2: %f\n", k1, k2);
 	ref_dist = sqrt(square(k1) + square(k2));
@@ -67,16 +68,16 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 	/* Todo: This needs taking out!! */
 	//sleep(0.5);
 
-	//printf("\nBase angle: %d\nShoulder Angle:%d\nEblow Angle: %d\n\n",base_angle_int, shoulder_angle_int,elbow_angle_int);
+	printf("\nBase angle: %d-Shoulder Angle:%d-Eblow Angle: %d\n\n",base_angle_int, shoulder_angle_int,elbow_angle_int);
 	/* Before sending the move command to the EMU arm confirm it is within the operating envelope of the servos */
 	if((base_angle_int <= MAX_ANGLE) && (base_angle_int > MIN_ANGLE))
 	{
-		printf("Move B:\n");
+		printf("Move B:");
 		servo_vals[BASE] = emu_map(base_angle_int);
 	}
 	if ((shoulder_angle_int <= MAX_ANGLE) && (shoulder_angle_int >= MIN_ANGLE))
 	{
-		printf("Move S:\n");
+		printf("Move S:");
 		servo_vals[SHOULDER] = emu_map(shoulder_angle_int);
 	}
 	if ((elbow_angle_int <= MAX_ANGLE) && (elbow_angle_int >= MIN_ANGLE))
@@ -157,7 +158,7 @@ void ik_update_xyz(float* xyz_pos,int which,int change)
 	 *
 	 for (i = 0; i < 3;i++)
 	{
-		printf("\n -- xyz[%d] - %f",i,xyz_pos[i]);
+		printf("xyz[%d] - %f",i,xyz_pos[i]);
 	}
 	*/
 
