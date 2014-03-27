@@ -16,7 +16,6 @@ float square(float x)
  */
 void emu_ikrun(float xyz_pos[3], int* servo_vals)
 {
-	system("clear");
 	int shoulder_angle_int, base_angle_int, elbow_angle_int;
 	float cq1, c3,  k1, k2;
 	float elbow_step_1; //, elbow_step_2; just inverse of step 1 so removed
@@ -85,6 +84,8 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 		printf("Move E:\n");
 		servo_vals[ELBOW] = emu_map(elbow_angle_int);
 	}
+	//sleep(1);
+	//system("clear");
 }
 
 /****************************************************
