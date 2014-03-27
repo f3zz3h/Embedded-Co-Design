@@ -21,3 +21,8 @@ clean:
 
 depend: $(SRCS)
 	makedepend $(INCLUDES) $^
+	
+debug: CXX += -DDEBUG -g
+debug: CC += -DDEBUG -g
+debug: all
+	

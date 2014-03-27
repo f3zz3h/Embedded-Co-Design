@@ -56,7 +56,7 @@ void command(unsigned int cmd) {
 
 	// step 2, wait
 	i = SETUP;
-	countdown(i);
+	COUNTDOWN(i);
 
 	/* step 3, assert EN */
 	ctrl |= 0x8;
@@ -64,7 +64,7 @@ void command(unsigned int cmd) {
 
 	/*  step 4, wait */
 	i = PULSE;
-	countdown(i);
+	COUNTDOWN(i);
 
 	/* step 5, de-assert EN */
 	ctrl &= ~0x8; /*  de-assert EN */
@@ -72,7 +72,7 @@ void command(unsigned int cmd) {
 
 	/* step 6, wait */
 	i = HOLD;
-	countdown(i);
+	COUNTDOWN(i);
 }
 void* writechars() {
 	int i;
@@ -100,7 +100,7 @@ void* writechars() {
 
 		// step 2
 		i = SETUP;
-		countdown(i);
+		COUNTDOWN(i);
 
 		/* step 3, assert EN */
 		ctrl |= 0x8;
@@ -108,7 +108,7 @@ void* writechars() {
 
 		// step 4, wait 800 nS
 		i = PULSE;
-		countdown(i);
+		COUNTDOWN(i);
 
 		/* step 5, de-assert EN */
 		ctrl &= ~0x8; // de-assert EN
@@ -116,7 +116,7 @@ void* writechars() {
 
 		/* step 6, wait */
 		i = HOLD;
-		countdown(i);
+		COUNTDOWN(i);
 	} while (*lcdMsg);
 
 	pthread_exit(NULL);
@@ -126,7 +126,11 @@ void lcd_message(char* msg) {
 	lcdMsg = malloc(strlen(msg) + 1);
 	strcpy(lcdMsg, msg);
 }
-void countdown(int limit)
+/* USE THIS FOR IN COMPILING ON x86
+ *
+ */
+#ifdef DEBUG
+void COUNTDOWN(int limit)
 {
 	int i;
 	for (i = 0; i < limit; i++)
@@ -134,3 +138,4 @@ void countdown(int limit)
 		usleep(1);
 	}
 }
+#endif

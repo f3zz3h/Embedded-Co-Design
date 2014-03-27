@@ -14,14 +14,16 @@
 #define PULSE	100
 #define HOLD	100
 
-/* Arm only!! -- This is why not compiling for you joe :p
+/* Arm only!! -- This is why not compiling for you joe :p */
+#ifndef DEBUG
 #define COUNTDOWN(x)	asm volatile ( \
   "1:\n"\
   "subs %1, %1, #1;\n"\
   "bne 1b;\n"\
   : "=r" ((x)) : "r" ((x)) \
 );
-*/
+#endif
+
 
 volatile unsigned int *gpio;
 volatile unsigned int *phdr;
@@ -33,4 +35,6 @@ volatile unsigned int *paddr;
 
 /*Function Declarations*/
 void command(unsigned int);
-void countdown(int);
+#ifdef DEBUG
+void COUNTDOWN(int);
+#endif
