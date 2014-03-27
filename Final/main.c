@@ -82,22 +82,22 @@ int main( void )
 			case 3 : invert_gripper(sVals);
 
 			//Up
-			case 4 : ik_update_xyz(xyz_pos,Y,INCREMENT);
+			case 4 : ik_update_xyz(xyz_pos,X,INCREMENT);
 			lcd_message(UPMSG);
 
 					break;
 			//Row 2 [ 5 - 8 ]
 			//Left
-			case 5 : ik_update_xyz(xyz_pos,X,DECREMENT);
+			case 5 : ik_update_xyz(xyz_pos,Y,DECREMENT);
 					break;
 			//Start recording
 			case 6 :
 					break;
 			//Right
-			case 7 : ik_update_xyz(xyz_pos,X,INCREMENT);
+			case 7 : ik_update_xyz(xyz_pos,Y,INCREMENT);
 					break;
 			//Down
-			case 8 : ik_update_xyz(xyz_pos,Y,DECREMENT);
+			case 8 : ik_update_xyz(xyz_pos,X,DECREMENT);
 					break;
 			//Row 3 [ 9 - 12 ]
 			//Playback
