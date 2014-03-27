@@ -25,4 +25,8 @@ depend: $(SRCS)
 debug: CXX += -DDEBUG -g
 debug: CC += -DDEBUG -g
 debug: all
+
+ikrun: CXX += -DIKRUN -g
+ikrun: CXX += -DIKRUN -g
+ikrun: all
 	

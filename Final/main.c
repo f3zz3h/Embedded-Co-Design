@@ -58,7 +58,7 @@ int main( void )
 	while(1)
 	{
 		/* Read the keypad and switch over its return value */
-		pthread_create(&lcd_thread, NULL, writechars, NULL);
+		//pthread_create(&lcd_thread, NULL, writechars, NULL);
 		emu_ikrun(xyz_pos,sVals);
 
 		for (i = 0; i < 4; i++)
@@ -66,24 +66,24 @@ int main( void )
 			//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
 			Write_PWM(i, sVals[i]);
 		}
-
+#ifdef IKRUN
 		switch (temp_key)
 		{
 			//Row 1 [ 1 - 4 ]
 			//Reset Posotion
 			case 1 : emu_intialize(xyz_pos, sVals);
-			lcd_message(RESETMSG) ;
+			//lcd_message(RESETMSG) ;
 					break;
 			//Forward
 			case 2 : ik_update_xyz(xyz_pos,Z,INCREMENT);
-			lcd_message(FWDMSG);
+			//lcd_message(FWDMSG);
 					break;
 			//Grab
 			case 3 : invert_gripper(sVals);
 
 			//Up
 			case 4 : ik_update_xyz(xyz_pos,X,INCREMENT);
-			lcd_message(UPMSG);
+			//lcd_message(UPMSG);
 
 					break;
 			//Row 2 [ 5 - 8 ]
@@ -138,11 +138,74 @@ int main( void )
 			default : break; printf("Key val not defined = %x\n", temp_key);
 					
 		}
+#else
+		 switch (temp_key)
+				{
+					//Row 1 [ 1 - 4 ]
+					case 1 : sVals[SHOULDER] = SERVO_MID-3;
+							 sVals[ELBOW] = SERVO_MID;
+							 sVals[BASE] = SERVO_MID;
+							 sVals[GRIPPER] = SERVO_MAX;
+							break;
+					case 2 : if (sVals[SHOULDER] < SERVO_MAX) sVals[SHOULDER]++;
+							if (sVals[ELBOW] > SERVO_MIN) sVals[ELBOW]--;
+							break;
+					case 3 : //GRABBER open or close
+							if ( sVals[GRIPPER] == SERVO_MIN)
+							{
+								sVals[GRIPPER] = SERVO_MAX;
+							}
+							else
+							{
+								sVals[GRIPPER] = SERVO_MIN;
+							}
+							break;
+					case 4 : xyz_pos[Z] = xyz_pos[Z] + 5;
 
-		if(lcdMsg)
-		{
-			free(lcdMsg);
-		}
+							break;
+					//Row 2 [ 5 - 8 ]
+					case 5 : if (sVals[BASE] < SERVO_MAX) sVals[BASE]++;
+							break;
+					case 6 : //RECORD HERE!?
+							break;
+					case 7 : //Move right.
+							  if (sVals[BASE] > SERVO_MIN) sVals[BASE]--;
+							break;
+					case 8 : //MOVE DOWN!?
+
+							break;
+					//Row 3 [ 9 - 12 ]
+					case 9 : //PLAYBACK
+							break;
+					case 10 : if (sVals[SHOULDER]  > SERVO_MIN) sVals[SHOULDER] --;
+							if (sVals[ELBOW] < SERVO_MAX) sVals[ELBOW]++;
+							break;
+					case 11 : //MASTER STOP!!!
+							break;
+					case 12 : //MENU STUFF
+							break;
+					//Row 4 [ 13 - 16]
+					case 13 :
+							break;
+					case 14 :
+							break;
+					case 15 :
+							break;
+					case 16 ://MENU STUFF (FOR NOW JUST PRINT)
+							for (i = 0; i < 3 ; i++)
+							{
+								printf("Servo:%d: %d\n\n", i, Read_PWM(i));
+							}
+							break;
+					default : break; printf("Key val not defined = %x\n", temp_key);
+
+				}
+#endif
+
+		//if(lcdMsg)
+		//{
+		//	free(lcdMsg);
+		//}
 
 		/* todo: Functionalize this as it is effectively our keypad debounce */
 		if (temp_key != 0)
