@@ -49,14 +49,15 @@ char *lcdMsg;
 FILE *path;
 
 /* Function decelerations */
-void Write_PWM(int output_servo, int value);
+void Write_PWM(int* value);
 void* Read_Keypad();
 int emu_map(int x);
 void emu_ikrun(float xyz_pos[3], int* servo_vals);
 void emu_intialize(float* xyz_pos, int* servo_vals);
 int Read_PWM(int servo);
 void ik_update_xyz(float* xyz_pos,int which,int change);
-void invert_gripper(int* sVals);
+void decrement_gripper(int* sVals);
+void increment_gripper(int* sVals);
 /* lcd */
 void* writechars();
 void lcdinit();

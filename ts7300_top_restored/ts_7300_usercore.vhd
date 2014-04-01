@@ -80,9 +80,9 @@ end component;
   signal   dio2_read   : std_logic_vector(15 downto 0);  -- ditto
   signal   misc_read   : std_logic_vector(3 downto 0);  -- ditto
   signal  DUTY_CYCLEA : std_logic_vector(15 downto 0) := X"006F";
-  signal  DUTY_CYCLEB : std_logic_vector(15 downto 0) := X"005F";
-  signal  DUTY_CYCLEC : std_logic_vector(15 downto 0) := X"007F";
-  signal  DUTY_CYCLED : std_logic_vector(15 downto 0) := X"008F";
+  signal  DUTY_CYCLEB : std_logic_vector(15 downto 0) := X"006F";
+  signal  DUTY_CYCLEC : std_logic_vector(15 downto 0) := X"006F";
+  signal  DUTY_CYCLED : std_logic_vector(15 downto 0) := X"006F";
   signal PWM_not_reset, PWM_enable_A, PWM_enable_B, PWM_enable_C, PWM_enable_D : std_logic := '1';
 
   
@@ -156,8 +156,7 @@ begin
   headerpin_oe_o(13) <= vga_enable(6);   -- grn1
   headerpin_oe_o(15) <= vga_enable(7);   -- grn2
   headerpin_oe_o(17) <= vga_enable(8);   -- grn3
-  --headerpin_oe_o(19) <= vga_enable(9);   -- grn4
-  headerpin_oe_o(19) <= '1';
+
   
   headerpin_oe_o(4)  <= vga_enable(10);  -- red0
   headerpin_oe_o(6)  <= vga_enable(11);  -- red1
@@ -165,14 +164,13 @@ begin
   headerpin_oe_o(10) <= vga_enable(13);  -- red3
   headerpin_oe_o(12) <= vga_enable(14);  -- red4
 
-
+	--headerpin_oe_o(19) <= '1';
 	headerpin_oe_o(21) <= '1';
 	headerpin_oe_o(23) <= '1';
 	headerpin_oe_o(25) <= '1';
-  --headerpin_oe_o(21) <= dio2_enable(0);     -- DIO2
-  --headerpin_oe_o(23) <= dio2_enable(1);     -- DIO2
-  --headerpin_oe_o(25) <= dio2_enable(2);     -- DIO2
-  headerpin_oe_o(27) <= dio2_enable(3);     -- DIO2
+
+  headerpin_oe_o(27) <= '1';   
+  
   headerpin_oe_o(29) <= dio2_enable(4);     -- DIO2
   headerpin_oe_o(31) <= dio2_enable(5);     -- DIO2
   headerpin_oe_o(33) <= dio2_enable(6);     -- DIO2
@@ -217,13 +215,6 @@ begin
  headerpin_o(15) <= vga_reg(7);     --grn2
  headerpin_o(17) <= vga_reg(8);     --grn3
   
-  --For PWM now
-  --headerpin_o(19) <= dio2_reg(0);       -- DIO2
-  --headerpin_o(21) <= dio2_reg(0);       -- DIO2
-  --headerpin_o(23) <= dio2_reg(1);       -- DIO2
-  --headerpin_o(25) <= dio2_reg(2);       -- DIO2
-  
-  headerpin_o(27) <= dio2_reg(3);       -- DIO2
   headerpin_o(29) <= dio2_reg(4);       -- DIO2
   headerpin_o(31) <= dio2_reg(5);       -- DIO2
   headerpin_o(33) <= dio2_reg(6);       -- DIO2
@@ -295,34 +286,34 @@ begin
   duty_cycle => DUTY_CYCLEA,
   pwm_enable =>  PWM_enable_A,--Enable_output_A,
   resetn => PWM_not_reset,
-  pwm_out => headerpin_o(19));
+  pwm_out => headerpin_o(21));
   
   
  PWM_2:pwm
    port map (
   clk => wb_clk_i,
   duty_cycle => DUTY_CYCLEB,
-  pwm_enable =>  PWM_enable_B,--Enable_output_A,
+  pwm_enable =>  PWM_enable_B,--Enable_output_B,
     resetn => PWM_not_reset,
-  pwm_out => headerpin_o(21));
+  pwm_out => headerpin_o(23));
   
   
  PWM_3:pwm
    port map (
   clk => wb_clk_i,
-  duty_cycle => DUTY_CYCLEB,
-  pwm_enable =>  PWM_enable_C,--Enable_output_A,
+  duty_cycle => DUTY_CYCLEC,
+  pwm_enable =>  PWM_enable_C,--Enable_output_C,
     resetn => PWM_not_reset,
-  pwm_out => headerpin_o(23));
+  pwm_out => headerpin_o(25));
   
   
  PWM_4:pwm
    port map (
   clk => wb_clk_i,
-  duty_cycle => DUTY_CYCLEB,
-  pwm_enable =>  PWM_enable_D,--Enable_output_A,
+  duty_cycle => DUTY_CYCLED,
+  pwm_enable =>  PWM_enable_D,--Enable_output_D,
     resetn => PWM_not_reset,
-  pwm_out => headerpin_o(25));
+  pwm_out => headerpin_o(27));
 
 
 

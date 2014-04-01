@@ -27,6 +27,6 @@ debug: CC += -DDEBUG -g
 debug: all
 
 ikrun: CXX += -DIKRUN -g
-ikrun: CXX += -DIKRUN -g
+ikrun: CC += -DIKRUN -g
 ikrun: all
 	

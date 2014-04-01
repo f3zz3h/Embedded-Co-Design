@@ -165,17 +165,27 @@ void ik_update_xyz(float* xyz_pos,int which,int change)
 
 }
 /* Invert the gripper status */
-void invert_gripper(int* sVals)
+void increment_gripper(int* sVals)
 {
-	if ( sVals[GRIPPER] == SERVO_MIN)
+	printf("GRIPPER VAL: %d\n", sVals[GRIPPER]);
+	if ( sVals[GRIPPER] < SERVO_MAX)
 	{
-		sVals[GRIPPER] = SERVO_MAX;
-	}
-	else
-	{
-		sVals[GRIPPER]= SERVO_MIN;
+		sVals[GRIPPER]++;
 	}
 }
+
+/* Invert the gripper status */
+void decrement_gripper(int* sVals)
+{
+	printf("GRIPPER VAL: %d\n", sVals[GRIPPER]);
+
+	if ( sVals[GRIPPER] > SERVO_MIN)
+	{
+		sVals[GRIPPER]--;
+	}
+
+}
+
 
 void emu_intialize(float* xyz_pos, int* sVals)
 {
