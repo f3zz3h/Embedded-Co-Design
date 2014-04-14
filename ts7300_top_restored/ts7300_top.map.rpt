@@ -1,5 +1,5 @@
 Analysis & Synthesis report for ts7300_top
-Tue Apr  1 12:53:25 2014
+Mon Apr 14 12:53:23 2014
 Quartus II 64-Bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
 
 
@@ -52,15 +52,15 @@ applicable agreement for further details.
 +------------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                       ;
 +------------------------------------+-----------------------------------------------+
-; Analysis & Synthesis Status        ; Successful - Tue Apr  1 12:53:25 2014         ;
+; Analysis & Synthesis Status        ; Successful - Mon Apr 14 12:53:23 2014         ;
 ; Quartus II 64-Bit Version          ; 12.1 Build 243 01/31/2013 SP 1 SJ Web Edition ;
 ; Revision Name                      ; ts7300_top                                    ;
 ; Top-level Entity Name              ; ts7300_top                                    ;
 ; Family                             ; Cyclone II                                    ;
-; Total logic elements               ; 482                                           ;
+; Total logic elements               ; 481                                           ;
 ;     Total combinational functions  ; 307                                           ;
-;     Dedicated logic registers      ; 319                                           ;
-; Total registers                    ; 319                                           ;
+;     Dedicated logic registers      ; 318                                           ;
+; Total registers                    ; 318                                           ;
 ; Total pins                         ; 138                                           ;
 ; Total virtual pins                 ; 0                                             ;
 ; Total memory bits                  ; 0                                             ;
@@ -189,7 +189,7 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +---------------------------------------------+-------+
 ; Resource                                    ; Usage ;
 +---------------------------------------------+-------+
-; Estimated Total logic elements              ; 482   ;
+; Estimated Total logic elements              ; 481   ;
 ;                                             ;       ;
 ; Total combinational functions               ; 307   ;
 ; Logic element usage by number of LUT inputs ;       ;
@@ -201,8 +201,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ;     -- normal mode                          ; 240   ;
 ;     -- arithmetic mode                      ; 67    ;
 ;                                             ;       ;
-; Total registers                             ; 319   ;
-;     -- Dedicated logic registers            ; 319   ;
+; Total registers                             ; 318   ;
+;     -- Dedicated logic registers            ; 318   ;
 ;     -- I/O registers                        ; 0     ;
 ;                                             ;       ;
 ; I/O pins                                    ; 138   ;
@@ -210,8 +210,8 @@ Parallel compilation was disabled, but you have multiple processors available. E
 ; Total PLLs                                  ; 1     ;
 ;     -- PLLs                                 ; 1     ;
 ;                                             ;       ;
-; Maximum fan-out                             ; 259   ;
-; Total fan-out                               ; 1931  ;
+; Maximum fan-out                             ; 258   ;
+; Total fan-out                               ; 1926  ;
 ; Average fan-out                             ; 2.52  ;
 +---------------------------------------------+-------+
 
@@ -221,10 +221,10 @@ Parallel compilation was disabled, but you have multiple processors available. E
 +-----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------+
 ; Compilation Hierarchy Node              ; LC Combinationals ; LC Registers ; Memory Bits ; DSP Elements ; DSP 9x9 ; DSP 18x18 ; Pins ; Virtual Pins ; Full Hierarchy Name                                ; Library Name ;
 +-----------------------------------------+-------------------+--------------+-------------+--------------+---------+-----------+------+--------------+----------------------------------------------------+--------------+
-; |ts7300_top                             ; 307 (17)          ; 319 (70)     ; 0           ; 0            ; 0       ; 0         ; 138  ; 0            ; |ts7300_top                                        ;              ;
+; |ts7300_top                             ; 307 (17)          ; 318 (70)     ; 0           ; 0            ; 0       ; 0         ; 138  ; 0            ; |ts7300_top                                        ;              ;
 ;    |pll:clkgencore|                     ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|pll:clkgencore                         ;              ;
 ;       |altpll:altpll_component|         ; 0 (0)             ; 0 (0)        ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|pll:clkgencore|altpll:altpll_component ;              ;
-;    |ts7300_usercore:usercore|           ; 257 (164)         ; 233 (145)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|ts7300_usercore:usercore               ;              ;
+;    |ts7300_usercore:usercore|           ; 257 (164)         ; 232 (144)    ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|ts7300_usercore:usercore               ;              ;
 ;       |pwm:PWM_1|                       ; 39 (39)           ; 34 (34)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_1     ;              ;
 ;       |pwm:PWM_2|                       ; 18 (18)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_2     ;              ;
 ;       |pwm:PWM_3|                       ; 18 (18)           ; 18 (18)      ; 0           ; 0            ; 0       ; 0         ; 0    ; 0            ; |ts7300_top|ts7300_usercore:usercore|pwm:PWM_3     ;              ;
@@ -307,12 +307,12 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 319   ;
+; Total registers                              ; 318   ;
 ; Number of registers using Synchronous Clear  ; 16    ;
 ; Number of registers using Synchronous Load   ; 0     ;
 ; Number of registers using Asynchronous Clear ; 44    ;
 ; Number of registers using Asynchronous Load  ; 0     ;
-; Number of registers using Clock Enable       ; 224   ;
+; Number of registers using Clock Enable       ; 223   ;
 ; Number of registers using Preset             ; 0     ;
 +----------------------------------------------+-------+
 
@@ -852,7 +852,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Analysis & Synthesis
     Info: Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Apr  1 12:53:19 2014
+    Info: Processing started: Mon Apr 14 12:53:17 2014
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off ts7300_opencore -c ts7300_top
 Critical Warning (138069): Setting INCREMENTAL_COMPILATION to "OFF" is no longer supported. Assignment is ignored. To disable partitions, set the IGNORE_PARTITIONS global assignment to "ON" instead.
 Info (12021): Found 2 design units, including 1 entities, in source file ts_7300_usercore.vhd
@@ -1036,10 +1036,12 @@ Warning (10541): VHDL Signal Declaration warning at ts_7300_usercore.vhd(49): us
 Warning (10541): VHDL Signal Declaration warning at ts_7300_usercore.vhd(51): used implicit default value for signal "sdram_sdata_o" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10541): VHDL Signal Declaration warning at ts_7300_usercore.vhd(52): used implicit default value for signal "sdram_sdata_oe" because signal was never assigned a value or an explicit default value. Use of implicit default value may introduce unintended design optimizations.
 Warning (10873): Using initial value X (don't care) for net "headerpin_o[39]" at ts_7300_usercore.vhd(41)
+Warning (10873): Using initial value X (don't care) for net "headerpin_o[27]" at ts_7300_usercore.vhd(41)
 Warning (10873): Using initial value X (don't care) for net "headerpin_o[19]" at ts_7300_usercore.vhd(41)
 Warning (10873): Using initial value X (don't care) for net "headerpin_o[12]" at ts_7300_usercore.vhd(41)
 Warning (10873): Using initial value X (don't care) for net "headerpin_o[10..8]" at ts_7300_usercore.vhd(41)
 Warning (10873): Using initial value X (don't care) for net "headerpin_o[4]" at ts_7300_usercore.vhd(41)
+Warning (10873): Using initial value X (don't care) for net "headerpin_oe_o[27]" at ts_7300_usercore.vhd(42)
 Warning (10873): Using initial value X (don't care) for net "headerpin_oe_o[19]" at ts_7300_usercore.vhd(42)
 Warning (10873): Using initial value X (don't care) for net "vga_read[14..9]" at ts_7300_usercore.vhd(79)
 Warning (10873): Using initial value X (don't care) for net "dio2_read[9]" at ts_7300_usercore.vhd(80)
@@ -1053,7 +1055,7 @@ Info (13060): One or more bidirs are fed by always enabled tri-state buffers
     Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "dio0to8_pad[0]" is moved to its source
     Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "dio0to8_pad[1]" is moved to its source
     Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "dio0to8_pad[2]" is moved to its source
-    Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "dio0to8_pad[3]" is moved to its source
+    Info (13061): Fan-out of permanently enabled tri-state buffer feeding bidir "dio0to8_pad[4]" is moved to its source
 Info (13000): Registers with preset signals will power-up high
 Info (13003): DEV_CLRn pin will set, and not reset, register with preset signal due to NOT Gate Push-Back
 Warning (13008): TRI or OPNDRN buffers permanently disabled
@@ -1062,7 +1064,7 @@ Warning (13009): TRI or OPNDRN buffers permanently enabled
     Warning (13010): Node "temp_reg[21]"
     Warning (13010): Node "temp_reg[23]"
     Warning (13010): Node "temp_reg[25]"
-    Warning (13010): Node "temp_reg[27]"
+    Warning (13010): Node "temp_reg[29]"
 Warning (13024): Output pins are stuck at VCC or GND
     Warning (13410): Pin "sd_soft_power_pad" is stuck at GND
     Warning (13410): Pin "sd_hard_power_pad" is stuck at VCC
@@ -1114,15 +1116,15 @@ Warning (21074): Design contains 13 input pin(s) that do not drive logic
     Warning (15610): No output dependent on input pin "eth_txclk_pad"
     Warning (15610): No output dependent on input pin "eth_col_pad"
     Warning (15610): No output dependent on input pin "eth_crs_pad"
-Info (21057): Implemented 622 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 621 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 25 input pins
     Info (21059): Implemented 34 output pins
     Info (21060): Implemented 79 bidirectional pins
-    Info (21061): Implemented 483 logic cells
+    Info (21061): Implemented 482 logic cells
     Info (21065): Implemented 1 PLLs
-Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 96 warnings
-    Info: Peak virtual memory: 639 megabytes
-    Info: Processing ended: Tue Apr  1 12:53:25 2014
+Info: Quartus II 64-Bit Analysis & Synthesis was successful. 0 errors, 98 warnings
+    Info: Peak virtual memory: 640 megabytes
+    Info: Processing ended: Mon Apr 14 12:53:23 2014
     Info: Elapsed time: 00:00:06
     Info: Total CPU time (on all processors): 00:00:06
 

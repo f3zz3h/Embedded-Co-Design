@@ -1,3 +1,13 @@
+/* ********************************************************
+ * Project Title: EMU Pick & Place
+ * File: ******
+ * Description:
+ *
+ *
+ * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
+ * Last edited: 14/04/2014
+ * ******************************************************* */
+
 #include "global.h"
 #include "emu.h"
 /* WHOLE DOCUMENT - ToDo: Refactor, Rename and comment all of the code
@@ -6,6 +16,11 @@
  *
  * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
  */
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 float square(float x)
 {
    return x * x;
@@ -14,6 +29,11 @@ float square(float x)
  * grabber angle is the grabber opening amount i believe?
  *
  */
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void emu_ikrun(float xyz_pos[3], int* servo_vals)
 {
 	int shoulder_angle_int, base_angle_int, elbow_angle_int;
@@ -99,6 +119,11 @@ int emu_map(int x)
 /* 1 == Increment
  * 0 == Decrement
  */
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void ik_update_xyz(float* xyz_pos,int which,int change)
 {
 	//step default value
@@ -164,6 +189,11 @@ void ik_update_xyz(float* xyz_pos,int which,int change)
 	*/
 
 }
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 /* Invert the gripper status */
 void increment_gripper(int* sVals)
 {
@@ -173,7 +203,11 @@ void increment_gripper(int* sVals)
 		sVals[GRIPPER]++;
 	}
 }
-
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 /* Invert the gripper status */
 void decrement_gripper(int* sVals)
 {
@@ -185,8 +219,11 @@ void decrement_gripper(int* sVals)
 	}
 
 }
-
-
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void emu_intialize(float* xyz_pos, int* sVals)
 {
 	xyz_pos[X] = X_START;   //X position relative to centre of robot base //ToDo: On return this value if lost

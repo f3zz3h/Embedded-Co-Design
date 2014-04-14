@@ -1,4 +1,12 @@
-/* Standard includes. */
+/* ********************************************************
+ * Project Title: EMU Pick & Place
+ * File: ******
+ * Description:
+ *
+ *
+ * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
+ * Last edited: 14/04/2014
+ * ******************************************************* */
 #include "global.h"
 
 volatile unsigned int *mem_addr  = NULL;
@@ -19,7 +27,7 @@ int main( void )
 	int i;
 	int temp_key = 0;
 	pthread_t keypad_thread;
-	pthread_t lcd_thread;
+	//pthread_t lcd_thread;
 
 	/* Open a page at the FPGA base address */
 	fd = open("/dev/mem", O_RDWR | O_SYNC);
@@ -47,15 +55,15 @@ int main( void )
 	}
 
 	#ifdef IKRUN
-	/* Intialize the emu array */
-	emu_intialize(xyz_pos, sVals);
+		/* Intialize the emu array */
+		emu_intialize(xyz_pos, sVals);
 	#endif
 	#ifndef IKRUN
-	for (i = 0; i < 4; i++)
-	{
-		//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
-		sVals[i] = SERVO_MIN;
-	}
+		for (i = 0; i < 4; i++)
+		{
+			//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
+			sVals[i] = SERVO_MIN;
+		}
 	#endif
 
 	/* Initialize the LCD screen */
@@ -63,12 +71,13 @@ int main( void )
 
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);
+	//pthread_create(&lcd_thread, NULL, writechars, NULL);
 
 	while(1)
 	{
 		#ifdef IKRUN
 		/* Read the keypad and switch over its return value */
-		//pthread_create(&lcd_thread, NULL, writechars, NULL);
+
 		emu_ikrun(xyz_pos,sVals);
 		#endif
 
@@ -211,11 +220,6 @@ int main( void )
 
 				}
 #endif
-
-		//if(lcdMsg)
-		//{
-		//	free(lcdMsg);
-		//}
 
 		/* todo: Functionalize this as it is effectively our keypad debounce */
 		if (temp_key != 0)

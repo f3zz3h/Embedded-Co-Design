@@ -1,9 +1,24 @@
+/* ********************************************************
+ * Project Title: EMU Pick & Place
+ * File: ******
+ * Description:
+ *
+ *
+ * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
+ * Last edited: 14/04/2014
+ * ******************************************************* */
+
 /* Based from Nigel's toggle_leds.c */
 
 #include "global.h"
 #include "pwm.h"
 
 /* Re-written to attempt to fix only one value being sent to servos */
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void Write_PWM(int* value)
 {
 	int i;
@@ -12,7 +27,7 @@ void Write_PWM(int* value)
 	{
 		if (( value[i] > SERVO_MAX) || (value[i] < SERVO_MIN ))
 		{
-			printf("Value %d out of servos range\n", value);
+			printf("Value %d out of servos range\n", value[i]);
 			return;
 		}
 	}
@@ -53,7 +68,11 @@ void Write_PWM(int* value)
 	*pwm_enable_C = DISABLE;
 	*pwm_enable_D = DISABLE;
 }
-
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 int Read_PWM(int servo)
 {
 	volatile unsigned int *pwm;

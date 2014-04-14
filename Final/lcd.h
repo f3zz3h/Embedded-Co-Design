@@ -1,3 +1,13 @@
+/* ********************************************************
+ * Project Title: EMU Pick & Place
+ * File: ******
+ * Description:
+ *
+ *
+ * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
+ * Last edited: 14/04/2014
+ * ******************************************************* */
+
 #define GPIOBASE	0x80840000
 #define PADR	0
 #define PADDR	(0x10 / sizeof(unsigned int))

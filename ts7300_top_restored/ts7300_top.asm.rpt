@@ -1,5 +1,5 @@
 Assembler report for ts7300_top
-Tue Apr  1 12:54:53 2014
+Mon Apr 14 12:54:05 2014
 Quartus II 64-Bit Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
 
 
@@ -38,7 +38,7 @@ applicable agreement for further details.
 +---------------------------------------------------------------+
 ; Assembler Summary                                             ;
 +-----------------------+---------------------------------------+
-; Assembler Status      ; Successful - Tue Apr  1 12:54:53 2014 ;
+; Assembler Status      ; Successful - Mon Apr 14 12:54:05 2014 ;
 ; Revision Name         ; ts7300_top                            ;
 ; Top-level Entity Name ; ts7300_top                            ;
 ; Family                ; Cyclone II                            ;
@@ -95,8 +95,8 @@ applicable agreement for further details.
 ; Option         ; Setting                 ;
 +----------------+-------------------------+
 ; Device         ; EP2C8Q208C8             ;
-; JTAG usercode  ; 0x0010E020              ;
-; Checksum       ; 0x0010E020              ;
+; JTAG usercode  ; 0x0010C3CD              ;
+; Checksum       ; 0x0010C3CD              ;
 +----------------+-------------------------+
 
 
@@ -116,14 +116,14 @@ applicable agreement for further details.
 Info: *******************************************************************
 Info: Running Quartus II 64-Bit Assembler
     Info: Version 12.1 Build 243 01/31/2013 Service Pack 1 SJ Web Edition
-    Info: Processing started: Tue Apr  1 12:54:51 2014
+    Info: Processing started: Mon Apr 14 12:54:02 2014
 Info: Command: quartus_asm --read_settings_files=off --write_settings_files=off ts7300_opencore -c ts7300_top
 Critical Warning (138069): Setting INCREMENTAL_COMPILATION to "OFF" is no longer supported. Assignment is ignored. To disable partitions, set the IGNORE_PARTITIONS global assignment to "ON" instead.
 Info (115031): Writing out detailed assembly data for power analysis
 Info (115030): Assembler is generating device programming files
 Info: Quartus II 64-Bit Assembler was successful. 0 errors, 1 warning
-    Info: Peak virtual memory: 533 megabytes
-    Info: Processing ended: Tue Apr  1 12:54:54 2014
+    Info: Peak virtual memory: 537 megabytes
+    Info: Processing ended: Mon Apr 14 12:54:05 2014
     Info: Elapsed time: 00:00:03
     Info: Total CPU time (on all processors): 00:00:02
 

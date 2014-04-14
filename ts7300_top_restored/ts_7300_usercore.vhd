@@ -169,9 +169,9 @@ begin
 	headerpin_oe_o(23) <= '1';
 	headerpin_oe_o(25) <= '1';
 
-  headerpin_oe_o(27) <= '1';   
+  headerpin_oe_o(29) <= '1';   
   
-  headerpin_oe_o(29) <= dio2_enable(4);     -- DIO2
+  -- headerpin_oe_o(29) <= dio2_enable(4);     -- DIO2
   headerpin_oe_o(31) <= dio2_enable(5);     -- DIO2
   headerpin_oe_o(33) <= dio2_enable(6);     -- DIO2
   headerpin_oe_o(35) <= dio2_enable(7);     -- DIO2
@@ -215,7 +215,7 @@ begin
  headerpin_o(15) <= vga_reg(7);     --grn2
  headerpin_o(17) <= vga_reg(8);     --grn3
   
-  headerpin_o(29) <= dio2_reg(4);       -- DIO2
+  -- headerpin_o(29) <= dio2_reg(4);       -- DIO2
   headerpin_o(31) <= dio2_reg(5);       -- DIO2
   headerpin_o(33) <= dio2_reg(6);       -- DIO2
   headerpin_o(35) <= dio2_reg(7);       -- DIO2
@@ -313,7 +313,7 @@ begin
   duty_cycle => DUTY_CYCLED,
   pwm_enable =>  PWM_enable_D,--Enable_output_D,
     resetn => PWM_not_reset,
-  pwm_out => headerpin_o(27));
+  pwm_out => headerpin_o(29));
 
 
 

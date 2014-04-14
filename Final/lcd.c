@@ -1,6 +1,20 @@
+/* ********************************************************
+ * Project Title: EMU Pick & Place
+ * File: ******
+ * Description:
+ *
+ *
+ * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
+ * Last edited: 14/04/2014
+ * ******************************************************* */
 #include "global.h"
 #include "lcd.h"
 
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void lcdinit() {
 	gpio = (unsigned int *) mmap(0, getpagesize(), PROT_READ | PROT_WRITE,
 			MAP_SHARED, fd, GPIOBASE);
@@ -36,6 +50,11 @@ void lcdinit() {
 	command(0x2); // return home
 }
 
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void command(unsigned int cmd) {
 	int i;
 	unsigned int ctrl = *phdr;
@@ -74,58 +93,80 @@ void command(unsigned int cmd) {
 	i = HOLD;
 	COUNTDOWN(i);
 }
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void* writechars() {
 	int i;
 	unsigned int ctrl = *phdr;
 
-	command(0x1);
+	while(1)
+	{
+		command(0x1);
 
-	do {
-		*paddr = *paddr | PAMASK; //set port A to outputs
-		*pcddr = *pcddr | PCMASK; //set port C to outputs
+		do {
+			*paddr = *paddr | PAMASK; //set port A to outputs
+			*pcddr = *pcddr | PCMASK; //set port C to outputs
 
-		/* step 1, apply RS & WR, send data */
+			/* step 1, apply RS & WR, send data */
 
-		*padr = *padr & ~PAMASK;
-		*pcdr = *pcdr & ~PCMASK;
-		*padr = *padr | (*lcdMsg & PAMASK);
-		*pcdr = *pcdr | ((*lcdMsg >> 7) & PCMASK);
+			*padr = *padr & ~PAMASK;
+			*pcdr = *pcdr & ~PCMASK;
+			*padr = *padr | (*lcdMsg & PAMASK);
+			*pcdr = *pcdr | ((*lcdMsg >> 7) & PCMASK);
 
-		/* Incrementing the character */
-		*lcdMsg++;
+			/* Incrementing the character pointer */
+			*lcdMsg++;
 
-		ctrl |= 0x10; /* assert RS */
-		ctrl &= ~0x20; /* assert WR */
-		*phdr = ctrl;
+			ctrl |= 0x10; /* assert RS */
+			ctrl &= ~0x20; /* assert WR */
+			*phdr = ctrl;
 
-		// step 2
-		i = SETUP;
-		COUNTDOWN(i);
+			// step 2
+			i = SETUP;
+			COUNTDOWN(i);
 
-		/* step 3, assert EN */
-		ctrl |= 0x8;
-		*phdr = ctrl;
+			/* step 3, assert EN */
+			ctrl |= 0x8;
+			*phdr = ctrl;
 
-		// step 4, wait 800 nS
-		i = PULSE;
-		COUNTDOWN(i);
+			// step 4, wait 800 nS
+			i = PULSE;
+			COUNTDOWN(i);
 
-		/* step 5, de-assert EN */
-		ctrl &= ~0x8; // de-assert EN
-		*phdr = ctrl;
+			/* step 5, de-assert EN */
+			ctrl &= ~0x8; // de-assert EN
+			*phdr = ctrl;
 
-		/* step 6, wait */
-		i = HOLD;
-		COUNTDOWN(i);
-	} while (*lcdMsg);
-
-	pthread_exit(NULL);
+			/* step 6, wait */
+			i = HOLD;
+			COUNTDOWN(i);
+		} while (*lcdMsg);
+	}
 }
-
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 void lcd_message(char* msg) {
-	lcdMsg = malloc(strlen(msg) + 1);
+	if (lcdMsg)
+	{
+		lcdMsg = (char *)realloc(lcdMsg,strlen(msg) + 1);
+	}
+	else
+	{
+		lcdMsg = (char *)malloc(strlen(msg) + 1);
+	}
 	strcpy(lcdMsg, msg);
 }
+/* ********************************************************
+ *
+ *
+ *
+ * ******************************************************* */
 /* USE THIS FOR IN COMPILING ON x86
  *
  */
