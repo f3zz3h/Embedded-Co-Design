@@ -1,9 +1,9 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
- *
+ * File: emu.c
+ * Description: This file contains the inverse kinematics and
+ * accompanying functions. It also includes functions for changing
+ * the values for the gripper/jaw.
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
  * ******************************************************* */
@@ -17,22 +17,24 @@
  * ToDo: Serious scope potential issues here, the parameters x,y,zE are all globals
  */
 /* ********************************************************
- *
- *
- *
+ * Description: Squaring function that takes a float and returns the
+ * the squared value.
+ * Parameter: Float to be squared
+ * Returns: Square of X
+ * Last edited: 14/04/2014
  * ******************************************************* */
 float square(float x)
 {
-   return x * x;
+   return (float)x * x;
 }
-/* xyz pointer is an array of [x,y,z] and current[x,y,z] is the previous values ..
- * grabber angle is the grabber opening amount i believe?
+/*
  *
  */
 /* ********************************************************
- *
- *
- *
+ * Description:
+ * Parameters: xyz_pos pointer is an array of [x,y,z]
+ * 			   servo_vals pointer for keeping servo values up-to-date
+ * Last edited: 14/04/2014
  * ******************************************************* */
 void emu_ikrun(float xyz_pos[3], int* servo_vals)
 {
@@ -109,20 +111,25 @@ void emu_ikrun(float xyz_pos[3], int* servo_vals)
 }
 
 /****************************************************
- * Map
+ * Description: Emu Map generates a angle matched to
+ * 				the servo values range.
+ * Params: X - The angle to be mapped
+ * Returns: Integer value for servo compatibility
+ * Last edited: 14/04/2014
  ***************************************************/
 int emu_map(int x)
 {
-	return ((x - MIN_ANGLE) * (SERVO_MAX - SERVO_MIN) / (MAX_ANGLE - MIN_ANGLE) + SERVO_MIN);
+	return (int)((x - MIN_ANGLE) * (SERVO_MAX - SERVO_MIN) / (MAX_ANGLE - MIN_ANGLE) + SERVO_MIN);
 }
-
-/* 1 == Increment
- * 0 == Decrement
- */
 /* ********************************************************
- *
- *
- *
+ * Description: Increment of decrement the xyz positions.
+ * 		1 == Increment
+ * 		0 == Decrement
+ * Params:  xyz_pos - array of the co-ordinates
+ * 			which - value to edit based on defined vals X,Y or Z
+ * 			change - increment or decrement
+ * Return: Void
+ * Last edited: 14/04/2014
  * ******************************************************* */
 void ik_update_xyz(float* xyz_pos,int which,int change)
 {
@@ -179,40 +186,27 @@ void ik_update_xyz(float* xyz_pos,int which,int change)
 			xyz_pos[which] = min;
 		}
 	}
-
-	/*
-	 *
-	 for (i = 0; i < 3;i++)
-	{
-		printf("xyz[%d] - %f",i,xyz_pos[i]);
-	}
-	*/
-
 }
 /* ********************************************************
- *
- *
- *
+ * Description: incremenet the gripper by one
+ * Params: The servo values to be updated
+ * Last edited: 14/04/2014
  * ******************************************************* */
-/* Invert the gripper status */
+
 void increment_gripper(int* sVals)
 {
-	printf("GRIPPER VAL: %d\n", sVals[GRIPPER]);
 	if ( sVals[GRIPPER] < SERVO_MAX)
 	{
 		sVals[GRIPPER]++;
 	}
 }
 /* ********************************************************
- *
- *
- *
+ * Description: Deccremenet the gripper by one
+ * Params: The servo values to be updated
+ * Last edited: 14/04/2014
  * ******************************************************* */
-/* Invert the gripper status */
 void decrement_gripper(int* sVals)
 {
-	printf("GRIPPER VAL: %d\n", sVals[GRIPPER]);
-
 	if ( sVals[GRIPPER] > SERVO_MIN)
 	{
 		sVals[GRIPPER]--;
@@ -220,14 +214,15 @@ void decrement_gripper(int* sVals)
 
 }
 /* ********************************************************
- *
- *
- *
+ * Description: Set all positions to starting values
+ * Params: 	XYZ Postion array
+ * 			sVals are the servo values, required for gripper
+ * Last edited: 14/04/2014
  * ******************************************************* */
 void emu_intialize(float* xyz_pos, int* sVals)
 {
-	xyz_pos[X] = X_START;   //X position relative to centre of robot base //ToDo: On return this value if lost
-	xyz_pos[Y] = Y_START;    //Y position relative to centre of robot base
-	xyz_pos[Z] = Z_START;   //Z position relative to centre of robot base
+	xyz_pos[X] = X_START;
+	xyz_pos[Y] = Y_START;
+	xyz_pos[Z] = Z_START;
 	sVals[GRIPPER] = SERVO_MAX;
 }

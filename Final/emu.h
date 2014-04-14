@@ -1,8 +1,7 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
+ * File: emu.h
+ * Description: Emu specific variable definitions
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014

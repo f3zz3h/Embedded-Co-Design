@@ -1,18 +1,18 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
- *
+ * File: replay.c
+ * Description: Currently unfinished implementation of the
+ * replay path functionality
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
  * ******************************************************* */
 
 #include "global.h"
 /* ********************************************************
- * 	Replay Function
- * 	Reads the replay path file back and send the values to motors in
- * 	the sequence they were written to it.
+ * 	Description: Reads the replay path file back and send the
+ * 	values to motors in the sequence they were written to it.
+ * 	Params: The current X,Y,Z co-ords
+ * 	Return: Succes or Failure
  * ******************************************************* */
 int replay(float* xyz_pos)
 {
@@ -36,8 +36,10 @@ int replay(float* xyz_pos)
 
 }
 /* ********************************************************
- * 	Write Path Function
- *
+ * 	Description: Write Path Function to write to file one
+ * 	position at a time.
+ * 	Params: Current XYZ position
+ * 	Return: Success or failure
  * ******************************************************* */
 int write_path(float* xyz_pos)
 {
@@ -61,8 +63,10 @@ int write_path(float* xyz_pos)
 	return (0);
 }
 /* ********************************************************
- * 	New File Function
- *	Only function of this file is to wipe / create new replay path file
+ * Description: Only function of this file is to wipe /
+ * create new replay path file
+ * Params:
+ * Return: Success or Fail
  * ********************************************************/
 int new_file()
 {

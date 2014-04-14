@@ -1,7 +1,7 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
+ * File: pwm.h
+ * Description: Define declerations for the PWM functions
  *
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak

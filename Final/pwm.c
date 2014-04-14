@@ -1,23 +1,21 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
+ * File: pwm.c
+ * Description: PWM Read write functions
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
+ *
+ * Based from Nigel's toggle_leds.c
  * ******************************************************* */
-
-/* Based from Nigel's toggle_leds.c */
-
 #include "global.h"
 #include "pwm.h"
 
-/* Re-written to attempt to fix only one value being sent to servos */
 /* ********************************************************
- *
- *
- *
+ * Description: Write values from params to pwm modules
+ * Params: sVals
+ * Return: Void
+ * Last edited: 14/04/2014
  * ******************************************************* */
 void Write_PWM(int* value)
 {
@@ -69,9 +67,10 @@ void Write_PWM(int* value)
 	*pwm_enable_D = DISABLE;
 }
 /* ********************************************************
- *
- *
- *
+ * Description: Read current PWM values from registers
+ * params: Servo number to read based on defines
+ * return: int value stored in PWM
+ * Last edited: 14/04/2014
  * ******************************************************* */
 int Read_PWM(int servo)
 {

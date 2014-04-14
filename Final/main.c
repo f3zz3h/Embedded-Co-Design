@@ -1,8 +1,8 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
+ * File: main.c
+ * Description: The startiing point of the application. Includes
+ * main funtion only and assigns the intial extern vars. *
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
@@ -14,10 +14,12 @@ unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
 pthread_mutex_t keypad_mutex = PTHREAD_MUTEX_INITIALIZER;
 
 /* ********************************************************
- * Program entry point, opens file pointed to memory address for
+ * Description: Program entry point, opens file pointed to memory address for
  * TS-7300 to access wishbone (FPGA side) of the platform.
  * Contains primary infinite loop for program and switch statement
  * based on key press to send corresponding values to drive the arm.
+ * Params: void
+ * Return: int standard for c
  * ******************************************************* */
 int main( void )
 {

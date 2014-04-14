@@ -1,8 +1,8 @@
 /* ********************************************************
  * Project Title: EMU Pick & Place
- * File: ******
- * Description:
- *
+ * File: global.h
+ * Description: Global variables and Function defintions
+ * for all parts of the application.
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
