@@ -117,6 +117,8 @@ void* Read_Keypad()
 				case 0xEE :
 					key_val =  KEY_16;
 					break;
+				default :
+					key_val = 0;
 			}
 			pthread_mutex_unlock(&keypad_mutex);
 			keyval = 0;

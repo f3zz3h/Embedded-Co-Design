@@ -107,7 +107,7 @@ int writechars(char *lcdMsg)
 
 	command(0x1);
 
-	while (*lcdMsg); {
+	 do {
 		*paddr = *paddr | PAMASK; //set port A to outputs
 		*pcddr = *pcddr | PCMASK; //set port C to outputs
 
@@ -143,7 +143,7 @@ int writechars(char *lcdMsg)
 		/* step 6, wait */
 		i = HOLD;
 		COUNTDOWN(i);
-	}
+	} while (*lcdMsg);
 }
 /* ********************************************************
  * void COUNTDOWN(int limit);

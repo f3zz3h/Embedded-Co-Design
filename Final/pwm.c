@@ -61,10 +61,10 @@ void Write_PWM(int* value)
 
 	usleep(30000);
 
-	*pwm_enable_A = DISABLE;
-	*pwm_enable_B = DISABLE;
-	*pwm_enable_C = DISABLE;
-	*pwm_enable_D = DISABLE;
+//	*pwm_enable_A = DISABLE;
+//	*pwm_enable_B = DISABLE;
+//	*pwm_enable_C = DISABLE;
+//	*pwm_enable_D = DISABLE;
 }
 /* ********************************************************
  * Description: Read current PWM values from registers
@@ -99,4 +99,26 @@ int Read_PWM(int servo)
 	/* Enable PWM, read value from reg*/
 	//*pwm_enable = ENABLE;
 	return *pwm;
+}
+/* ********************************************************
+ * Description: A way to slowly incement to a position
+ * params: current position and the goal position
+ * return: 1 step closer movement.
+ * 			or return current if same
+ * Last edited: 15/04/2014
+ * ******************************************************* */
+int move_closer(int current, int goal)
+{
+	if (current > goal)
+	{
+		return current ++;
+	}
+	else if (current < goal)
+	{
+		return current --;
+	}
+	else
+	{
+		return current;
+	}
 }

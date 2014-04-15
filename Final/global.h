@@ -70,12 +70,14 @@ int Read_PWM(int servo);
 void ik_update_xyz(float* xyz_pos,int which,int change);
 void decrement_gripper(int* sVals);
 void increment_gripper(int* sVals);
+int move_closer(int current, int goal);
 /* lcd */
 int writechars(char *lcdMsg);
 void lcdinit();
 void lcd_message(char* msg);
 /*replay */
-int write_path(float* xyz_pos);
+int write_path(int* servo_vals);
 int replay();
+int new_file();
 
 #endif

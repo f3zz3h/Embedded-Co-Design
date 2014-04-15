@@ -14,8 +14,11 @@
  * 	Params: The current X,Y,Z co-ords
  * 	Return: Succes or Failure
  * ******************************************************* */
-int replay(float* xyz_pos)
+int replay(int* servo_vals)
 {
+	/* For when we increment */
+	int* temp_servo_vals = servo_vals;
+
 	/* Makes sure the file can be opened before trying to read */
 	if ((path = fopen(REPLAY_FILE, "r")) == NULL)
 	{
@@ -26,8 +29,23 @@ int replay(float* xyz_pos)
 	/* Keep going until end o the file is reached */
 	while (! (feof (path) ) )
 	{
-		fscanf(path, "%f:%f:%f:\n", &xyz_pos[X],&xyz_pos[Y],&xyz_pos[Z]);
-		/* TODO: Call IK with read values and update PWM's */
+		fscanf(path, "%d:%d:%d:%d:\n", &servo_vals[BASE],&servo_vals[SHOULDER],&servo_vals[ELBOW],&servo_vals[GRIPPER]);
+		/* TODO: increment movement rather than move straight there. */
+
+		do
+		{
+			temp_servo_vals[BASE] = move_closer(temp_servo_vals[BASE], servo_vals[BASE]);
+			temp_servo_vals[SHOULDER] = move_closer(temp_servo_vals[SHOULDER], servo_vals[SHOULDER]);
+			temp_servo_vals[ELBOW] = move_closer(temp_servo_vals[ELBOW], servo_vals[ELBOW]);
+			temp_servo_vals[GRIPPER] = move_closer(temp_servo_vals[GRIPPER], servo_vals[GRIPPER]);
+
+			Write_PWM(servo_vals);
+			sleep(1);
+		} while ( (temp_servo_vals[BASE] != servo_vals[BASE]) &&
+				(temp_servo_vals[SHOULDER] != servo_vals[SHOULDER]) &&
+				(temp_servo_vals[ELBOW] != servo_vals[ELBOW]) &&
+				(temp_servo_vals[GRIPPER] != servo_vals[GRIPPER]) );
+
 	}
 		
 	/* Close the file and exit function */
@@ -41,7 +59,7 @@ int replay(float* xyz_pos)
  * 	Params: Current XYZ position
  * 	Return: Success or failure
  * ******************************************************* */
-int write_path(float* xyz_pos)
+int write_path(int* servo_vals)
 {
 	int i;
 
@@ -52,14 +70,15 @@ int write_path(float* xyz_pos)
 		return (0);
 	}
 
-	for (i = 0; i < 3; i++)
+	for (i = 0; i < 4; i++)
 	{
 		/* Writes values to the file */
-		fprintf(path, "%f:", xyz_pos[i]);
+		fprintf(path, "%d:", servo_vals[i]);
 	}
 	fprintf(path, "\n");
 	/* Close file and exit function */
-	fclose (path);	
+	fclose (path);
+	sleep(.5);
 	return (0);
 }
 /* ********************************************************

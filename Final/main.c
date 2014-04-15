@@ -103,9 +103,8 @@ int main( void )
 	while(1)
 	{
 		#ifdef IKRUN
-		/* Read the keypad and switch over its return value */
-
-		emu_ikrun(xyz_pos,sVals);
+			/* Read the keypad and switch over its return value */
+			emu_ikrun(xyz_pos,sVals);
 		#endif
 
 		//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
@@ -204,7 +203,8 @@ int main( void )
 					//Row 2 [ 5 - 8 ]
 					case 5 : if (sVals[BASE] < SERVO_MAX) sVals[BASE]++;
 							break;
-					case 6 : //RECORD HERE!?
+					case 6 : write_path(sVals);
+								sleep(1);
 							break;
 					case 7 : //Move right.
 							  if (sVals[BASE] > SERVO_MIN) sVals[BASE]--;
@@ -213,7 +213,8 @@ int main( void )
 
 							break;
 					//Row 3 [ 9 - 12 ]
-					case 9 : //PLAYBACK
+					case 9 : replay(sVals);
+								sleep(1);
 							break;
 					case 10 : if (sVals[SHOULDER]  > SERVO_MIN) sVals[SHOULDER] --;
 							if (sVals[ELBOW] < SERVO_MAX) sVals[ELBOW]++;
@@ -223,7 +224,8 @@ int main( void )
 					case 12 : //MENU STUFF
 							break;
 					//Row 4 [ 13 - 16]
-					case 13 :
+					case 13 : new_file();
+								sleep(1);
 							break;
 					//Undefined
 					case 14 : increment_gripper(sVals);
@@ -256,7 +258,7 @@ int main( void )
 
 		if (key_val != 0)
 		{
-			/*TODO: IF KEYPAD VAL BEING UPDATE THIS MAY NOT WORK.. NEED TO CHECK THIS OUT */
+			sleep(.3);
 			pthread_mutex_lock(&keypad_mutex);
 			temp_key = key_val;
 			key_val = 0;
