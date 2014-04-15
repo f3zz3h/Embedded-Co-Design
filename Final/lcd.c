@@ -15,9 +15,7 @@
  * Initialises the LCD screen for use with the TS-7300.
  * Last edited: 14/04/2014
  * ******************************************************* */
-void lcdinit(void*) {
-	gpio = (unsigned int *) mmap(0, getpagesize(), PROT_READ | PROT_WRITE,
-			MAP_SHARED, fd, GPIOBASE);
+void lcdinit() {
 
 	phdr = &gpio[PHDR];
 	padr = &gpio[PADR];

@@ -2,7 +2,7 @@
  * Project Title: EMU Pick & Place
  * File: main.c
  * Description: The startiing point of the application. Includes
- * main funtion only and assigns the intial extern vars. *
+ * main function and intialization, assigns the intial extern vars.
  *
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
@@ -10,8 +10,57 @@
 #include "global.h"
 
 volatile unsigned int *mem_addr  = NULL;
+volatile unsigned int *gpio = NULL;
 unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
+
 pthread_mutex_t keypad_mutex = PTHREAD_MUTEX_INITIALIZER;
+
+/* ********************************************************
+ * Description: Primary intilization function
+ * Params: void
+ * Return: int error value -1 or 1 for success.
+ * ******************************************************* */
+int initialization()
+{
+	/* Open a page at the FPGA base address */
+	fd = open("/dev/mem", O_RDWR | O_SYNC);
+
+	if (fd < 0)
+	{
+		printf("Open /dev/mem failed - %s %d\n", strerror(errno),errno);
+		return -1;
+	}
+
+	mem_addr = (unsigned int *)mmap(
+		0,
+		getpagesize(),
+		PROT_READ|PROT_WRITE,
+		MAP_SHARED,
+		fd,
+		mem_phys);
+
+	gpio = (unsigned int *) mmap(
+			0,
+			getpagesize(),
+			PROT_READ | PROT_WRITE,
+			MAP_SHARED,
+			fd,
+			GPIOBASE);
+
+	if (mem_addr == (unsigned int *)MAP_FAILED)
+	{
+		printf("Error: mmap failed\n");
+		close(fd);
+		return -1;
+	}
+	if (gpio == (unsigned int *)MAP_FAILED)
+	{
+		printf("Error: gpio failed\n");
+		close(fd);
+		return -1;
+	}
+	return 1;
+}
 
 /* ********************************************************
  * Description: Program entry point, opens file pointed to memory address for
@@ -25,36 +74,12 @@ int main( void )
 {
 	float xyz_pos[3];
 	int sVals[4]; //Servo int write values
-	int page_size = getpagesize();
 	int i;
 	int temp_key = 0;
 	pthread_t keypad_thread;
-	//pthread_t lcd_thread;
+	pthread_t lcd_thread;
 
-	/* Open a page at the FPGA base address */
-	fd = open("/dev/mem", O_RDWR | O_SYNC);
-
-	if (fd < 0)
-	{
-		printf("Open /dev/mem failed - %s %d\n",
-			strerror(errno),errno);
-		return -1;
-	}
-
-	mem_addr = (unsigned int *)mmap(
-		0,
-		page_size,
-		PROT_READ|PROT_WRITE,
-		MAP_SHARED,
-		fd,
-		mem_phys);
-
-	if (mem_addr == (unsigned int *)MAP_FAILED)
-	{
-		printf("Error: mmap failed\n");
-		close(fd);
-		return -1;
-	}
+	initialization();
 
 	#ifdef IKRUN
 		/* Intialize the emu array */
@@ -69,7 +94,7 @@ int main( void )
 	#endif
 
 	/* Initialize the LCD screen */
-	//lcdinit();
+	lcdinit();
 
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);

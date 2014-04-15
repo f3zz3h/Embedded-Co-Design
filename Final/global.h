@@ -47,6 +47,9 @@
 
 int fd;        /* /dev/mem file descriptor  */
 
+#define GPIOBASE	0x80840000
+extern volatile unsigned int *gpio;
+
 extern volatile unsigned int *mem_addr;
 extern unsigned int mem_phys; /* base for opencore reg */
 extern pthread_mutex_t keypad_mutex;
@@ -58,6 +61,7 @@ char *lcdMsg;
 FILE *path;
 
 /* Function decelerations */
+int initialization();
 void Write_PWM(int* value);
 void* Read_Keypad();
 int emu_map(int x);

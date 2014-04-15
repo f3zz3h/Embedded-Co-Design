@@ -8,7 +8,7 @@
  * Last edited: 14/04/2014
  * ******************************************************* */
 
-#define GPIOBASE	0x80840000
+
 #define PADR	0
 #define PADDR	(0x10 / sizeof(unsigned int))
 #define PAMASK  0x7F  
@@ -34,8 +34,6 @@
 );
 #endif
 
-
-volatile unsigned int *gpio;
 volatile unsigned int *phdr;
 volatile unsigned int *phddr;
 volatile unsigned int *pcdr;

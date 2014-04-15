@@ -7,11 +7,8 @@
  * Authors: Luke Hart, Joe Ellis, Kerrim Morris & Lukasz Matczak
  * Last edited: 14/04/2014
  * ******************************************************* */
-
 #include "global.h"
 #include "keypad.h"
-
-
 /****************************************************************
  * void* Read_Keypad();
  * Determines which key has been pressed by writing a walking 0
@@ -24,6 +21,11 @@ void* Read_Keypad()
 {
 	volatile unsigned int *vga_reg;      /* only bits 14-0 valid */
 	volatile unsigned int *enable_vga;   /* only bits 14-0 valid */
+	/* Walking 0 bit pattern for keypad */
+	unsigned int vga_reg_vals[4] = {0x000001C0,
+									0x000001A0,
+									0x00000160,
+									0x000000E0};
 	
 	/* Set up the pointers to the registers that have been created in the FPGA. Then, make all configurable pins outputs.*/
 	/* IO registers */
@@ -38,48 +40,27 @@ void* Read_Keypad()
 	int flag = 0;
 	int keyval = 0;
 	int temp_key = 0;
+	int i = 0;
 
 	while(1)
 	{
-		*vga_reg = 0x0000000E<<5; // bitshift row 1 five bits to the left
 
-		usleep(1000);
-		temp_key = (*vga_reg & 0x000001eF); // Mask the shifted bit pattern to determine if a column has been pulled low.
-
-		if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
+		for (i = 0; i < 4; i++)
 		{
-			keyval = temp_key;
-			flag = 1;
-		}
+			*vga_reg = vga_reg_vals[i]; // bitshift row 1 five bits to the left
 
-		*vga_reg = 0x0000000D<<5;
-		usleep(1000);
-		temp_key = (*vga_reg & 0x000001eF);
+			usleep(1000);
 
-		if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
-		{
-			keyval = temp_key;
-			flag = 1;
-		}
+			temp_key = (*vga_reg & 0x000001eF); // Mask the shifted bit pattern to determine if a column has been pulled low.
 
-		*vga_reg = 0x0000000B<<5;
-		usleep(1000);
-		temp_key = (*vga_reg & 0x000001eF);
+			if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
+			{
+				keyval = temp_key;
+				flag = 1;
 
-		if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
-		{
-			keyval = temp_key;
-			flag = 1;
-		}
-
-		*vga_reg = 0x00000007<<5;
-		usleep(1);
-		temp_key = (*vga_reg & 0x000001eF);
-
-		if ((keyval != temp_key) && ((temp_key & 0x0000000F) < 0xF))
-		{
-			keyval = temp_key;
-			flag = 1;
+				/* breaking here will take only the first button pressed */
+				break;
+			}
 		}
 
 
