@@ -55,7 +55,6 @@ extern unsigned int mem_phys; /* base for opencore reg */
 extern pthread_mutex_t keypad_mutex;
 
 int key_val;
-char *lcdMsg;
 
 #define REPLAY_FILE "replay.txt"
 FILE *path;
@@ -72,7 +71,7 @@ void ik_update_xyz(float* xyz_pos,int which,int change);
 void decrement_gripper(int* sVals);
 void increment_gripper(int* sVals);
 /* lcd */
-void* writechars();
+int writechars(char *lcdMsg);
 void lcdinit();
 void lcd_message(char* msg);
 /*replay */

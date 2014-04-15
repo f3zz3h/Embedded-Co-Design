@@ -43,6 +43,7 @@ volatile unsigned int *paddr;
 
 /*Function Declarations*/
 void command(unsigned int);
+
 #ifdef DEBUG
 void COUNTDOWN(int);
 #endif

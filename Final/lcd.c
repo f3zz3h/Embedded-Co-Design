@@ -9,7 +9,6 @@
  * ******************************************************* */
 #include "global.h"
 #include "lcd.h"
-
 /* ********************************************************
  * void lcdinit();
  * Initialises the LCD screen for use with the TS-7300.
@@ -65,11 +64,13 @@ void command(unsigned int cmd) {
 	*padr = *padr & ~PAMASK;
 	*pcdr = *pcdr & ~PCMASK;
 	*padr = (*padr & ~PAMASK) | (cmd & PAMASK);
+
 	//if bit 7 of cmd is set the set bit 0 of pcdr
 	//if bit 7 of cmd is clear then clear bit 0 of pcdr
 	*pcdr = *pcdr | (cmd >> 7);
 
-	ctrl &= ~0x30; // de-assert RS, assert WR
+	//De-assert RS, assert WR
+	ctrl &= ~0x30;
 	*phdr = ctrl;
 
 	// step 2, wait
@@ -99,74 +100,51 @@ void command(unsigned int cmd) {
  * LCD screen.
  * Last edited: 14/04/2014
  * ******************************************************* */
-void* writechars() {
+int writechars(char *lcdMsg)
+{
 	int i;
 	unsigned int ctrl = *phdr;
 
-	while(1)
-	{
-		command(0x1);
+	command(0x1);
 
-		do {
-			*paddr = *paddr | PAMASK; //set port A to outputs
-			*pcddr = *pcddr | PCMASK; //set port C to outputs
+	while (*lcdMsg); {
+		*paddr = *paddr | PAMASK; //set port A to outputs
+		*pcddr = *pcddr | PCMASK; //set port C to outputs
 
-			/* step 1, apply RS & WR, send data */
+		/* step 1, apply RS & WR, send data */
+		*padr = *padr & ~PAMASK;
+		*pcdr = *pcdr & ~PCMASK;
+		*padr = *padr | (*lcdMsg & PAMASK);
+		*pcdr = *pcdr | ((*lcdMsg >> 7) & PCMASK);
 
-			*padr = *padr & ~PAMASK;
-			*pcdr = *pcdr & ~PCMASK;
-			*padr = *padr | (*lcdMsg & PAMASK);
-			*pcdr = *pcdr | ((*lcdMsg >> 7) & PCMASK);
+		/* Incrementing the character pointer */
+		*lcdMsg++;
 
-			/* Incrementing the character pointer */
-			*lcdMsg++;
+		ctrl |= 0x10; /* assert RS */
+		ctrl &= ~0x20; /* assert WR */
+		*phdr = ctrl;
 
-			ctrl |= 0x10; /* assert RS */
-			ctrl &= ~0x20; /* assert WR */
-			*phdr = ctrl;
+		// step 2
+		i = SETUP;
+		COUNTDOWN(i);
 
-			// step 2
-			i = SETUP;
-			COUNTDOWN(i);
+		/* step 3, assert EN */
+		ctrl |= 0x8;
+		*phdr = ctrl;
 
-			/* step 3, assert EN */
-			ctrl |= 0x8;
-			*phdr = ctrl;
+		// step 4, wait 800 nS
+		i = PULSE;
+		COUNTDOWN(i);
 
-			// step 4, wait 800 nS
-			i = PULSE;
-			COUNTDOWN(i);
+		/* step 5, de-assert EN */
+		ctrl &= ~0x8; // de-assert EN
+		*phdr = ctrl;
 
-			/* step 5, de-assert EN */
-			ctrl &= ~0x8; // de-assert EN
-			*phdr = ctrl;
-
-			/* step 6, wait */
-			i = HOLD;
-			COUNTDOWN(i);
-		} while (*lcdMsg);
+		/* step 6, wait */
+		i = HOLD;
+		COUNTDOWN(i);
 	}
 }
-
-/* ********************************************************
- * void lcd_message(char* msg);
- * Parameters: msg - The message to allocate memory for.
- * Creates a space in memory for the msg passed as the parameter
- * given the length of the message.
- * Last edited: 14/04/2014
- * ******************************************************* */
-void lcd_message(char* msg) {
-	if (lcdMsg)
-	{
-		lcdMsg = (char *)realloc(lcdMsg,strlen(msg) + 1);
-	}
-	else
-	{
-		lcdMsg = (char *)malloc(strlen(msg) + 1);
-	}
-	strcpy(lcdMsg, msg);
-}
-
 /* ********************************************************
  * void COUNTDOWN(int limit);
  * Parameters: limit - The time limit to countdown by.

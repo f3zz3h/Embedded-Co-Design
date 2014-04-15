@@ -11,7 +11,7 @@
 
 volatile unsigned int *mem_addr  = NULL;
 volatile unsigned int *gpio = NULL;
-unsigned int mem_phys  = 0x72A00000; /*base for opencore reg */
+unsigned int mem_phys = 0x72A00000; /*base for opencore reg */
 
 pthread_mutex_t keypad_mutex = PTHREAD_MUTEX_INITIALIZER;
 
@@ -77,7 +77,6 @@ int main( void )
 	int i;
 	int temp_key = 0;
 	pthread_t keypad_thread;
-	pthread_t lcd_thread;
 
 	initialization();
 
@@ -98,7 +97,8 @@ int main( void )
 
 	/* Read the keypad and switch over its return value */
 	pthread_create(&keypad_thread, NULL, Read_Keypad, NULL);
-	//pthread_create(&lcd_thread, NULL, writechars, NULL);
+
+	writechars("Hello");
 
 	while(1)
 	{
@@ -110,7 +110,6 @@ int main( void )
 
 		//printf("sVals - %d xyz_pos - %f\n", sVals[i], xyz_pos[i]);
 		Write_PWM(sVals);
-
 
 		#ifdef IKRUN
 		switch (temp_key)
